@@ -1,11 +1,11 @@
-import { Button } from './components/ui/button';
+import { RouterProvider } from '@tanstack/react-router';
+import { ThemeProvider } from './common/contexts/theme.contexts';
+import { router } from './common/router/Router';
 
-function App() {
-  return (
-    <div className="flex justify-center items-center w-full h-full">
-      <Button>button</Button>
-    </div>
-  );
-}
+const App = () => (
+  <ThemeProvider>
+    <RouterProvider router={router} />
+  </ThemeProvider>
+);
 
 export default App;
