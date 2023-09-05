@@ -1,45 +1,73 @@
-import { FC } from 'react';
-import { Moon, Sun } from 'lucide-react';
-
-import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu';
+import { FC, useState } from 'react';
 import { useTheme } from '@/common/hooks/theme.hooks';
 import { Theme } from '@/common/models/theme.models';
-import { THEME_DARK, THEME_LIGHT, THEME_SYSTEM } from '@/common/constants';
 import { useTranslation } from '@/common/hooks/lang.hooks';
+import { Button } from '@/components/ui/button';
+import { Command, CommandGroup, CommandItem } from '@/components/ui/command';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger
+} from '@/components/ui/popover';
+import { Check, ChevronsUpDown } from 'lucide-react';
+import { THEME_DARK, THEME_LIGHT, THEME_SYSTEM } from '@/common/constants';
+import { IThemeSelect } from './settings.models';
+import { cn } from '@/common/utils/tailwind.utils';
+import { Label } from '@/components/ui/label';
 
 const ThemeToggle: FC = () => {
-  const { setTheme } = useTheme();
   const { t } = useTranslation();
+  const { theme, setTheme } = useTheme();
 
-  const handleChange = (theme: Theme) => () => setTheme(theme);
+  const [open, setOpen] = useState<boolean>(false);
+
+  const handleChange = (theme: Theme) => () => {
+    setTheme(theme);
+    setOpen(false);
+  };
+
+  const themes: IThemeSelect[] = [
+    { label: t('theme.light'), value: THEME_LIGHT },
+    { label: t('theme.dark'), value: THEME_DARK },
+    { label: t('theme.system'), value: THEME_SYSTEM }
+  ];
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
-          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          <span className="sr-only">{t('theme.toggle')}</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={handleChange(THEME_LIGHT)}>
-          {t('theme.light')}
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={handleChange(THEME_DARK)}>
-          {t('theme.dark')}
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={handleChange(THEME_SYSTEM)}>
-          {t('theme.system')}
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <div>
+      <div className="flex flex-col gap-3">
+        <Label>{t('theme')}</Label>
+        <Popover open={open} onOpenChange={setOpen}>
+          <PopoverTrigger asChild>
+            <Button
+              variant="outline"
+              role="combobox"
+              aria-expanded={open}
+              className="w-[200px] justify-between"
+            >
+              {t(`theme.${theme}`)}
+              <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="w-[200px] p-0">
+            <Command>
+              <CommandGroup>
+                {themes.map((th) => (
+                  <CommandItem key={th.value} onSelect={handleChange(th.value)}>
+                    <Check
+                      className={cn(
+                        'mr-2 h-4 w-4',
+                        theme === th.value ? 'opacity-100' : 'opacity-0'
+                      )}
+                    />
+                    {th.label}
+                  </CommandItem>
+                ))}
+              </CommandGroup>
+            </Command>
+          </PopoverContent>
+        </Popover>
+      </div>
+    </div>
   );
 };
 

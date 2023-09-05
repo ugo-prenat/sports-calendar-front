@@ -28,8 +28,7 @@ i18next.use(initReactI18next).init({
     en: { translation: en },
     fr: { translation: fr }
   },
-  lng: defaultLang,
-  interpolation: { escapeValue: false }
+  lng: defaultLang
 });
 
 export const LangProvider: FC<ILangContextProps> = ({ children, ...props }) => {

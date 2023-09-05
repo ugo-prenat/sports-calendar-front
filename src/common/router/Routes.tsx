@@ -1,5 +1,5 @@
 import { Outlet, Route, RootRoute } from '@tanstack/react-router';
-import Header from '../../components/Header';
+import Header from '../../components/header/Header';
 import Calendar from '../../pages/calendar/CalendarPage';
 import Settings from '../../pages/settings/SettingsPage';
 import Manage from '../../pages/manage/ManagePage';

@@ -3,8 +3,14 @@
   "theme.dark": "Sombre",
   "theme.light": "Clair",
   "theme.system": "Système",
-  "theme.toggle": "Sélection du thème",
 
+  "language": "Langue",
   "language.fr": "Français",
-  "language.en": "English"
+  "language.en": "English",
+
+  "manage.sports": "Gérer",
+  "manage.sports.title": "Gestion des sports",
+  "manage.sports.details": "choisissez les sports à afficher ou non dans le calendrier.",
+
+  "settings": "Paramètres"
 }
