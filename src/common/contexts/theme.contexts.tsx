@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react';
+import { FC, createContext, useEffect, useState } from 'react';
 import {
   IThemeContextProps,
   IThemeContextState,
@@ -20,7 +20,10 @@ const initialState: IThemeContextState = {
 export const ThemeProviderContext =
   createContext<IThemeContextState>(initialState);
 
-export const ThemeProvider = ({ children, ...props }: IThemeContextProps) => {
+export const ThemeProvider: FC<IThemeContextProps> = ({
+  children,
+  ...props
+}) => {
   const [theme, setTheme] = useState<Theme>(
     (localStorage.getItem(THEME_STORAGE_KEY) as Theme) || DEFAULT_THEME
   );

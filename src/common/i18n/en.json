@@ -1,0 +1,10 @@
+{
+  "theme": "Theme",
+  "theme.dark": "Dark",
+  "theme.light": "Light",
+  "theme.system": "System",
+  "theme.toggle": "Toggle theme",
+
+  "language.fr": "Français",
+  "language.en": "English"
+}

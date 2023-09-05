@@ -10,11 +10,14 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { useTheme } from '@/common/hooks/theme.hooks';
 import { Theme } from '@/common/models/theme.models';
+import { THEME_DARK, THEME_LIGHT, THEME_SYSTEM } from '@/common/constants';
+import { useTranslation } from '@/common/hooks/lang.hooks';
 
 const ThemeToggle: FC = () => {
   const { setTheme } = useTheme();
+  const { t } = useTranslation();
 
-  const handleToggle = (theme: Theme) => () => setTheme(theme);
+  const handleChange = (theme: Theme) => () => setTheme(theme);
 
   return (
     <DropdownMenu>
@@ -22,16 +25,18 @@ const ThemeToggle: FC = () => {
         <Button variant="outline" size="icon">
           <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
           <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          <span className="sr-only">Toggle theme</span>
+          <span className="sr-only">{t('theme.toggle')}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={handleToggle('light')}>
-          Light
+        <DropdownMenuItem onClick={handleChange(THEME_LIGHT)}>
+          {t('theme.light')}
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={handleToggle('dark')}>Dark</DropdownMenuItem>
-        <DropdownMenuItem onClick={handleToggle('system')}>
-          System
+        <DropdownMenuItem onClick={handleChange(THEME_DARK)}>
+          {t('theme.dark')}
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={handleChange(THEME_SYSTEM)}>
+          {t('theme.system')}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
