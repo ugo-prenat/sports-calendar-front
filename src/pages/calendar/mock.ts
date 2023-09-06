@@ -15,8 +15,8 @@ const F1_MONZA_SESSIONS_MOCK: ISession[] = [
         shortName: 'EL1'
       }
     },
-    startTime: '2023-09-15T17:30:00+08:00',
-    endTime: '2023-09-15T18:30:00+08:00'
+    startTime: '2023-09-01T13:30:00+02:00',
+    endTime: '2023-09-01T14:30:00+02:00'
   },
   {
     id: '2',
@@ -32,8 +32,8 @@ const F1_MONZA_SESSIONS_MOCK: ISession[] = [
         shortName: 'EL2'
       }
     },
-    startTime: '2023-09-15T21:00:00+08:00',
-    endTime: '2023-09-15T22:00:00+08:00'
+    startTime: '2023-09-01T17:00:00+02:00',
+    endTime: '2023-09-01T18:00:00+02:00'
   },
   {
     id: '3',
@@ -49,8 +49,8 @@ const F1_MONZA_SESSIONS_MOCK: ISession[] = [
         shortName: 'EL3'
       }
     },
-    startTime: '2023-09-16T17:30:00+08:00',
-    endTime: '2023-09-16T18:30:00+08:00'
+    startTime: '2023-09-02T12:30:00+02:00',
+    endTime: '2023-09-02T13:30:00+02:00'
   },
   {
     id: '4',
@@ -66,8 +66,8 @@ const F1_MONZA_SESSIONS_MOCK: ISession[] = [
         shortName: 'Q'
       }
     },
-    startTime: '2023-09-16T21:00:00+08:00',
-    endTime: '2023-09-16T22:00:00+08:00'
+    startTime: '2023-09-02T16:00:00+02:00',
+    endTime: '2023-09-02T17:00:00+02:00'
   },
   {
     id: '5',
@@ -81,8 +81,8 @@ const F1_MONZA_SESSIONS_MOCK: ISession[] = [
         name: 'Course'
       }
     },
-    startTime: '2023-09-17T20:00:00+08:00',
-    endTime: '2023-09-17T22:00:00+08:00'
+    startTime: '2023-09-03T15:00:00+02:00',
+    endTime: '2023-09-03T17:00:00+02:00'
   }
 ];
 
@@ -157,7 +157,21 @@ const F2_MONZA_SESSIONS_MOCK: ISession[] = [
   }
 ];
 
+const UFC_PARIS_SESSIONS_MOCK: ISession[] = [
+  {
+    id: '10',
+    sport: 'combat-sports',
+    championship: 'ufc',
+    regionalized: {
+      en: { name: 'UFC Fight Night 226', shortName: 'UFC Paris' }
+    },
+    startTime: '2023-09-02T18:30:00+02:00',
+    endTime: '2023-09-03T00:30:00+02:00'
+  }
+];
+
 export const F1_SESSIONS_MOCK: ISession[] = [
   ...F1_MONZA_SESSIONS_MOCK,
-  ...F2_MONZA_SESSIONS_MOCK
+  ...F2_MONZA_SESSIONS_MOCK,
+  ...UFC_PARIS_SESSIONS_MOCK
 ];

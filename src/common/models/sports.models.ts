@@ -24,12 +24,8 @@ export interface IEvent {
   }>;
   startTime: string;
   endTime: string;
-  location: IEventLocation;
-}
-
-export interface IEventLocation {
   country: IEventCountry;
-  circuit: IEventCircuit;
+  location: IEventLocation;
 }
 
 export interface IEventCountry {
@@ -37,19 +33,19 @@ export interface IEventCountry {
     code: string;
     name?: string; // i18n à partir du code ?
   }>;
-  flag?: string;
+  flag: string;
 }
 
-export interface IEventCircuit {
+export interface IEventLocation {
   regionalized: IRegionalized<{
     name: string;
-    shortName: string;
+    shortName?: string;
   }>;
-  track?: string;
   coordinates?: {
     lat: number;
     lng: number;
   };
+  track?: string;
 }
 
 export interface ISession {
