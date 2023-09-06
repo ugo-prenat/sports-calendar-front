@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { THEME_DARK, THEME_LIGHT, THEME_SYSTEM } from '../constants';
+import { THEME_DARK, THEME_LIGHT, THEME_SYSTEM } from '../../constants';
 
 export type Theme =
   | typeof THEME_LIGHT

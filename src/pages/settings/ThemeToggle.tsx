@@ -10,7 +10,7 @@ import {
   PopoverTrigger
 } from '@/components/ui/popover';
 import { Check, ChevronsUpDown } from 'lucide-react';
-import { THEME_DARK, THEME_LIGHT, THEME_SYSTEM } from '@/common/constants';
+import { THEME_DARK, THEME_LIGHT, THEME_SYSTEM } from '@/constants';
 import { IThemeSelect } from './settings.models';
 import { cn } from '@/common/utils/tailwind.utils';
 import { Label } from '@/components/ui/label';

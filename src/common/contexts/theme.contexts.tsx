@@ -10,7 +10,7 @@ import {
   THEME_LIGHT,
   THEME_STORAGE_KEY,
   THEME_SYSTEM
-} from '../constants';
+} from '../../constants';
 
 const initialState: IThemeContextState = {
   theme: DEFAULT_THEME,

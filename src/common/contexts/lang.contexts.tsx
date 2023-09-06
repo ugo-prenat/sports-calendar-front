@@ -9,7 +9,7 @@ import {
   ILangContextState,
   Lang
 } from '../models/lang.models';
-import { LANG_STORAGE_KEY } from '../constants';
+import { LANG_STORAGE_KEY } from '../../constants';
 import { getDefaultLang } from '../utils/lang.utils';
 
 export const defaultLang: Lang = getDefaultLang();

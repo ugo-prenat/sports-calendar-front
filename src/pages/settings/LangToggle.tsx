@@ -9,7 +9,7 @@ import {
 import { Lang } from '@/common/models/lang.models';
 import { cn } from '@/common/utils/tailwind.utils';
 import { Check, ChevronsUpDown } from 'lucide-react';
-import { LANG_EN, LANG_FR } from '@/common/constants';
+import { LANG_EN, LANG_FR } from '@/constants';
 import { useTranslation } from '@/common/hooks/lang.hooks';
 import { ILanguageSelect } from './settings.models';
 import { Label } from '@/components/ui/label';

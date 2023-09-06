@@ -1,4 +1,4 @@
-import { DEFAULT_LANG, LANG_FR, LANG_STORAGE_KEY } from '../constants';
+import { DEFAULT_LANG, LANG_FR, LANG_STORAGE_KEY } from '../../constants';
 import { Lang } from '../models/lang.models';
 
 export const getDefaultLang = (): Lang => {
