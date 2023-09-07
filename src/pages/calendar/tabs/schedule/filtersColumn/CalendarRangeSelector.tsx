@@ -8,7 +8,7 @@ import {
 import { FC, useState } from 'react';
 import { Calendar } from '@/components/ui/calendar';
 import {
-  CalendarRange,
+  CalendarView,
   ICalendarRangeSelect,
   IDateRange
 } from '../../../calendar.models';
@@ -17,15 +17,15 @@ import { getDateRange, getNextRange } from '../../../calendar.utils';
 import { DateRange } from 'react-day-picker';
 
 interface ICalendarRangeSelectorProps {
-  calendarRange: CalendarRange;
+  calendarView: CalendarView;
 }
 
 const CalendarRangeSelector: FC<ICalendarRangeSelectorProps> = ({
-  calendarRange
+  calendarView
 }) => {
   const { t } = useTranslation();
 
-  const [range, setRange] = useState<IDateRange>(getDateRange(calendarRange));
+  const [range, setRange] = useState<IDateRange>(getDateRange(calendarView));
 
   const handleSetRange = (maybeRange: DateRange | undefined) => {
     const newRange: IDateRange = {
@@ -36,11 +36,11 @@ const CalendarRangeSelector: FC<ICalendarRangeSelectorProps> = ({
   };
 
   const handleChangeRange = (value: string) =>
-    setRange(getNextRange(calendarRange, +value));
+    setRange(getNextRange(calendarView, +value));
 
   const selectItems: ICalendarRangeSelect[] = ['0', '1', '2'].map((value) => ({
     value,
-    label: t(`pick.date.${calendarRange}.${value}`)
+    label: t(`pick.date.${calendarView}.${value}`)
   }));
 
   return (

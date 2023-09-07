@@ -1,18 +1,18 @@
 import { FC } from 'react';
-import { CalendarRange } from '../../calendar.models';
+import { CalendarView } from '../../calendar.models';
 import FiltersColumn from './filtersColumn/FiltersColumn';
 import Schedule from './schedule/Schedule';
 
 interface ICalendarScheduleTabProps {
-  calendarRange: CalendarRange;
+  calendarView: CalendarView;
 }
 
 const CalendarScheduleTab: FC<ICalendarScheduleTabProps> = ({
-  calendarRange
+  calendarView
 }) => {
   return (
     <div className="flex h-full">
-      <FiltersColumn calendarRange={calendarRange} />
+      <FiltersColumn calendarView={calendarView} />
 
       <Schedule />
     </div>

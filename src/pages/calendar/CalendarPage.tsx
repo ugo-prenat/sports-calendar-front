@@ -18,17 +18,17 @@ const CalendarPage: FC = () => {
     {
       id: WEEKEND,
       label: t('tab.weekend'),
-      content: <CalendarScheduleTab calendarRange={WEEKEND} />
+      content: <CalendarScheduleTab calendarView={WEEKEND} />
     },
     {
       id: WEEK,
       label: t('tab.week'),
-      content: <CalendarScheduleTab calendarRange={WEEK} />
+      content: <CalendarScheduleTab calendarView={WEEK} />
     },
     {
       id: MONTH,
       label: t('tab.month'),
-      content: <CalendarScheduleTab calendarRange={MONTH} />
+      content: <CalendarScheduleTab calendarView={MONTH} />
     }
   ];
 

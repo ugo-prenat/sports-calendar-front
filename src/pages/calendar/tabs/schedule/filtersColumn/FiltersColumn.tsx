@@ -1,15 +1,15 @@
 import { FC } from 'react';
-import { CalendarRange } from '../../../calendar.models';
+import { CalendarView } from '../../../calendar.models';
 import CalendarRangeSelector from './CalendarRangeSelector';
 
 interface IFiltersColumnProps {
-  calendarRange: CalendarRange;
+  calendarView: CalendarView;
 }
 
-const FiltersColumn: FC<IFiltersColumnProps> = ({ calendarRange }) => {
+const FiltersColumn: FC<IFiltersColumnProps> = ({ calendarView }) => {
   return (
     <div className="h-full pr-4 border-r">
-      <CalendarRangeSelector calendarRange={calendarRange} />
+      <CalendarRangeSelector calendarView={calendarView} />
 
       <div className="py-4">sports filters</div>
       <div className="pt-4 border-t">championship filters</div>
