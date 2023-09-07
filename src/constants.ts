@@ -61,11 +61,14 @@ export const CHAMIPONSHIP_CONFS = [
 
 // CALENDAR
 export const UPCOMING = 'upcoming';
+export const SCHEDULE = 'schedule';
+
 export const WEEKEND = 'weekend';
 export const WEEK = 'week';
 export const MONTH = 'month';
 
-export const CALENDAR_VIEWS = [WEEKEND, WEEK, MONTH] as const;
+export const DEFAULT_SCHEDULE_VIEW = WEEKEND;
+export const DEFAULT_CALENDAR_TAB = SCHEDULE;
 
-export const CALENDAR_EN_FORMAT = 'LLL dd, y';
-export const CALENDAR_FR_FORMAT = 'dd LLL y';
+export const SCHEDULE_VIEWS = [WEEKEND, WEEK, MONTH] as const;
+export const CALENDAR_TABS = [UPCOMING, SCHEDULE] as const;
