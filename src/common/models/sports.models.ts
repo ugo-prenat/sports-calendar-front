@@ -18,6 +18,8 @@ export interface IRegionalized<T extends { [key: string]: any }> {
 
 export interface IEvent {
   id: string;
+  sport: SportType;
+  championship: MotorsportChampionship | CombatSportChampionship;
   regionalized: IRegionalized<{
     name: string;
     shortName: string;
@@ -45,7 +47,7 @@ export interface IEventLocation {
     lat: number;
     lng: number;
   };
-  track?: string;
+  track?: string; // juste pour les sports mécaniques
 }
 
 export interface ISession {

@@ -12,5 +12,21 @@
   "manage.sports.title": "Sports management",
   "manage.sports.details": "Select the sports to be displayed or not in the calendar.",
 
-  "settings": "Settings"
+  "settings": "Settings",
+
+  "tab.upcoming": "Upcoming",
+  "tab.weekend": "Weekend",
+  "tab.week": "Week",
+  "tab.month": "Month",
+
+  "pick.date": "Pick a range",
+  "pick.date.weekend.0": "This weekend",
+  "pick.date.weekend.1": "Next weekend",
+  "pick.date.weekend.2": "In 2 weekends",
+  "pick.date.week.0": "This week",
+  "pick.date.week.1": "Next week",
+  "pick.date.week.2": "In 2 weeks",
+  "pick.date.month.0": "This month",
+  "pick.date.month.1": "Next month",
+  "pick.date.month.2": "In 2 months"
 }

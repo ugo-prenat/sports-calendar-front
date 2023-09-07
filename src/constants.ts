@@ -29,16 +29,14 @@ export const F1 = 'f1';
 export const F2 = 'f2';
 export const F3 = 'f3';
 export const F1_ACADEMY = 'f1-academy';
-export const GT3 = 'gt3';
-export const GT4 = 'gt4';
+export const GT_WORLD_CHALLENGE = 'gt-world-challenge';
 
 export const MOTORSPORTS_CHAMPIONSHIPS = [
   F1,
   F2,
   F3,
   F1_ACADEMY,
-  GT3,
-  GT4
+  GT_WORLD_CHALLENGE
 ] as const;
 
 export const UFC = 'ufc';
@@ -60,3 +58,14 @@ export const CHAMIPONSHIP_CONFS = [
     color: '#ff0000'
   }
 ];
+
+// CALENDAR
+export const UPCOMING = 'upcoming';
+export const WEEKEND = 'weekend';
+export const WEEK = 'week';
+export const MONTH = 'month';
+
+export const CALENDAR_RANGES = [WEEKEND, WEEK, MONTH] as const;
+
+export const CALENDAR_EN_FORMAT = 'LLL dd, y';
+export const CALENDAR_FR_FORMAT = 'dd LLL y';

@@ -12,5 +12,21 @@
   "manage.sports.title": "Gestion des sports",
   "manage.sports.details": "choisissez les sports à afficher ou non dans le calendrier.",
 
-  "settings": "Paramètres"
+  "settings": "Paramètres",
+
+  "tab.upcoming": "Prochainement",
+  "tab.weekend": "Week-end",
+  "tab.week": "Semaine",
+  "tab.month": "Mois",
+
+  "pick.date": "Choisir une période",
+  "pick.date.weekend.0": "Ce week-end",
+  "pick.date.weekend.1": "Week-end prochain",
+  "pick.date.weekend.2": "Dans 2 week-ends",
+  "pick.date.week.0": "Cette semaine",
+  "pick.date.week.1": "Semaine prochaine",
+  "pick.date.week.2": "Dans 2 semaines",
+  "pick.date.month.0": "Ce mois-ci",
+  "pick.date.month.1": "Mois prochain",
+  "pick.date.month.2": "Dans 2 mois"
 }

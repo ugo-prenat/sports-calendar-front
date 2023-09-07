@@ -2,12 +2,13 @@ import { FC } from 'react';
 import { Link } from '@tanstack/react-router';
 import { Button } from '../ui/button';
 import CompactThemeToggle from './CompactThemeToggle';
+import CompactLangToggle from './CompactLangToggle';
 
 interface HeaderProps {}
 
 const Header: FC<HeaderProps> = () => {
   return (
-    <div className="flex justify-between items-center p-2 border-input border">
+    <div className="flex justify-between items-center py-2 px-4 border-input border">
       <div className="flex">
         <Button variant="link">
           <Link to="/">Home</Link>
@@ -21,7 +22,10 @@ const Header: FC<HeaderProps> = () => {
           <Link to="/settings">Settings</Link>
         </Button>
       </div>
-      <CompactThemeToggle />
+      <div className="flex gap-x-2">
+        <CompactLangToggle />
+        <CompactThemeToggle />
+      </div>
     </div>
   );
 };
