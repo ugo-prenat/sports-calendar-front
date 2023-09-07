@@ -5,27 +5,21 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui/select';
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { Calendar } from '@/components/ui/calendar';
-import {
-  CalendarView,
-  ICalendarRangeSelect,
-  IDateRange
-} from '../../../calendar.models';
+import { ICalendarRangeSelect, IDateRange } from '../../../home.models';
 import { useTranslation } from '@/common/hooks/lang.hooks';
-import { getDateRange, getNextRange } from '../../../calendar.utils';
+import { getNextRange } from '../../../home.utils';
 import { DateRange } from 'react-day-picker';
+import { useCalendar } from '@/common/hooks/calendar.hooks';
 
-interface ICalendarRangeSelectorProps {
-  calendarView: CalendarView;
-}
-
-const CalendarRangeSelector: FC<ICalendarRangeSelectorProps> = ({
-  calendarView
-}) => {
+const CalendarRangeSelector: FC = () => {
   const { t } = useTranslation();
-
-  const [range, setRange] = useState<IDateRange>(getDateRange(calendarView));
+  const {
+    calendarView,
+    calendarRange: range,
+    setCalendarRange: setRange
+  } = useCalendar();
 
   const handleSetRange = (maybeRange: DateRange | undefined) => {
     const newRange: IDateRange = {

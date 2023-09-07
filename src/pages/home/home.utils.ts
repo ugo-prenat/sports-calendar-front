@@ -12,13 +12,13 @@ import {
   addMonths,
   addWeeks
 } from 'date-fns';
-import { CalendarRange, IDateRange } from './calendar.models';
+import { CalendarView, IDateRange } from './home.models';
 import { MONTH, WEEK, WEEKEND } from '@/constants';
 
-export const getDateRange = (range: CalendarRange): IDateRange => {
+export const getDateRange = (view: CalendarView): IDateRange => {
   const today = new Date();
 
-  switch (range) {
+  switch (view) {
     case WEEKEND:
       return {
         from: getFirstDayOfNextWeekend(),
@@ -38,12 +38,12 @@ export const getDateRange = (range: CalendarRange): IDateRange => {
 };
 
 export const getNextRange = (
-  calendarRange: CalendarRange,
+  view: CalendarView,
   iterations: number
 ): IDateRange => {
-  const todayRange: IDateRange = getDateRange(calendarRange);
+  const todayRange: IDateRange = getDateRange(view);
 
-  switch (calendarRange) {
+  switch (view) {
     case WEEKEND:
     case WEEK:
       return {

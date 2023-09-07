@@ -65,7 +65,6 @@ export const WEEKEND = 'weekend';
 export const WEEK = 'week';
 export const MONTH = 'month';
 
-export const CALENDAR_VIEWS = [WEEKEND, WEEK, MONTH] as const;
+export const DEFAULT_CALENDAR_VIEW = WEEKEND;
 
-export const CALENDAR_EN_FORMAT = 'LLL dd, y';
-export const CALENDAR_FR_FORMAT = 'dd LLL y';
+export const CALENDAR_VIEWS = [WEEKEND, WEEK, MONTH] as const;

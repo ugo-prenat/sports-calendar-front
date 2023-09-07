@@ -1,6 +1,6 @@
 import { Outlet, Route, RootRoute } from '@tanstack/react-router';
 import Header from '../../components/header/Header';
-import Calendar from '../../pages/calendar/CalendarPage';
+import HomePage from '../../pages/home/HomePage';
 import Settings from '../../pages/settings/SettingsPage';
 import Manage from '../../pages/manage/ManagePage';
 import NotFoundPage from '@/pages/notFound/NotFoundPage';
@@ -17,7 +17,7 @@ export const rootRoute = new RootRoute({
 const calendarRoute = new Route({
   getParentRoute: () => rootRoute,
   path: '/',
-  component: Calendar
+  component: HomePage
 });
 
 const settingsRoute = new Route({

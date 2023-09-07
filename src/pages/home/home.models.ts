@@ -9,7 +9,7 @@ export interface IDateRange {
 }
 
 export interface ICalendarTab {
-  id: string;
+  id: CalendarView;
   label: string;
   content: JSX.Element;
 }
