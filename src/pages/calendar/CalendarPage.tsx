@@ -4,7 +4,7 @@ import { useTranslation } from '@/common/hooks/lang.hooks';
 import { ICalendarTab } from './calendar.models';
 import CalendarUpcomingTab from './tabs/upcoming/CalendarUpcomingTab';
 import CalendarScheduleTab from './tabs/schedule/CalendarScheduleTab';
-import { DEFAULT_CALENDAR_TAB, SCHEDULE, UPCOMING } from '@/constants';
+import { MONTH, UPCOMING, WEEK, WEEKEND } from '@/constants';
 
 const CalendarPage: FC = () => {
   const { t } = useTranslation();
@@ -12,21 +12,28 @@ const CalendarPage: FC = () => {
   const tabs: ICalendarTab[] = [
     {
       id: UPCOMING,
-      label: t(`tab.${UPCOMING}`),
+      label: t('tab.upcoming'),
       content: <CalendarUpcomingTab />
     },
     {
-      id: SCHEDULE,
-      label: t(`tab.${SCHEDULE}`),
-      content: <CalendarScheduleTab />
+      id: WEEKEND,
+      label: t('tab.weekend'),
+      content: <CalendarScheduleTab calendarView={WEEKEND} />
+    },
+    {
+      id: WEEK,
+      label: t('tab.week'),
+      content: <CalendarScheduleTab calendarView={WEEK} />
+    },
+    {
+      id: MONTH,
+      label: t('tab.month'),
+      content: <CalendarScheduleTab calendarView={MONTH} />
     }
   ];
 
   return (
-    <Tabs
-      defaultValue={DEFAULT_CALENDAR_TAB}
-      className="p-6 pb-0 flex-grow flex flex-col"
-    >
+    <Tabs defaultValue={WEEKEND} className="p-6 pb-0 flex-grow flex flex-col">
       <TabsList className="w-fit">
         {tabs.map((tab) => (
           <TabsTrigger key={tab.id} value={tab.id}>

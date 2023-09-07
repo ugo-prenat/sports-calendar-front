@@ -1,11 +1,18 @@
 import { FC } from 'react';
+import { CalendarView } from '../../calendar.models';
 import FiltersColumn from './filtersColumn/FiltersColumn';
 import Schedule from './schedule/Schedule';
 
-const CalendarScheduleTab: FC = () => {
+interface ICalendarScheduleTabProps {
+  calendarView: CalendarView;
+}
+
+const CalendarScheduleTab: FC<ICalendarScheduleTabProps> = ({
+  calendarView
+}) => {
   return (
     <div className="flex h-full">
-      <FiltersColumn />
+      <FiltersColumn calendarView={calendarView} />
 
       <Schedule />
     </div>

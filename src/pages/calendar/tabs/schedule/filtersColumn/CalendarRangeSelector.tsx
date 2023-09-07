@@ -5,23 +5,27 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui/select';
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 import { Calendar } from '@/components/ui/calendar';
-import { ICalendarRangeSelect, IDateRange } from '../../../calendar.models';
+import {
+  CalendarView,
+  ICalendarRangeSelect,
+  IDateRange
+} from '../../../calendar.models';
 import { useTranslation } from '@/common/hooks/lang.hooks';
-import { getNextRange } from '../../../calendar.utils';
+import { getDateRange, getNextRange } from '../../../calendar.utils';
 import { DateRange } from 'react-day-picker';
-import { useCalendar } from '@/pages/calendar/calendar.hooks';
 
-const CalendarRangeSelector: FC = () => {
+interface ICalendarRangeSelectorProps {
+  calendarView: CalendarView;
+}
+
+const CalendarRangeSelector: FC<ICalendarRangeSelectorProps> = ({
+  calendarView
+}) => {
   const { t } = useTranslation();
-  const {
-    calendarRange: range,
-    setCalendarRange: setRange,
-    calendarView
-  } = useCalendar();
 
-  const [value, setValue] = useState<string>('0');
+  const [range, setRange] = useState<IDateRange>(getDateRange(calendarView));
 
   const handleSetRange = (maybeRange: DateRange | undefined) => {
     const newRange: IDateRange = {
@@ -31,14 +35,8 @@ const CalendarRangeSelector: FC = () => {
     setRange(newRange);
   };
 
-  const handleChangeRange = (value: string) => {
+  const handleChangeRange = (value: string) =>
     setRange(getNextRange(calendarView, +value));
-    setValue(value);
-  };
-
-  useEffect(() => {
-    setValue('0');
-  }, [calendarView]);
 
   const selectItems: ICalendarRangeSelect[] = ['0', '1', '2'].map((value) => ({
     value,
@@ -51,7 +49,6 @@ const CalendarRangeSelector: FC = () => {
         <Select
           onValueChange={handleChangeRange}
           defaultValue={selectItems[0]?.value}
-          value={value}
         >
           <SelectTrigger>
             <SelectValue placeholder={t('pick.date')} />

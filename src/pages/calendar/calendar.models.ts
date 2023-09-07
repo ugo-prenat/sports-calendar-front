@@ -1,8 +1,7 @@
-import { CALENDAR_TABS, SCHEDULE_VIEWS } from '@/constants';
+import { CALENDAR_VIEWS } from '@/constants';
 import { ReactNode } from 'react';
 
-export type ScheduleView = (typeof SCHEDULE_VIEWS)[number];
-export type CalendarTab = (typeof CALENDAR_TABS)[number];
+export type CalendarView = (typeof CALENDAR_VIEWS)[number];
 
 export interface IDateRange {
   from: Date;
@@ -10,14 +9,9 @@ export interface IDateRange {
 }
 
 export interface ICalendarTab {
-  id: CalendarTab;
+  id: string;
   label: string;
   content: JSX.Element;
-}
-
-export interface IScheduleViewSelector {
-  id: ScheduleView;
-  label: string;
 }
 
 export interface ICalendarRangeSelect {
@@ -30,8 +24,8 @@ export interface ICalendarContextProps {
 }
 
 export interface ICalendarContextState {
-  calendarView: ScheduleView;
+  calendarView: CalendarView;
   calendarRange: IDateRange;
-  setCalendarView: (calendarView: ScheduleView) => void;
+  setCalendarView: (calendarView: CalendarView) => void;
   setCalendarRange: (calendarRange: IDateRange) => void;
 }
