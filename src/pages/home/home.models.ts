@@ -11,7 +11,6 @@ export interface IDateRange {
 export interface ICalendarTab {
   id: CalendarView;
   label: string;
-  content: JSX.Element;
 }
 
 export interface ICalendarRangeSelect {

@@ -6,9 +6,6 @@ import { cn } from '@/common/utils/tailwind.utils';
 import { buttonVariants } from '@/components/ui/button';
 import { useTranslation } from '@/common/hooks/lang.hooks';
 
-import { fr } from 'date-fns/locale';
-import { LANG_FR } from '@/constants';
-
 export type CalendarProps = React.ComponentProps<typeof DayPicker>;
 
 function Calendar({
@@ -17,8 +14,7 @@ function Calendar({
   showOutsideDays = true,
   ...props
 }: CalendarProps) {
-  const { lang } = useTranslation();
-  const locale: Locale | undefined = lang === LANG_FR ? fr : undefined;
+  const { fnsLocale } = useTranslation();
 
   return (
     <DayPicker
@@ -57,7 +53,7 @@ function Calendar({
         day_hidden: 'invisible',
         ...classNames
       }}
-      locale={locale}
+      locale={fnsLocale}
       components={{
         IconLeft: () => <ChevronLeft className="h-4 w-4" />,
         IconRight: () => <ChevronRight className="h-4 w-4" />

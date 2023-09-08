@@ -1,5 +1,5 @@
 import i18next from 'i18next';
-import { FC, createContext, useState } from 'react';
+import { FC, createContext, useEffect, useState } from 'react';
 import { initReactI18next, useTranslation } from 'react-i18next';
 
 import en from '../i18n/en.json';
@@ -9,15 +9,17 @@ import {
   ILangContextState,
   Lang
 } from '../models/lang.models';
-import { LANG_STORAGE_KEY } from '../../constants';
+import { LANG_FR, LANG_STORAGE_KEY } from '../../constants';
 import { getDefaultLang } from '../utils/lang.utils';
+import { fr as fnsFrLocale } from 'date-fns/locale';
 
 export const defaultLang: Lang = getDefaultLang();
 
 const initialState: ILangContextState = {
   lang: defaultLang,
   setLang: () => null,
-  t: () => ''
+  t: () => '',
+  fnsLocale: defaultLang === LANG_FR ? fnsFrLocale : undefined
 };
 
 export const LangProviderContext =
@@ -33,6 +35,9 @@ i18next.use(initReactI18next).init({
 
 export const LangProvider: FC<ILangContextProps> = ({ children, ...props }) => {
   const [lang, changeLang] = useState(defaultLang);
+  const [fnsLocale, setFnsLocale] = useState<Locale | undefined>(
+    lang === LANG_FR ? fnsFrLocale : undefined
+  );
   const { t } = useTranslation();
 
   const setLang = (newLang: Lang) => {
@@ -41,7 +46,11 @@ export const LangProvider: FC<ILangContextProps> = ({ children, ...props }) => {
     i18next.changeLanguage(newLang);
   };
 
-  const value = { lang, setLang, t };
+  useEffect(() => {
+    setFnsLocale(lang === LANG_FR ? fnsFrLocale : undefined);
+  }, [lang]);
+
+  const value = { lang, setLang, t, fnsLocale };
 
   return (
     <LangProviderContext.Provider {...props} value={value}>

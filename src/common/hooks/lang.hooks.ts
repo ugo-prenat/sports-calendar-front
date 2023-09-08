@@ -1,5 +1,7 @@
 import { useContext } from 'react';
 import { LangProviderContext } from '../contexts/lang.contexts';
+import { IFnsFormatOptions } from '../models/lang.models';
+import { format as fnsFormat } from 'date-fns';
 
 export const useTranslation = () => {
   const context = useContext(LangProviderContext);
@@ -8,4 +10,16 @@ export const useTranslation = () => {
     throw new Error('useTranslation must be used within a LangProvider');
 
   return context;
+};
+
+export const useFnsFormat = () => {
+  const { fnsLocale } = useContext(LangProviderContext);
+
+  const format = (
+    date: Date | number,
+    format: string,
+    options?: IFnsFormatOptions
+  ) => fnsFormat(date, format, { locale: fnsLocale, ...options });
+
+  return format;
 };

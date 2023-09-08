@@ -4,7 +4,7 @@ import { useTranslation } from '@/common/hooks/lang.hooks';
 import { CalendarView, ICalendarTab } from './home.models';
 import UpcomingTab from './tabs/upcoming/UpcomingTab';
 import CalendarScheduleTab from './tabs/calendar/CalendarTab';
-import { MONTH, UPCOMING, WEEK, WEEKEND } from '@/constants';
+import { CALENDAR_VIEWS, UPCOMING, WEEKEND } from '@/constants';
 import { useCalendar } from '@/common/hooks/calendar.hooks';
 
 const HomePage: FC = () => {
@@ -13,23 +13,10 @@ const HomePage: FC = () => {
 
   const handleChangeTab = (id: CalendarView) => () => setCalendarView(id);
 
-  const calendarTabs: ICalendarTab[] = [
-    {
-      id: WEEKEND,
-      label: t(`tab.${WEEKEND}`),
-      content: <CalendarScheduleTab />
-    },
-    {
-      id: WEEK,
-      label: t(`tab.${WEEK}`),
-      content: <CalendarScheduleTab />
-    },
-    {
-      id: MONTH,
-      label: t(`tab.${MONTH}`),
-      content: <CalendarScheduleTab />
-    }
-  ];
+  const calendarTabs: ICalendarTab[] = CALENDAR_VIEWS.map((view) => ({
+    id: view,
+    label: t(`tab.${view}`)
+  }));
 
   return (
     <Tabs defaultValue={WEEKEND} className="p-6 pb-0 flex-grow flex flex-col">
@@ -58,7 +45,7 @@ const HomePage: FC = () => {
           value={tab.id}
           className="mt-0 pt-6 flex-grow"
         >
-          {tab.content}
+          <CalendarScheduleTab />
         </TabsContent>
       ))}
     </Tabs>

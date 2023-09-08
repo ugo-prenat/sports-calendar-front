@@ -10,7 +10,12 @@ import {
   startOfMonth,
   endOfMonth,
   addMonths,
-  addWeeks
+  addWeeks,
+  eachDayOfInterval,
+  eachHourOfInterval,
+  startOfToday,
+  endOfToday,
+  format
 } from 'date-fns';
 import { CalendarView, IDateRange } from './home.models';
 import { MONTH, WEEK, WEEKEND } from '@/constants';
@@ -67,3 +72,23 @@ const getFirstDayOfNextWeekend = (): Date => {
   if (isSunday(today)) return subDays(today, 2);
   return nextFriday(today);
 };
+
+export const getCalendarDays = (range: IDateRange): Date[] =>
+  eachDayOfInterval({
+    start: range.from,
+    end: range.to
+  });
+
+export const getHours = (locale?: Locale): string[] => {
+  const hours = eachHourOfInterval({
+    start: startOfToday(),
+    end: endOfToday()
+  });
+
+  return hours.map((hour) => format(hour, 'p', { locale }));
+};
+
+export const sliceDaysIntoChunks = <T>(arr: T[], chunkSize: number): T[][] =>
+  Array.from({ length: Math.ceil(arr.length / chunkSize) }, (_, index) =>
+    arr.slice(index * chunkSize, (index + 1) * chunkSize)
+  );
