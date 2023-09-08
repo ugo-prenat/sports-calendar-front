@@ -20,12 +20,15 @@
   "tab.month": "Mois",
 
   "pick.date": "Choisir une période",
+  "pick.date.weekend.-1": "Week-end dernier",
   "pick.date.weekend.0": "Ce week-end",
   "pick.date.weekend.1": "Week-end prochain",
   "pick.date.weekend.2": "Dans 2 week-ends",
+  "pick.date.week.-1": "Semaine dernière",
   "pick.date.week.0": "Cette semaine",
   "pick.date.week.1": "Semaine prochaine",
   "pick.date.week.2": "Dans 2 semaines",
+  "pick.date.month.-1": "Mois dernier",
   "pick.date.month.0": "Ce mois-ci",
   "pick.date.month.1": "Mois prochain",
   "pick.date.month.2": "Dans 2 mois"

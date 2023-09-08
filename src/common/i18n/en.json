@@ -20,12 +20,15 @@
   "tab.month": "Month",
 
   "pick.date": "Pick a range",
+  "pick.date.weekend.-1": "Last weekend",
   "pick.date.weekend.0": "This weekend",
   "pick.date.weekend.1": "Next weekend",
   "pick.date.weekend.2": "In 2 weekends",
+  "pick.date.week.-1": "Last week",
   "pick.date.week.0": "This week",
   "pick.date.week.1": "Next week",
   "pick.date.week.2": "In 2 weeks",
+  "pick.date.month.-1": "Last month",
   "pick.date.month.0": "This month",
   "pick.date.month.1": "Next month",
   "pick.date.month.2": "In 2 months"

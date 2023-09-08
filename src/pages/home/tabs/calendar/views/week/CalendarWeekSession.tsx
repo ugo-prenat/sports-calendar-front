@@ -9,7 +9,6 @@ const CalendarWeekSession: FC<ICalendarWeekSessionProps> = ({ session }) => {
   const sessionStartHour = new Date(session.startTime).getHours();
   const sessionSpanHeight =
     new Date(session.endTime).getHours() - sessionStartHour;
-  console.log(sessionStartHour, sessionSpanHeight);
 
   const style: CSSProperties = {
     top: `calc(100%/24*${sessionStartHour})`,

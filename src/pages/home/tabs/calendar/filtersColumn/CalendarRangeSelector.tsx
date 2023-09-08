@@ -32,18 +32,17 @@ const CalendarRangeSelector: FC = () => {
   const handleChangeRange = (value: string) =>
     setRange(getNextRange(calendarView, +value));
 
-  const selectItems: ICalendarRangeSelect[] = ['0', '1', '2'].map((value) => ({
-    value,
-    label: t(`pick.date.${calendarView}.${value}`)
-  }));
+  const selectItems: ICalendarRangeSelect[] = ['-1', '0', '1', '2'].map(
+    (value) => ({
+      value,
+      label: t(`pick.date.${calendarView}.${value}`)
+    })
+  );
 
   return (
     <div className="pb-4 border-b">
       <div className="mb-1">
-        <Select
-          onValueChange={handleChangeRange}
-          defaultValue={selectItems[0]?.value}
-        >
+        <Select onValueChange={handleChangeRange} defaultValue="0">
           <SelectTrigger>
             <SelectValue placeholder={t('pick.date')} />
           </SelectTrigger>
