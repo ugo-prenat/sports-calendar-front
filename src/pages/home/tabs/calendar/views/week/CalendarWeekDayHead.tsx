@@ -15,10 +15,8 @@ const CalendarWeekDayHead: FC<ICalendarWeekDayHeadProps> = ({ day }) => {
   return (
     <Badge
       className={cn(
-        'h-6 font-normal text-sm bg-transparent text-primary/50 mb-1',
-        {
-          'bg-primary text-primary-foreground font-bold': isToday
-        }
+        'h-6 font-normal text-sm bg-transparent text-muted-foreground mb-1',
+        { 'bg-primary text-primary-foreground font-bold': isToday }
       )}
     >
       {format(day, 'ccc d')}

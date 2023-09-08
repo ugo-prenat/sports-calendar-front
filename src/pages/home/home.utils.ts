@@ -58,7 +58,7 @@ export const getNextRange = (
     case MONTH:
       return {
         from: addMonths(todayRange.from, iterations),
-        to: addMonths(todayRange.to, iterations)
+        to: endOfMonth(addMonths(todayRange.to, iterations))
       };
     default:
       return todayRange;
@@ -73,11 +73,33 @@ const getFirstDayOfNextWeekend = (): Date => {
   return nextFriday(today);
 };
 
-export const getCalendarDays = (range: IDateRange): Date[] =>
+export const getCalendarWeekDays = (range: IDateRange): Date[] =>
   eachDayOfInterval({
     start: range.from,
     end: range.to
   });
+
+export const getCalendarMonthDays = (range: IDateRange): Date[] => {
+  const monthDays: Date[] = eachDayOfInterval({
+    start: range.from,
+    end: range.to
+  });
+
+  const daysBeforeStartOfMonth: Date[] = eachDayOfInterval({
+    start: startOfWeek(range.from, { weekStartsOn: 1 }),
+    end: range.from
+  });
+
+  const daysAfterEndOfMonth: Date[] = eachDayOfInterval({
+    start: range.to,
+    end: endOfWeek(range.to, { weekStartsOn: 1 })
+  });
+
+  daysBeforeStartOfMonth.pop();
+  daysAfterEndOfMonth.shift();
+
+  return [...daysBeforeStartOfMonth, ...monthDays, ...daysAfterEndOfMonth];
+};
 
 export const getHours = (locale?: Locale): string[] => {
   const hours = eachHourOfInterval({

@@ -1,19 +1,21 @@
 import { useCalendar } from '@/common/hooks/calendar.hooks';
 import { FC } from 'react';
-import { getCalendarDays } from '../../home.utils';
+import { getCalendarMonthDays, getCalendarWeekDays } from '../../home.utils';
 import CalendarWeekView from './views/week/CalendarWeekView';
 import CalendarMonthView from './views/month/CalendarMonthView';
 
 const Calendar: FC = () => {
   const { calendarRange } = useCalendar();
-  const days: Date[] = getCalendarDays(calendarRange);
+
+  const weekDays: Date[] = getCalendarWeekDays(calendarRange);
+  const monthDays: Date[] = getCalendarMonthDays(calendarRange);
 
   return (
-    <div className="flex-grow flex just">
-      {days.length <= 7 ? (
-        <CalendarWeekView days={days} />
+    <div className="flex flex-1 max-w-full">
+      {weekDays.length <= 7 ? (
+        <CalendarWeekView days={weekDays} />
       ) : (
-        <CalendarMonthView days={days} />
+        <CalendarMonthView days={monthDays} />
       )}
     </div>
   );
