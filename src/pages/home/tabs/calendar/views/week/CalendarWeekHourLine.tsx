@@ -27,13 +27,13 @@ const CalendarWeekHourLine: FC<ICalendarWeekHourLineProps> = ({ day }) => {
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger
-          className="w-full h-[10px] absolute flex items-center z-10 border-l-2 border-primary -mt-[0.3rem]"
+          className="w-full h-[10px] absolute flex items-center z-10 border-l-2 border-muted-foreground -mt-[0.3rem]"
           style={{ top: `calc(100%/24/60*${actualMinutesStart})` }}
         >
-          <span className="inline-block w-full border-t-2 border-primary border-dashed absolute top-[50%-1px]"></span>
+          <span className="inline-block w-full border-t-2 border-muted-foreground border-dashed absolute top-[50%-1px]"></span>
         </TooltipTrigger>
-        <TooltipContent>
-          <p>{format(new Date(), 'p')}</p>
+        <TooltipContent side="left" className="bg-popover">
+          {format(new Date(), 'p')}
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
