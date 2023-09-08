@@ -1,23 +1,58 @@
-import { ISession } from '@/common/models/sports.models';
+import { cn } from '@/common/utils/tailwind.utils';
+import { ICalendarSession } from '@/pages/home/home.models';
+import { differenceInMinutes, startOfDay } from 'date-fns';
 import { CSSProperties, FC } from 'react';
 
 interface ICalendarWeekSessionProps {
-  session: ISession;
+  session: ICalendarSession;
 }
 
 const CalendarWeekSession: FC<ICalendarWeekSessionProps> = ({ session }) => {
-  const sessionStartHour = new Date(session.startTime).getHours();
-  const sessionSpanHeight =
-    new Date(session.endTime).getHours() - sessionStartHour;
+  const sessionStartTime = new Date(session.startTime);
+  const sessionEndTime = new Date(session.endTime);
+  const isSessionSameDay =
+    !session.sessionStartedYesterday && !session.sessionEndsTomorrow;
+
+  const sessionStartMinutes = differenceInMinutes(
+    sessionStartTime,
+    startOfDay(sessionStartTime)
+  );
+
+  const sessionMinutesNb = differenceInMinutes(
+    sessionEndTime,
+    sessionStartTime
+  );
 
   const style: CSSProperties = {
-    top: `calc(100%/24*${sessionStartHour})`,
-    height: `calc(100%/24*${sessionSpanHeight})`
+    top: `calc(100%/24/60*${sessionStartMinutes})`,
+    height: `calc(100%/24/60*${sessionMinutesNb})`
   };
 
   return (
-    <div className={`bg-red-500 w-full absolute`} style={style}>
-      session
+    <div
+      className={cn(
+        'bg-red-600 flex items-start text-primary-foreground w-full absolute p-2',
+        {
+          'rounded-t-sm bg-gradient-to-t from-background via-background via-0% to-transparent to-5%':
+            session.sessionEndsTomorrow,
+          'rounded-b-sm bg-gradient-to-b from-background via-background via-0% to-transparent to-5% dark:to-10%':
+            session.sessionStartedYesterday,
+          'rounded-sm': isSessionSameDay,
+          'items-center': sessionMinutesNb <= 90,
+          'text-xs': sessionMinutesNb <= 30
+        }
+      )}
+      style={style}
+    >
+      <div className="flex gap-2 overflow-hidden">
+        <img
+          src="https://www.formula1.com/etc/designs/fom-website/images/f1_logo.svg"
+          className="w-6"
+        />
+        <p className="text-ellipsis overflow-hidden whitespace-nowrap">
+          {session.regionalized.fr?.name}
+        </p>
+      </div>
     </div>
   );
 };

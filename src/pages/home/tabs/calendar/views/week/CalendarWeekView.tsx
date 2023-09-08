@@ -22,7 +22,7 @@ const CalendarWeekView: FC<ICalendarWeekViewProps> = ({ days }) => {
           {hours.map((hour, index) => (
             <p
               key={index}
-              className="flex-1 flex px-2 text-xs text-muted-foreground/50"
+              className="flex-1 flex px-2 text-xs text-muted-foreground/50 -mt-[0.40rem]"
             >
               {hour}
             </p>

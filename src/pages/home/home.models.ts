@@ -1,3 +1,4 @@
+import { ISession } from '@/common/models/sports.models';
 import { CALENDAR_VIEWS } from '@/constants';
 import { ReactNode } from 'react';
 
@@ -27,4 +28,9 @@ export interface ICalendarContextState {
   calendarRange: IDateRange;
   setCalendarView: (calendarView: CalendarView) => void;
   setCalendarRange: (calendarRange: IDateRange) => void;
+}
+
+export interface ICalendarSession extends ISession {
+  sessionStartedYesterday: boolean;
+  sessionEndsTomorrow: boolean;
 }

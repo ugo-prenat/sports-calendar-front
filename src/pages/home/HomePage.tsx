@@ -43,7 +43,7 @@ const HomePage: FC = () => {
         <TabsContent
           key={tab.id}
           value={tab.id}
-          className="mt-0 pt-6 flex-grow"
+          className="mt-0 py-6 flex-grow"
         >
           <CalendarScheduleTab />
         </TabsContent>
