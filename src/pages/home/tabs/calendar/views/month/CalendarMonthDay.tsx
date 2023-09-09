@@ -26,7 +26,8 @@ const CalendarMonthDay: FC<ICalendarMonthDayProps> = ({ day }) => {
           shortName: 'Q'
         },
         fr: {
-          name: "Qualifications c'est trop long",
+          // name: "Qualifications c'est trop long mais genre vriament beaucoup trop long",
+          name: "Qualifications c'est",
           shortName: 'Q'
         }
       },
@@ -79,11 +80,11 @@ const CalendarMonthDay: FC<ICalendarMonthDayProps> = ({ day }) => {
   ];
 
   return (
-    <div className="flex flex-col border-r p-2 pt-0 w-full max-w-fit">
+    <div className="flex flex-col border-r p-2 pt-0 flex-1">
       <CalendarMonthDayHead day={day} />
 
       <div
-        className={cn('flex flex-col', {
+        className={cn('flex flex-col flex-1', {
           'opacity-20': isDayOutOfMonth
         })}
       >

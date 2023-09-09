@@ -13,16 +13,12 @@ interface ICalendarMonthSessionProps {
 const CalendarMonthSession: FC<ICalendarMonthSessionProps> = ({ session }) => {
   return (
     <Popover>
-      <PopoverTrigger>
-        <div className="flex gap-2 overflow-hidden">
-          <img
-            src="https://www.formula1.com/etc/designs/fom-website/images/f1_logo.svg"
-            className="w-6"
-          />
-          <p className="text-ellipsis overflow-hidden whitespace-nowrap">
-            {session.regionalized.fr?.name}
-          </p>
-        </div>
+      <PopoverTrigger className="flex items-center gap-2 bg-red-600 rounded-sm px-2 mb-2">
+        <img
+          src="https://www.formula1.com/etc/designs/fom-website/images/f1_logo.svg"
+          className="w-6"
+        />
+        <p>{session.regionalized.fr?.name}</p>
       </PopoverTrigger>
       <PopoverContent side="right" className="-mx-4">
         Event details

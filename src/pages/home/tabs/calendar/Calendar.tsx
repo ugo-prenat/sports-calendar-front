@@ -11,7 +11,7 @@ const Calendar: FC = () => {
   const monthDays: Date[] = getCalendarMonthDays(calendarRange);
 
   return (
-    <div className="flex flex-1 max-w-full">
+    <div className="flex flex-1">
       {weekDays.length <= 7 ? (
         <CalendarWeekView days={weekDays} />
       ) : (

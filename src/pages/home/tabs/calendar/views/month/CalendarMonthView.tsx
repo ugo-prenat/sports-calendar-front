@@ -10,7 +10,7 @@ const CalendarMonthView: FC<ICalendarMonthViewProps> = ({ days: rawDays }) => {
   const days: Date[][] = sliceDaysIntoChunks(rawDays, 7);
 
   return (
-    <div className="flex flex-col flex-1 first:border-t max-w-full">
+    <div className="flex flex-col flex-1 first:border-t">
       {days.map((day, index) => (
         <div key={index} className="flex flex-1 border-b">
           {day.map((d, i) => (
