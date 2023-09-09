@@ -8,7 +8,7 @@ interface HeaderProps {}
 
 const Header: FC<HeaderProps> = () => {
   return (
-    <div className="flex justify-between items-center py-2 px-4 border-input border">
+    <div className="flex justify-between py-2 items-center px-4 border-input border h-14">
       <div className="flex">
         <Button variant="link">
           <Link to="/">Home</Link>

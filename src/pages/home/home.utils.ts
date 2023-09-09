@@ -109,8 +109,3 @@ export const getHours = (locale?: Locale): string[] => {
 
   return hours.map((hour) => format(hour, 'p', { locale }));
 };
-
-export const sliceDaysIntoChunks = <T>(arr: T[], chunkSize: number): T[][] =>
-  Array.from({ length: Math.ceil(arr.length / chunkSize) }, (_, index) =>
-    arr.slice(index * chunkSize, (index + 1) * chunkSize)
-  );

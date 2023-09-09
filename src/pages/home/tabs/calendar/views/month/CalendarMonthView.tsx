@@ -1,22 +1,25 @@
-import { sliceDaysIntoChunks } from '@/pages/home/home.utils';
 import { FC } from 'react';
 import CalendarMonthDay from './CalendarMonthDay';
+import { getWeeksInMonth } from 'date-fns';
+import { useCalendar } from '@/common/hooks/calendar.hooks';
 
 interface ICalendarMonthViewProps {
   days: Date[];
 }
 
-const CalendarMonthView: FC<ICalendarMonthViewProps> = ({ days: rawDays }) => {
-  const days: Date[][] = sliceDaysIntoChunks(rawDays, 7);
+const CalendarMonthView: FC<ICalendarMonthViewProps> = ({ days }) => {
+  const { calendarRange } = useCalendar();
+  const weeksInMonth = getWeeksInMonth(calendarRange.from, { weekStartsOn: 1 });
 
   return (
-    <div className="flex flex-col flex-1 first:border-t">
+    <div
+      className="grid grid-cols-7 w-full first:border-t"
+      style={{
+        gridTemplateRows: `repeat(${weeksInMonth}, minmax(0, 1fr))`
+      }}
+    >
       {days.map((day, index) => (
-        <div key={index} className="flex flex-1 border-b">
-          {day.map((d, i) => (
-            <CalendarMonthDay key={i} day={d} />
-          ))}
-        </div>
+        <CalendarMonthDay key={index} day={day} sessions={[]} />
       ))}
     </div>
   );

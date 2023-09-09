@@ -7,90 +7,29 @@ import { ICalendarSession } from '@/pages/home/home.models';
 
 interface ICalendarMonthDayProps {
   day: Date;
+  sessions: ICalendarSession[];
 }
 
-const CalendarMonthDay: FC<ICalendarMonthDayProps> = ({ day }) => {
+const CalendarMonthDay: FC<ICalendarMonthDayProps> = ({ day, sessions }) => {
   const { calendarRange } = useCalendar();
 
   const month = calendarRange.from.getMonth();
   const isDayOutOfMonth: boolean = month !== day.getMonth();
 
-  const sessions: ICalendarSession[] = [
-    {
-      id: '7',
-      sport: 'motorsports',
-      championship: 'f2',
-      regionalized: {
-        en: {
-          name: 'Qualifying 01',
-          shortName: 'Q'
-        },
-        fr: {
-          // name: "Qualifications c'est trop long mais genre vriament beaucoup trop long",
-          name: "Qualifications c'est",
-          shortName: 'Q'
-        }
-      },
-      startTime: '2023-09-01T20:00:00+02:00',
-      endTime: '2023-09-01T23:59:00+02:00',
-
-      sessionStartedYesterday: false,
-      sessionEndsTomorrow: true
-    },
-    {
-      id: '7',
-      sport: 'motorsports',
-      championship: 'f2',
-      regionalized: {
-        en: {
-          name: 'Race',
-          shortName: 'Q'
-        },
-        fr: {
-          name: 'Race',
-          shortName: 'Q'
-        }
-      },
-      startTime: '2023-09-01T09:00:00+02:00',
-      endTime: '2023-09-01T10:00:00+02:00',
-
-      sessionStartedYesterday: false,
-      sessionEndsTomorrow: false
-    },
-    {
-      id: '7',
-      sport: 'motorsports',
-      championship: 'f2',
-      regionalized: {
-        en: {
-          name: 'Qualifying 02',
-          shortName: 'Q'
-        },
-        fr: {
-          name: 'Qualifications',
-          shortName: 'Q'
-        }
-      },
-      startTime: '2023-09-02T00:00:00+02:00',
-      endTime: '2023-09-02T02:30:00+02:00',
-
-      sessionStartedYesterday: true,
-      sessionEndsTomorrow: false
-    }
-  ];
-
   return (
-    <div className="flex flex-col border-r p-2 pt-0 flex-1">
+    <div className="flex flex-col border-r border-b p-2 pt-0 flex-1">
       <CalendarMonthDayHead day={day} />
 
       <div
-        className={cn('flex flex-col flex-1', {
+        className={cn('flex flex-col flex-1 overflow-hidden h-12', {
           'opacity-20': isDayOutOfMonth
         })}
       >
-        {sessions.map((session, index) => (
-          <CalendarMonthSession key={index} session={session} />
-        ))}
+        <div>
+          {sessions.map((session, index) => (
+            <CalendarMonthSession key={index} session={session} />
+          ))}
+        </div>
       </div>
     </div>
   );

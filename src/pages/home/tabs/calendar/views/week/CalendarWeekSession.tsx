@@ -61,7 +61,7 @@ const CalendarWeekSession: FC<ICalendarWeekSessionProps> = ({ session }) => {
         </div>
       </PopoverTrigger>
       <PopoverContent side="right" className="-mx-4">
-        Event details
+        {session.regionalized.fr?.name}
       </PopoverContent>
     </Popover>
   );

@@ -19,7 +19,10 @@ const HomePage: FC = () => {
   }));
 
   return (
-    <Tabs defaultValue={WEEKEND} className="p-6 pb-0 flex-grow flex flex-col">
+    <Tabs
+      defaultValue={WEEKEND}
+      className="p-6 pb-0 flex flex-col h-[calc(100%-6.5rem)]"
+    >
       <TabsList className="w-fit py-6 px-2">
         <TabsTrigger value={UPCOMING} className="px-4 py-2">
           {t(`tab.${UPCOMING}`)}
@@ -40,11 +43,7 @@ const HomePage: FC = () => {
         <UpcomingTab />
       </TabsContent>
       {calendarTabs.map((tab) => (
-        <TabsContent
-          key={tab.id}
-          value={tab.id}
-          className="mt-0 py-6 flex-grow"
-        >
+        <TabsContent key={tab.id} value={tab.id} className="mt-0 py-6 h-full">
           <CalendarScheduleTab />
         </TabsContent>
       ))}
