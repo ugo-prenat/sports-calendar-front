@@ -214,30 +214,40 @@ export const MOCK_CALENDAR_DAY_SESSIONS: ICalendarDaySessions[] = [
   {
     date: new Date('2023-09-10T13:00:00+02:00'),
     overlapedSessions: [
+      // [
+      //   {
+      //     ...base,
+      //     championship: 'f2',
+      //     regionalized: { en: { name: '00h - 07h' } },
+      //     startTime: '2023-09-09T00:00:00+02:00',
+      //     endTime: '2023-09-09T07:00:00+02:00',
+      //     sessionStartedYesterday: true,
+      //     sessionEndsTomorrow: false
+      //   },
+      //   {
+      //     ...base,
+      //     regionalized: { en: { name: '02h - 05h' } },
+      //     startTime: '2023-09-09T02:00:00+02:00',
+      //     endTime: '2023-09-09T05:00:00+02:00',
+      //     sessionStartedYesterday: false,
+      //     sessionEndsTomorrow: false
+      //   },
+      //   {
+      //     ...base,
+      //     championship: 'f3',
+      //     regionalized: { en: { name: '00h - 10h' } },
+      //     startTime: '2023-09-09T00:00:00+02:00',
+      //     endTime: '2023-09-09T10:00:00+02:00',
+      //     sessionStartedYesterday: false,
+      //     sessionEndsTomorrow: false
+      //   }
+      // ],
       [
         {
           ...base,
-          championship: 'f2',
-          regionalized: { en: { name: '00h - 07h' } },
-          startTime: '2023-09-09T00:00:00+02:00',
-          endTime: '2023-09-09T07:00:00+02:00',
-          sessionStartedYesterday: true,
-          sessionEndsTomorrow: false
-        },
-        {
-          ...base,
-          regionalized: { en: { name: '02h - 05h' } },
-          startTime: '2023-09-09T02:00:00+02:00',
-          endTime: '2023-09-09T05:00:00+02:00',
-          sessionStartedYesterday: false,
-          sessionEndsTomorrow: false
-        },
-        {
-          ...base,
-          championship: 'f3',
-          regionalized: { en: { name: '00h - 10h' } },
-          startTime: '2023-09-09T00:00:00+02:00',
-          endTime: '2023-09-09T10:00:00+02:00',
+          regionalized: { en: { name: '16h - 17h' } },
+          startTime: '2023-09-10T16:00:00+02:00',
+          endTime: '2023-09-10T17:00:00+02:00',
           sessionStartedYesterday: false,
           sessionEndsTomorrow: false
         }
@@ -246,8 +256,8 @@ export const MOCK_CALENDAR_DAY_SESSIONS: ICalendarDaySessions[] = [
         {
           ...base,
           regionalized: { en: { name: '16h - 17h' } },
-          startTime: '2023-09-09T16:00:00+02:00',
-          endTime: '2023-09-09T17:00:00+02:00',
+          startTime: '2023-09-10T19:00:00+02:00',
+          endTime: '2023-09-10T20:00:00+02:00',
           sessionStartedYesterday: false,
           sessionEndsTomorrow: false
         }

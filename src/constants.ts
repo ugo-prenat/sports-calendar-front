@@ -1,3 +1,5 @@
+import { IChampionshipConf } from './common/models/sports.models';
+
 // THEME
 export const THEME_LIGHT = 'light';
 export const THEME_DARK = 'dark';
@@ -28,6 +30,7 @@ export const SPORTS_TYPES = [MOTORSPORTS, COMBAT_SPORTS] as const;
 export const F1 = 'f1';
 export const F2 = 'f2';
 export const F3 = 'f3';
+export const WEC = 'wec';
 export const F1_ACADEMY = 'f1-academy';
 export const GT_WORLD_CHALLENGE = 'gt-world-challenge';
 
@@ -35,6 +38,7 @@ export const MOTORSPORTS_CHAMPIONSHIPS = [
   F1,
   F2,
   F3,
+  WEC,
   F1_ACADEMY,
   GT_WORLD_CHALLENGE
 ] as const;
@@ -42,20 +46,55 @@ export const MOTORSPORTS_CHAMPIONSHIPS = [
 export const UFC = 'ufc';
 export const COMBAT_SPORTS_CHAMPIONSHIP = [UFC] as const;
 
-// SPORTS CONFS
-export const CHAMIPONSHIP_CONFS = [
+export const CHAMIPONSHIP_CONFS: IChampionshipConf[] = [
   {
     id: F1,
-    name: 'Formula 1',
-    shortName: 'F1',
-    logo: {
-      default:
-        'https://www.formula1.com/etc/designs/fom-website/images/f1_logo.svg',
-      light:
-        'https://www.formula1.com/etc/designs/fom-website/images/f1_logo.svg',
-      dark: 'https://www.formula1.com/etc/designs/fom-website/images/f1_logo.svg'
-    },
-    color: '#ff0000'
+    sport: MOTORSPORTS,
+    color: '#e10600',
+    logoUrl:
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/F1.svg/320px-F1.svg.png'
+  },
+  {
+    id: F2,
+    sport: MOTORSPORTS,
+    color: '#0090D0',
+    logoUrl:
+      'https://www.thesportsdb.com/images/media/league/badge/3iwfjg1536242234.png'
+  },
+  {
+    id: F3,
+    sport: MOTORSPORTS,
+    color: '#E90300',
+    logoUrl:
+      'https://cdn.discordapp.com/attachments/1112352229962297434/1150433209444732988/ELxnupl53yCuIAAAAASUVORK5CYII.png'
+  },
+  {
+    id: WEC,
+    sport: MOTORSPORTS,
+    color: '#0c3266',
+    logoUrl:
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/FIA_WEC_Logo_2019.svg/langfr-330px-FIA_WEC_Logo_2019.svg.png'
+  },
+  {
+    id: F1_ACADEMY,
+    sport: MOTORSPORTS,
+    color: '#be117e',
+    logoUrl:
+      'https://www.f1academy.com/_next/static/images/fa_logo_footer-1992667600d4ff845995310220de58a8.png'
+  },
+  {
+    id: GT_WORLD_CHALLENGE,
+    sport: MOTORSPORTS,
+    color: '#e31e12',
+    logoUrl:
+      'https://www.gt-world-challenge.com/images/logo-gt-world-challenge.png'
+  },
+  {
+    id: UFC,
+    sport: COMBAT_SPORTS,
+    color: '#ff0000',
+    logoUrl:
+      'https://logos-marques.com/wp-content/uploads/2021/03/UFC-Logo-768x434.png'
   }
 ];
 

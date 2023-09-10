@@ -10,6 +10,8 @@ export type MotorsportChampionship = (typeof MOTORSPORTS_CHAMPIONSHIPS)[number];
 export type CombatSportChampionship =
   (typeof COMBAT_SPORTS_CHAMPIONSHIP)[number];
 
+export type ChampionshipId = MotorsportChampionship | CombatSportChampionship;
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface IRegionalized<T extends { [key: string]: any }> {
   en: T;
@@ -19,7 +21,7 @@ export interface IRegionalized<T extends { [key: string]: any }> {
 export interface IEvent {
   id: string;
   sport: SportType;
-  championship: MotorsportChampionship | CombatSportChampionship;
+  championship: ChampionshipId;
   regionalized: IRegionalized<{
     name: string;
     shortName: string;
@@ -53,11 +55,18 @@ export interface IEventLocation {
 export interface ISession {
   id: string;
   sport: SportType;
-  championship: MotorsportChampionship | CombatSportChampionship;
+  championship: ChampionshipId;
   regionalized: IRegionalized<{
     name: string;
     shortName?: string;
   }>;
   startTime: string;
   endTime: string;
+}
+
+export interface IChampionshipConf {
+  id: ChampionshipId;
+  sport: SportType;
+  color: string;
+  logoUrl: string;
 }

@@ -1,7 +1,11 @@
 import { FC } from 'react';
 
 const UpcomingTab: FC = () => {
-  return <div>UpcomingTab</div>;
+  return (
+    <div>
+      <p>UpcomingTab</p>
+    </div>
+  );
 };
 
 export default UpcomingTab;
