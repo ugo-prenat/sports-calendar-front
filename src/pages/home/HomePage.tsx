@@ -4,12 +4,13 @@ import { useTranslation } from '@/common/hooks/lang.hooks';
 import { CalendarView, ICalendarTab } from './home.models';
 import UpcomingTab from './tabs/upcoming/UpcomingTab';
 import CalendarScheduleTab from './tabs/calendar/CalendarTab';
-import { CALENDAR_VIEWS, UPCOMING, WEEKEND } from '@/constants';
+import { CALENDAR_VIEWS, MONTH, UPCOMING, WEEKEND } from '@/constants';
 import { useCalendar } from '@/common/hooks/calendar.hooks';
+import { cn } from '@/common/utils/tailwind.utils';
 
 const HomePage: FC = () => {
   const { t } = useTranslation();
-  const { setCalendarView } = useCalendar();
+  const { calendarView, setCalendarView } = useCalendar();
 
   const handleChangeTab = (id: CalendarView) => () => setCalendarView(id);
 
@@ -21,7 +22,10 @@ const HomePage: FC = () => {
   return (
     <Tabs
       defaultValue={WEEKEND}
-      className="p-6 pb-0 flex flex-col h-[calc(100%-6.5rem)]"
+      className={cn('p-6 pb-0 flex flex-col', {
+        'h-[calc(100%-6.5rem)]': calendarView === MONTH,
+        'h-[calc(100%-3rem)]': calendarView !== MONTH
+      })}
     >
       <TabsList className="w-fit py-6 px-2">
         <TabsTrigger value={UPCOMING} className="px-4 py-2">

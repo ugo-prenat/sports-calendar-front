@@ -34,3 +34,8 @@ export interface ICalendarSession extends ISession {
   sessionStartedYesterday: boolean;
   sessionEndsTomorrow: boolean;
 }
+
+export interface ICalendarDaySessions {
+  date: Date;
+  overlapedSessions: ICalendarSession[][];
+}

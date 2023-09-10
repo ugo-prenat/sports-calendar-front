@@ -17,8 +17,9 @@ import {
   endOfToday,
   format
 } from 'date-fns';
-import { CalendarView, IDateRange } from './home.models';
+import { CalendarView, ICalendarSession, IDateRange } from './home.models';
 import { MONTH, WEEK, WEEKEND } from '@/constants';
+import { ICalendarWeekSessionStyle } from './tabs/calendar/views/week/CalendarWeekSession';
 
 export const getDateRange = (view: CalendarView): IDateRange => {
   const today = new Date();
@@ -109,3 +110,11 @@ export const getHours = (locale?: Locale): string[] => {
 
   return hours.map((hour) => format(hour, 'p', { locale }));
 };
+
+export const makeSessionStyle = (
+  sessions: ICalendarSession[],
+  index: number
+): ICalendarWeekSessionStyle => ({
+  left: `${(index * 100) / sessions.length}%`,
+  width: `${100 / sessions.length}%`
+});
