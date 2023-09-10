@@ -1,10 +1,15 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useTranslation } from '@/common/hooks/lang.hooks';
-import { CalendarView, ICalendarTab } from './home.models';
+import { TabId, ICalendarTab } from './home.models';
 import UpcomingTab from './tabs/upcoming/UpcomingTab';
-import CalendarScheduleTab from './tabs/calendar/CalendarTab';
-import { CALENDAR_VIEWS, MONTH, UPCOMING, WEEKEND } from '@/constants';
+import CalendarTab from './tabs/calendar/CalendarTab';
+import {
+  CALENDAR_VIEWS,
+  DEFAULT_CALENDAR_VIEW,
+  MONTH,
+  UPCOMING
+} from '@/constants';
 import { useCalendar } from '@/common/hooks/calendar.hooks';
 import { cn } from '@/common/utils/tailwind.utils';
 
@@ -12,7 +17,12 @@ const HomePage: FC = () => {
   const { t } = useTranslation();
   const { calendarView, setCalendarView } = useCalendar();
 
-  const handleChangeTab = (id: CalendarView) => () => setCalendarView(id);
+  const [activeTab, setActiveTab] = useState<TabId>(DEFAULT_CALENDAR_VIEW);
+
+  const handleChangeTab = (id: TabId) => () => {
+    if (id !== UPCOMING) setCalendarView(id);
+    setActiveTab(id);
+  };
 
   const calendarTabs: ICalendarTab[] = CALENDAR_VIEWS.map((view) => ({
     id: view,
@@ -21,14 +31,18 @@ const HomePage: FC = () => {
 
   return (
     <Tabs
-      defaultValue={WEEKEND}
+      defaultValue={DEFAULT_CALENDAR_VIEW}
       className={cn('p-6 pb-0 flex flex-col', {
         'h-[calc(100%-6.5rem)]': calendarView === MONTH,
         'h-[calc(100%-3rem)]': calendarView !== MONTH
       })}
     >
       <TabsList className="w-fit py-6 px-2">
-        <TabsTrigger value={UPCOMING} className="px-4 py-2">
+        <TabsTrigger
+          value={UPCOMING}
+          className="px-4 py-2"
+          onClick={handleChangeTab(UPCOMING)}
+        >
           {t(`tab.${UPCOMING}`)}
         </TabsTrigger>
         {calendarTabs.map((tab) => (
@@ -43,14 +57,9 @@ const HomePage: FC = () => {
         ))}
       </TabsList>
 
-      <TabsContent value={UPCOMING} className="mt-0 pt-6 flex-grow">
-        <UpcomingTab />
+      <TabsContent value={activeTab} className="mt-0 py-6 h-full">
+        {activeTab !== UPCOMING ? <CalendarTab /> : <UpcomingTab />}
       </TabsContent>
-      {calendarTabs.map((tab) => (
-        <TabsContent key={tab.id} value={tab.id} className="mt-0 py-6 h-full">
-          <CalendarScheduleTab />
-        </TabsContent>
-      ))}
     </Tabs>
   );
 };

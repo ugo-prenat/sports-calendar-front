@@ -4,13 +4,14 @@ import { getWeeksInMonth } from 'date-fns';
 import { useCalendar } from '@/common/hooks/calendar.hooks';
 import { MOCK_CALENDAR_DAY_SESSIONS } from '@/pages/home/mock';
 import { ICalendarDaySessions } from '@/pages/home/home.models';
+import { MONTH } from '@/constants';
 
 interface ICalendarMonthViewProps {
   days: Date[];
 }
 
 const CalendarMonthView: FC<ICalendarMonthViewProps> = ({ days }) => {
-  const { calendarRange } = useCalendar();
+  const { calendarRange, calendarView } = useCalendar();
   const [calendarDaysSessions, setCalendarDaysSessions] = useState<
     ICalendarDaySessions[]
   >([]);
@@ -18,7 +19,7 @@ const CalendarMonthView: FC<ICalendarMonthViewProps> = ({ days }) => {
 
   const handleGetDaysSessions = (): ICalendarDaySessions[] => {
     // fetch here
-    console.log('fetch sessions for ', days.length, 'days');
+    console.log('fetch sessions for', days.length, 'days');
 
     return days.map((day, i) => ({
       date: day,
@@ -28,6 +29,7 @@ const CalendarMonthView: FC<ICalendarMonthViewProps> = ({ days }) => {
   };
 
   useEffect(() => {
+    if (calendarView !== MONTH) return;
     setCalendarDaysSessions(handleGetDaysSessions());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [days]);

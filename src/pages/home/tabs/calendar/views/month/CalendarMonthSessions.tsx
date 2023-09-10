@@ -9,11 +9,11 @@ interface ICalendarMonthSessionsProps {
 const CalendarMonthSessions: FC<ICalendarMonthSessionsProps> = ({
   sessions
 }) => (
-  <>
+  <div>
     {sessions.map((session, index) => (
       <CalendarMonthSession key={index} session={session} />
     ))}
-  </>
+  </div>
 );
 
 export default CalendarMonthSessions;

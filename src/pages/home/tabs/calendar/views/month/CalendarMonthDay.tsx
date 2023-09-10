@@ -3,7 +3,6 @@ import CalendarMonthDayHead from './CalendarMonthDayHead';
 import { cn } from '@/common/utils/tailwind.utils';
 import { useCalendar } from '@/common/hooks/calendar.hooks';
 import { ICalendarDaySessions } from '@/pages/home/home.models';
-import { isEmpty } from '@/common/utils/utils';
 import CalendarMonthSessions from './CalendarMonthSessions';
 
 interface ICalendarMonthDayProps {
@@ -28,19 +27,9 @@ const CalendarMonthDay: FC<ICalendarMonthDayProps> = ({
           'opacity-20': isDayOutOfMonth
         })}
       >
-        {isEmpty(overlapedSessions) ? (
-          <p className="flex items-center justify-center h-full opacity-40">
-            🏎️
-          </p>
-        ) : (
-          <>
-            {overlapedSessions.map((sessions, index) => (
-              <div>
-                <CalendarMonthSessions key={index} sessions={sessions} />
-              </div>
-            ))}
-          </>
-        )}
+        {overlapedSessions.map((sessions, index) => (
+          <CalendarMonthSessions sessions={sessions} key={index} />
+        ))}
       </div>
     </div>
   );

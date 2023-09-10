@@ -1,8 +1,9 @@
 import { ISession } from '@/common/models/sports.models';
-import { CALENDAR_VIEWS } from '@/constants';
+import { CALENDAR_VIEWS, UPCOMING } from '@/constants';
 import { ReactNode } from 'react';
 
 export type CalendarView = (typeof CALENDAR_VIEWS)[number];
+export type TabId = CalendarView | typeof UPCOMING;
 
 export interface IDateRange {
   from: Date;
