@@ -11,7 +11,7 @@ export interface IDateRange {
 }
 
 export interface ICalendarTab {
-  id: CalendarView;
+  id: TabId;
   label: string;
 }
 

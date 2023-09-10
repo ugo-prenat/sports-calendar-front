@@ -4,12 +4,7 @@ import { useTranslation } from '@/common/hooks/lang.hooks';
 import { TabId, ICalendarTab } from './home.models';
 import UpcomingTab from './tabs/upcoming/UpcomingTab';
 import CalendarTab from './tabs/calendar/CalendarTab';
-import {
-  CALENDAR_VIEWS,
-  DEFAULT_CALENDAR_VIEW,
-  MONTH,
-  UPCOMING
-} from '@/constants';
+import { DEFAULT_CALENDAR_VIEW, MONTH, TAB_IDS, UPCOMING } from '@/constants';
 import { useCalendar } from '@/common/hooks/calendar.hooks';
 import { cn } from '@/common/utils/tailwind.utils';
 
@@ -24,9 +19,9 @@ const HomePage: FC = () => {
     setActiveTab(id);
   };
 
-  const calendarTabs: ICalendarTab[] = CALENDAR_VIEWS.map((view) => ({
-    id: view,
-    label: t(`tab.${view}`)
+  const tabs: ICalendarTab[] = TAB_IDS.map((id) => ({
+    id,
+    label: t(`tab.${id}`)
   }));
 
   return (
@@ -38,14 +33,7 @@ const HomePage: FC = () => {
       })}
     >
       <TabsList className="w-fit py-6 px-2">
-        <TabsTrigger
-          value={UPCOMING}
-          className="px-4 py-2"
-          onClick={handleChangeTab(UPCOMING)}
-        >
-          {t(`tab.${UPCOMING}`)}
-        </TabsTrigger>
-        {calendarTabs.map((tab) => (
+        {tabs.map((tab) => (
           <TabsTrigger
             key={tab.id}
             value={tab.id}

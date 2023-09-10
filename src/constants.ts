@@ -68,3 +68,4 @@ export const MONTH = 'month';
 export const DEFAULT_CALENDAR_VIEW = WEEKEND;
 
 export const CALENDAR_VIEWS = [WEEKEND, WEEK, MONTH] as const;
+export const TAB_IDS = [UPCOMING, WEEKEND, WEEK, MONTH] as const;
