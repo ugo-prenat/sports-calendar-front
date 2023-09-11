@@ -54,6 +54,7 @@ export interface IEventLocation {
 
 export interface ISession {
   id: string;
+  eventId: string;
   sport: SportType;
   championship: ChampionshipId;
   regionalized: IRegionalized<{
