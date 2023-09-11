@@ -26,6 +26,7 @@ export const SPORTS_TYPES = [MOTORSPORTS, COMBAT_SPORTS] as const;
 //        - ajouter son id ci-dessous
 //        - ajouter son id dans le tableau {SPORT_TYPE}_CHAMPIONSHIPS
 //        - ajouter sa configuration dans le tableau CHAMIPONSHIP_CONFS
+//        - faire la même chose côté back
 
 export const F1 = 'f1';
 export const F2 = 'f2';
