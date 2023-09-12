@@ -3,7 +3,6 @@ import CalendarWeekDay from './CalendarWeekDay';
 import { ICalendarDaySessions } from '@/pages/home/home.models';
 import CalendarWeekHours from './CalendarWeekHours';
 import { MOCK_CALENDAR_DAY_SESSIONS } from '@/pages/home/mock';
-import { useChampionships } from '@/common/hooks/championships.hooks';
 
 interface ICalendarWeekViewProps {
   days: Date[];
@@ -14,13 +13,9 @@ const CalendarWeekView: FC<ICalendarWeekViewProps> = ({ days }) => {
     ICalendarDaySessions[]
   >([]);
 
-  const { championships, addChampionship } = useChampionships();
-  console.log({ championships });
-
   const handleGetDaysSessions = (): ICalendarDaySessions[] => {
     // fetch here
-    console.log('fetch sessions for ', days.length, 'days');
-    addChampionship('wec');
+    console.log(days.map((day) => day.toISOString()));
 
     return days.map((day, i) => ({
       date: day,

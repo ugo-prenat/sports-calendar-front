@@ -22,7 +22,7 @@ import { MONTH, WEEK, WEEKEND } from '@/constants';
 import { ICalendarWeekSessionStyle } from './tabs/calendar/views/week/CalendarWeekSession';
 
 export const getDateRange = (view: CalendarView): IDateRange => {
-  const today = new Date();
+  const today = startOfToday();
 
   switch (view) {
     case WEEKEND:
@@ -66,7 +66,7 @@ export const getNextRange = (
   }
 };
 const getFirstDayOfNextWeekend = (): Date => {
-  const today = new Date();
+  const today = startOfToday();
 
   if (isFriday(today)) return today;
   if (isSaturday(today)) return subDays(today, 1);
