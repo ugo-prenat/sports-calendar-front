@@ -37,6 +37,6 @@ export interface ICalendarSession extends ISession {
 }
 
 export interface ICalendarDaySessions {
-  date: Date;
+  date: string;
   overlapedSessions: ICalendarSession[][];
 }

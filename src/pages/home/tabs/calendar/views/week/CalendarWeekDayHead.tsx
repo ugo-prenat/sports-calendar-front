@@ -5,12 +5,12 @@ import { isSameDay } from 'date-fns';
 import { FC } from 'react';
 
 interface ICalendarWeekDayHeadProps {
-  day: Date;
+  day: string;
 }
 
 const CalendarWeekDayHead: FC<ICalendarWeekDayHeadProps> = ({ day }) => {
   const format = useFnsFormat();
-  const isToday: boolean = isSameDay(day, new Date());
+  const isToday: boolean = isSameDay(new Date(day), new Date());
 
   return (
     <Badge
@@ -19,7 +19,7 @@ const CalendarWeekDayHead: FC<ICalendarWeekDayHeadProps> = ({ day }) => {
         { 'bg-primary text-primary-foreground font-bold': isToday }
       )}
     >
-      {format(day, 'ccc d')}
+      {format(new Date(day), 'ccc d')}
     </Badge>
   );
 };

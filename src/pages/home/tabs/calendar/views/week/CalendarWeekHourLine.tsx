@@ -9,13 +9,13 @@ import { differenceInMinutes, isSameDay, startOfDay } from 'date-fns';
 import { FC } from 'react';
 
 interface ICalendarWeekHourLineProps {
-  day: Date;
+  day: string;
 }
 
 const CalendarWeekHourLine: FC<ICalendarWeekHourLineProps> = ({ day }) => {
   const format = useFnsFormat();
 
-  const isToday: boolean = isSameDay(day, new Date());
+  const isToday: boolean = isSameDay(new Date(day), new Date());
   const actualMinutesStart = differenceInMinutes(
     new Date(),
     startOfDay(new Date())
