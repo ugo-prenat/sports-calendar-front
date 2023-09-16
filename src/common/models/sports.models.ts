@@ -65,6 +65,10 @@ export interface ISession {
   endTime: string;
 }
 
+export interface IAPISession extends Omit<ISession, 'id'> {
+  _id: string;
+}
+
 export interface IChampionshipConf {
   id: ChampionshipId;
   sport: SportType;

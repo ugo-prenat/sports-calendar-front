@@ -17,7 +17,12 @@ import {
   endOfToday,
   format
 } from 'date-fns';
-import { CalendarView, ICalendarSession, IDateRange } from './home.models';
+import {
+  CalendarView,
+  ICalendarSession,
+  IDateRange,
+  IRange
+} from './home.models';
 import { MONTH, WEEK, WEEKEND } from '@/constants';
 import { ICalendarWeekSessionStyle } from './tabs/calendar/views/week/CalendarWeekSession';
 
@@ -118,3 +123,12 @@ export const makeSessionStyle = (
   left: `${(index * 100) / sessions.length}%`,
   width: `${100 / sessions.length}%`
 });
+
+export const makeRange = (days: Date[]): IRange => {
+  const start = days.at(0);
+  const end = days.at(-1);
+
+  if (!start || !end) throw new Error('Invalid range');
+
+  return { start, end };
+};

@@ -1,4 +1,7 @@
-import { IChampionshipConf } from './common/models/sports.models';
+import {
+  ChampionshipId,
+  IChampionshipConf
+} from './common/models/sports.models';
 
 // THEME
 export const THEME_LIGHT = 'light';
@@ -46,6 +49,12 @@ export const MOTORSPORTS_CHAMPIONSHIPS = [
 
 export const UFC = 'ufc';
 export const COMBAT_SPORTS_CHAMPIONSHIP = [UFC] as const;
+
+export const DEFAULT_CHAMPIONSHIPS: ChampionshipId[] = [
+  F1,
+  WEC,
+  GT_WORLD_CHALLENGE
+];
 
 export const CHAMIPONSHIP_CONFS: IChampionshipConf[] = [
   {
@@ -109,3 +118,12 @@ export const DEFAULT_CALENDAR_VIEW = WEEKEND;
 
 export const CALENDAR_VIEWS = [WEEKEND, WEEK, MONTH] as const;
 export const TAB_IDS = [UPCOMING, WEEKEND, WEEK, MONTH] as const;
+
+// FETCHER
+export const GET_METHOD = 'GET';
+export const POST_METHOD = 'POST';
+export const PUT_METHOD = 'PUT';
+export const DELETE_METHOD = 'DELETE';
+
+export const PROD_API_URL = 'https://api.sports-calendar.com';
+export const DEV_API_URL = 'http://localhost:3000';

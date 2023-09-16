@@ -4,9 +4,10 @@ import {
   IChampionshipsContextState
 } from '../models/championships.models';
 import { ChampionshipId } from '../models/sports.models';
+import { DEFAULT_CHAMPIONSHIPS } from '@/constants';
 
 const initialState: IChampionshipsContextState = {
-  championships: [],
+  championships: DEFAULT_CHAMPIONSHIPS,
   addChampionship: () => null,
   removeChampionship: () => null
 };
@@ -18,7 +19,9 @@ export const ChampionshipsProvider: FC<IChampionshipsContextProps> = ({
   children,
   ...props
 }) => {
-  const [championships, setChampionships] = useState<ChampionshipId[]>([]);
+  const [championships, setChampionships] = useState<ChampionshipId[]>(
+    DEFAULT_CHAMPIONSHIPS
+  );
 
   const addChampionship = (championshipId: ChampionshipId) => {
     const isChampionshipAlreadyAdded = championships.includes(championshipId);

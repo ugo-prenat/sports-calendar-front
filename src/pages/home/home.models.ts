@@ -1,4 +1,4 @@
-import { ISession } from '@/common/models/sports.models';
+import { IAPISession, ISession } from '@/common/models/sports.models';
 import { CALENDAR_VIEWS, UPCOMING } from '@/constants';
 import { ReactNode } from 'react';
 
@@ -36,7 +36,22 @@ export interface ICalendarSession extends ISession {
   sessionEndsTomorrow: boolean;
 }
 
+export interface IAPICalendarSession extends IAPISession {
+  sessionStartedYesterday: boolean;
+  sessionEndsTomorrow: boolean;
+}
+
 export interface ICalendarDaySessions {
   date: string;
   overlapedSessions: ICalendarSession[][];
+}
+
+export interface IAPICalendarDaySessions {
+  date: string;
+  overlapedSessions: IAPICalendarSession[][];
+}
+
+export interface IRange {
+  start: Date;
+  end: Date;
 }
