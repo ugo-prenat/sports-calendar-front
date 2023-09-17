@@ -19,12 +19,14 @@ import {
 } from 'date-fns';
 import {
   CalendarView,
+  ICalendarDaySessions,
   ICalendarSession,
   IDateRange,
   IRange
 } from './home.models';
-import { MONTH, WEEK, WEEKEND } from '@/constants';
+import { LOADING_OVERLAPED_SESSIONS, MONTH, WEEK, WEEKEND } from '@/constants';
 import { ICalendarWeekSessionStyle } from './tabs/calendar/views/week/CalendarWeekSession';
+import { randomNbs } from '@/common/utils/utils';
 
 export const getDateRange = (view: CalendarView): IDateRange => {
   const today = startOfToday();
@@ -132,3 +134,13 @@ export const makeRange = (days: Date[]): IRange => {
 
   return { start, end };
 };
+
+export const makeLoadingCalendarDaySessions = (
+  date: Date
+): ICalendarDaySessions => ({
+  date: String(date),
+  overlapedSessions:
+    LOADING_OVERLAPED_SESSIONS[
+      randomNbs(0, LOADING_OVERLAPED_SESSIONS.length)
+    ] || []
+});

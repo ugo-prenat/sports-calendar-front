@@ -2,7 +2,6 @@ import { FC, useEffect, useState } from 'react';
 import CalendarMonthDay from './CalendarMonthDay';
 import { getWeeksInMonth } from 'date-fns';
 import { useCalendar } from '@/common/hooks/calendar.hooks';
-import { MOCK_CALENDAR_DAY_SESSIONS } from '@/pages/home/mock';
 import { ICalendarDaySessions } from '@/pages/home/home.models';
 import { MONTH } from '@/constants';
 
@@ -21,10 +20,9 @@ const CalendarMonthView: FC<ICalendarMonthViewProps> = ({ days }) => {
     // fetch here
     console.log('fetch sessions for', days.length, 'days');
 
-    return days.map((day, i) => ({
-      date: day,
-      overlapedSessions:
-        MOCK_CALENDAR_DAY_SESSIONS[i - 16]?.overlapedSessions || []
+    return days.map((day) => ({
+      date: String(day),
+      overlapedSessions: []
     }));
   };
 

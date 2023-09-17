@@ -7,10 +7,12 @@ import { isEmpty } from '@/common/utils/utils';
 
 interface ICalendarWeekDayProps {
   calendarDaySessions: ICalendarDaySessions;
+  isLoading?: boolean;
 }
 
 const CalendarWeekDay: FC<ICalendarWeekDayProps> = ({
-  calendarDaySessions
+  calendarDaySessions,
+  isLoading = false
 }) => {
   const { date, overlapedSessions } = calendarDaySessions;
 
@@ -28,7 +30,11 @@ const CalendarWeekDay: FC<ICalendarWeekDayProps> = ({
         ) : (
           <>
             {overlapedSessions.map((sessions, index) => (
-              <CalendarWeekSessions sessions={sessions} key={index} />
+              <CalendarWeekSessions
+                sessions={sessions}
+                key={index}
+                isLoading={isLoading}
+              />
             ))}
           </>
         )}

@@ -2,6 +2,7 @@ import {
   ChampionshipId,
   IChampionshipConf
 } from './common/models/sports.models';
+import { ICalendarSession } from './pages/home/home.models';
 
 // THEME
 export const THEME_LIGHT = 'light';
@@ -127,3 +128,74 @@ export const DELETE_METHOD = 'DELETE';
 
 export const PROD_API_URL = 'https://api.sports-calendar.com';
 export const DEV_API_URL = 'http://localhost:3000';
+
+//  FAKE LOADING SESSIONS
+const LOADING_SESSION: ICalendarSession = {
+  id: '',
+  eventId: '',
+  sport: 'motorsports',
+  championship: 'f1',
+  regionalized: { en: { name: '' } },
+  startTime: new Date().toISOString(),
+  endTime: new Date().toISOString(),
+  sessionStartedYesterday: false,
+  sessionEndsTomorrow: false
+};
+
+const ZERO_SESSION: ICalendarSession[][] = [];
+
+const ONE_SESSION: ICalendarSession[][] = [
+  [
+    {
+      ...LOADING_SESSION,
+      startTime: new Date('2023-01-01T10:00:00.000Z').toISOString(),
+      endTime: new Date('2023-01-01T12:00:00.000Z').toISOString()
+    }
+  ]
+];
+
+const TWO_SESSIONS: ICalendarSession[][] = [
+  [
+    {
+      ...LOADING_SESSION,
+      startTime: new Date('2023-01-01T03:00:00.000Z').toISOString(),
+      endTime: new Date('2023-01-01T05:00:00.000Z').toISOString()
+    }
+  ],
+  [
+    {
+      ...LOADING_SESSION,
+      startTime: new Date('2023-01-01T15:00:00.000Z').toISOString(),
+      endTime: new Date('2023-01-01T16:30:00.000Z').toISOString()
+    }
+  ]
+];
+
+const THREE_SESSIONS: ICalendarSession[][] = [
+  [
+    {
+      ...LOADING_SESSION,
+      startTime: new Date('2023-01-01T11:00:00.000Z').toISOString(),
+      endTime: new Date('2023-01-01T15:00:00.000Z').toISOString()
+    },
+    {
+      ...LOADING_SESSION,
+      startTime: new Date('2023-01-01T12:00:00.000Z').toISOString(),
+      endTime: new Date('2023-01-01T13:30:00.000Z').toISOString()
+    }
+  ],
+  [
+    {
+      ...LOADING_SESSION,
+      startTime: new Date('2023-01-01T20:00:00.000Z').toISOString(),
+      endTime: new Date('2023-01-01T21:30:00.000Z').toISOString()
+    }
+  ]
+];
+
+export const LOADING_OVERLAPED_SESSIONS: ICalendarSession[][][] = [
+  ZERO_SESSION,
+  ONE_SESSION,
+  TWO_SESSIONS,
+  THREE_SESSIONS
+];
