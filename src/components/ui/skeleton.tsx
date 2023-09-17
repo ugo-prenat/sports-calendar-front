@@ -1,4 +1,4 @@
-import { cn } from "@/common/utils/tailwind.utils"
+import { cn } from '@/common/utils/tailwind.utils';
 
 function Skeleton({
   className,
@@ -6,10 +6,10 @@ function Skeleton({
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      className={cn("animate-pulse rounded-md bg-muted", className)}
+      className={cn('animate-pulse rounded-md bg-muted', className)}
       {...props}
     />
-  )
+  );
 }
 
-export { Skeleton }
+export { Skeleton };

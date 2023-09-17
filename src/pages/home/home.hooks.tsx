@@ -1,6 +1,6 @@
 import { differenceInMinutes, startOfDay } from 'date-fns';
 import { ICalendarDaySessions, ICalendarSession, IRange } from './home.models';
-import { getCalendarDaySessions } from './home.api';
+import { getCalendarDaysSessions } from './home.api';
 import { useChampionships } from '@/common/hooks/championships.hooks';
 import { makeRange } from './home.utils';
 import { useFetcher } from '@/common/fetcher/fetcher.hooks';
@@ -32,13 +32,13 @@ export const useSessionDetails = (session: ICalendarSession) => {
   };
 };
 
-export const useCalendarDaySessions = (days: Date[]) => {
+export const useCalendarDaysSessions = (days: Date[]) => {
   const { championships } = useChampionships();
   const range: IRange = makeRange(days);
 
   const props = useFetcher<ICalendarDaySessions[]>(() =>
-    getCalendarDaySessions(range, championships)
+    getCalendarDaysSessions(range, championships)
   );
 
-  return { calendarDaySessions: props.data, ...props };
+  return { calendarDaysSessions: props.data, ...props };
 };

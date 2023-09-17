@@ -24,8 +24,8 @@ const CalendarWeekDay: FC<ICalendarWeekDayProps> = ({
         <CalendarWeekHourLine day={date} />
 
         {isEmpty(overlapedSessions) ? (
-          <p className="flex items-center justify-center h-full opacity-40">
-            🏎️
+          <p className="flex items-center justify-center h-full opacity-30 select-none">
+            -
           </p>
         ) : (
           <>

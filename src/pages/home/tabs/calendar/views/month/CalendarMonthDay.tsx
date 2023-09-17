@@ -7,20 +7,22 @@ import CalendarMonthSessions from './CalendarMonthSessions';
 
 interface ICalendarMonthDayProps {
   calendarDaySessions: ICalendarDaySessions;
+  isLoading?: boolean;
 }
 
 const CalendarMonthDay: FC<ICalendarMonthDayProps> = ({
-  calendarDaySessions
+  calendarDaySessions,
+  isLoading = false
 }) => {
   const { date, overlapedSessions } = calendarDaySessions;
   const { calendarRange } = useCalendar();
 
   const month = calendarRange.from.getMonth();
-  const isDayOutOfMonth: boolean = month !== date.getMonth();
+  const isDayOutOfMonth: boolean = month !== new Date(date).getMonth();
 
   return (
     <div className="flex flex-col border-r border-b p-2 pt-0 flex-1">
-      <CalendarMonthDayHead day={date} />
+      <CalendarMonthDayHead day={new Date(date)} />
 
       <div
         className={cn('flex flex-col flex-1 overflow-hidden h-12', {
@@ -28,7 +30,11 @@ const CalendarMonthDay: FC<ICalendarMonthDayProps> = ({
         })}
       >
         {overlapedSessions.map((sessions, index) => (
-          <CalendarMonthSessions sessions={sessions} key={index} />
+          <CalendarMonthSessions
+            sessions={sessions}
+            isLoading={isLoading}
+            key={index}
+          />
         ))}
       </div>
     </div>

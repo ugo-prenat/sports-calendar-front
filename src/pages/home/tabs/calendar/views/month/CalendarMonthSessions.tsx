@@ -1,17 +1,26 @@
 import { ICalendarSession } from '@/pages/home/home.models';
 import { FC } from 'react';
 import CalendarMonthSession from './CalendarMonthSession';
+import { Skeleton } from '@/components/ui/skeleton';
 
 interface ICalendarMonthSessionsProps {
   sessions: ICalendarSession[];
+  isLoading?: boolean;
 }
 
 const CalendarMonthSessions: FC<ICalendarMonthSessionsProps> = ({
-  sessions
+  sessions,
+  isLoading = false
 }) => (
   <div>
     {sessions.map((session, index) => (
-      <CalendarMonthSession key={index} session={session} />
+      <>
+        {isLoading ? (
+          <Skeleton className="h-6 mb-1" />
+        ) : (
+          <CalendarMonthSession key={index} session={session} />
+        )}
+      </>
     ))}
   </div>
 );

@@ -1,7 +1,7 @@
 import { FC, useEffect } from 'react';
 import CalendarWeekDay from './CalendarWeekDay';
 import CalendarWeekHours from './CalendarWeekHours';
-import { useCalendarDaySessions } from '@/pages/home/home.hooks';
+import { useCalendarDaysSessions } from '@/pages/home/home.hooks';
 import { makeLoadingCalendarDaySessions } from '@/pages/home/home.utils';
 
 interface ICalendarWeekViewProps {
@@ -9,8 +9,8 @@ interface ICalendarWeekViewProps {
 }
 
 const CalendarWeekView: FC<ICalendarWeekViewProps> = ({ days }) => {
-  const { calendarDaySessions, status, handleFetch } =
-    useCalendarDaySessions(days);
+  const { calendarDaysSessions, status, handleFetch } =
+    useCalendarDaysSessions(days);
 
   useEffect(() => {
     handleFetch();
@@ -31,8 +31,8 @@ const CalendarWeekView: FC<ICalendarWeekViewProps> = ({ days }) => {
         ))}
       {status === 'error' && <div>Error</div>}
       {status === 'success' &&
-        calendarDaySessions &&
-        calendarDaySessions.map((calendarDaySessions, index) => (
+        calendarDaysSessions &&
+        calendarDaysSessions.map((calendarDaySessions, index) => (
           <CalendarWeekDay
             key={index}
             calendarDaySessions={calendarDaySessions}
