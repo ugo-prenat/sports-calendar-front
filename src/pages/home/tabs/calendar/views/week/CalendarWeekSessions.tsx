@@ -15,21 +15,19 @@ const CalendarWeekSessions: FC<ICalendarWeekSessionsProps> = ({
 }) => (
   <>
     {sessions.map((session, index) => (
-      <>
+      <div key={index}>
         {isLoading ? (
           <CalendarWeekLoadingSession
-            key={index}
             session={session}
             sessionStyle={makeSessionStyle(sessions, index)}
           />
         ) : (
           <CalendarWeekSession
-            key={index}
             session={session}
             sessionStyle={makeSessionStyle(sessions, index)}
           />
         )}
-      </>
+      </div>
     ))}
   </>
 );

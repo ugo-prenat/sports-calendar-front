@@ -4,15 +4,17 @@ import { useTranslation } from '@/common/hooks/lang.hooks';
 import { TabId, ICalendarTab } from './home.models';
 import UpcomingTab from './tabs/upcoming/UpcomingTab';
 import CalendarTab from './tabs/calendar/CalendarTab';
-import { DEFAULT_CALENDAR_VIEW, MONTH, TAB_IDS, UPCOMING } from '@/constants';
+import { DEFAULT_CALENDAR_VIEW, TAB_IDS, UPCOMING } from '@/constants';
 import { useCalendar } from '@/common/hooks/calendar.hooks';
 import { cn } from '@/common/utils/tailwind.utils';
+import { usePreferences } from '@/common/hooks/preferences.hooks';
 
 const HomePage: FC = () => {
   const { t } = useTranslation();
-  const { calendarView, setCalendarView } = useCalendar();
+  const { setCalendarView } = useCalendar();
+  const { defaultTab } = usePreferences();
 
-  const [activeTab, setActiveTab] = useState<TabId>(DEFAULT_CALENDAR_VIEW);
+  const [activeTab, setActiveTab] = useState<TabId>(defaultTab);
 
   const handleChangeTab = (id: TabId) => () => {
     if (id !== UPCOMING) setCalendarView(id);
@@ -27,9 +29,9 @@ const HomePage: FC = () => {
   return (
     <Tabs
       defaultValue={DEFAULT_CALENDAR_VIEW}
-      className={cn('p-6 pb-0 flex flex-col', {
-        'h-[calc(100%-6.5rem)]': calendarView === MONTH,
-        'h-[calc(100%-3rem)]': calendarView !== MONTH
+      className={cn('p-6 pb-0 flex flex-col h-full', {
+        // 'h-[calc(100%-6.5rem)]': calendarView === MONTH,
+        // 'h-[calc(100%-3rem)]': calendarView !== MONTH
       })}
     >
       <TabsList className="w-fit py-6 px-2">

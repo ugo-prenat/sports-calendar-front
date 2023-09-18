@@ -199,3 +199,14 @@ export const LOADING_OVERLAPED_SESSIONS: ICalendarSession[][][] = [
   TWO_SESSIONS,
   THREE_SESSIONS
 ];
+
+// PREFERENCES
+export const PREFERENCES_STORAGE_KEY = 'preferences';
+
+// DENISTY
+export const DENSITY_NORMAL = 'normal';
+export const DENSITY_COMPACT = 'compact';
+
+export const DEFAULT_DENSITY = DENSITY_NORMAL;
+
+export const DENSITYS = [DENSITY_NORMAL, DENSITY_COMPACT] as const;

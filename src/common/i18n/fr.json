@@ -31,5 +31,8 @@
   "pick.date.month.-1": "Mois dernier",
   "pick.date.month.0": "Ce mois-ci",
   "pick.date.month.1": "Mois prochain",
-  "pick.date.month.2": "Dans 2 mois"
+  "pick.date.month.2": "Dans 2 mois",
+
+  "filtersColumn.open": "Afficher la barre latérale",
+  "filtersColumn.close": "Masquer la barre latérale"
 }

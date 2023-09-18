@@ -14,13 +14,13 @@ const CalendarMonthSessions: FC<ICalendarMonthSessionsProps> = ({
 }) => (
   <div>
     {sessions.map((session, index) => (
-      <>
+      <div key={index}>
         {isLoading ? (
           <Skeleton className="h-6 mb-1" />
         ) : (
-          <CalendarMonthSession key={index} session={session} />
+          <CalendarMonthSession session={session} />
         )}
-      </>
+      </div>
     ))}
   </div>
 );

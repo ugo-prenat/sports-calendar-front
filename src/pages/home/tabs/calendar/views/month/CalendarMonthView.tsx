@@ -28,7 +28,7 @@ const CalendarMonthView: FC<ICalendarMonthViewProps> = ({ days }) => {
     <>
       {status === 'loading' && (
         <div
-          className="grid grid-cols-7 w-full first:border-t"
+          className="grid grid-cols-7 w-full first:border-t border-l"
           style={{
             gridTemplateRows: `repeat(${weeksInMonth}, minmax(0, 1fr))`
           }}
@@ -45,7 +45,7 @@ const CalendarMonthView: FC<ICalendarMonthViewProps> = ({ days }) => {
       {status === 'error' && <div>Error</div>}
       {status === 'success' && calendarDaysSessions && (
         <div
-          className="grid grid-cols-7 w-full first:border-t"
+          className="grid grid-cols-7 w-full first:border-t border-l"
           style={{
             gridTemplateRows: `repeat(${weeksInMonth}, minmax(0, 1fr))`
           }}
