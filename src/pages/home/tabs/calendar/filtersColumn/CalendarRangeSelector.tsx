@@ -41,7 +41,7 @@ const CalendarRangeSelector: FC = () => {
 
   return (
     <div className="pb-4 border-b">
-      <div className="mb-1">
+      <div className="mb-2">
         <Select onValueChange={handleChangeRange} defaultValue="0">
           <SelectTrigger>
             <SelectValue placeholder={t('pick.date')} />
