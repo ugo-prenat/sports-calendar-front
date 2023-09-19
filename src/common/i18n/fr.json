@@ -12,6 +12,8 @@
   "manage.sports.title": "Gestion des sports",
   "manage.sports.details": "choisissez les sports à afficher ou non dans le calendrier.",
 
+  "home": "Accueil",
+  "manage": "Gérer",
   "settings": "Paramètres",
 
   "tab.upcoming": "Prochainement",

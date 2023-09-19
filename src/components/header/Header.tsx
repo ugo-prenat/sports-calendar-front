@@ -3,23 +3,25 @@ import { Link } from '@tanstack/react-router';
 import { Button } from '../ui/button';
 import CompactThemeToggle from './CompactThemeToggle';
 import CompactLangToggle from './CompactLangToggle';
+import { useTranslation } from '@/common/hooks/lang.hooks';
 
 interface HeaderProps {}
 
 const Header: FC<HeaderProps> = () => {
+  const { t } = useTranslation();
   return (
     <div className="flex justify-between py-2 items-center px-4 border-input border h-14">
       <div className="flex">
         <Button variant="link">
-          <Link to="/">Home</Link>
+          <Link to="/">{t('home')}</Link>
         </Button>
 
         <Button variant="link">
-          <Link to="/manage">Manage</Link>
+          <Link to="/manage">{t('manage')}</Link>
         </Button>
 
         <Button variant="link">
-          <Link to="/settings">Settings</Link>
+          <Link to="/settings">{t('settings')}</Link>
         </Button>
       </div>
       <div className="flex gap-x-2">

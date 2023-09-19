@@ -12,7 +12,6 @@ import { Check, ChevronsUpDown } from 'lucide-react';
 import { LANG_EN, LANG_FR } from '@/constants';
 import { useTranslation } from '@/common/hooks/lang.hooks';
 import { ILanguageSelect } from './settings.models';
-import { Label } from '@/components/ui/label';
 
 const LangToggle: FC = () => {
   const { t, lang, setLang } = useTranslation();
@@ -32,7 +31,8 @@ const LangToggle: FC = () => {
   return (
     <div>
       <div className="flex flex-col gap-3">
-        <Label>{t('language')}</Label>
+        <h4 className="font-medium leading-none">{t('language')}</h4>
+
         <Popover open={open} onOpenChange={setOpen}>
           <PopoverTrigger asChild>
             <Button
