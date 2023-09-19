@@ -10,7 +10,7 @@ interface HeaderProps {}
 const Header: FC<HeaderProps> = () => {
   const { t } = useTranslation();
   return (
-    <div className="flex justify-between py-2 items-center px-4 border-input border h-14">
+    <div className="flex justify-between py-2 items-center px-4 border-input border-b h-14">
       <div className="flex">
         <Button variant="link">
           <Link to="/">{t('home')}</Link>

@@ -20,6 +20,14 @@ const SettingsPage: FC = () => {
 
         <Separator />
         <LangToggle />
+
+        {/* 
+        
+          - default tab
+          - density
+          - timezone
+        
+        */}
       </div>
     </div>
   );
