@@ -31,12 +31,17 @@ import { Input } from '@/components/ui/input';
 import { setHours, setMinutes } from 'date-fns';
 
 interface ISessionSectionProps {
+  handleRemove: () => void;
   form: UseFormReturn<IEventWithSessions>;
   field: FieldArrayWithId<IEventWithSessions, 'sessions', 'id'>;
   index: number;
 }
 
-const SessionSection: FC<ISessionSectionProps> = ({ form, index }) => {
+const SessionSection: FC<ISessionSectionProps> = ({
+  form,
+  index,
+  handleRemove
+}) => {
   const { t } = useTranslation();
   const format = useFnsFormat();
 
@@ -135,7 +140,10 @@ const SessionSection: FC<ISessionSectionProps> = ({ form, index }) => {
           variant="outline"
           className="group w-10 h-10 hover:bg-destructive"
         >
-          <Trash className="w-4 h-4 opacity-50 group-hover:opacity-100 group-hover:stroke-white" />
+          <Trash
+            className="w-4 h-4 opacity-50 group-hover:opacity-100 group-hover:stroke-white"
+            onClick={handleRemove}
+          />
         </Button>
       </Tooltip>
     </div>
