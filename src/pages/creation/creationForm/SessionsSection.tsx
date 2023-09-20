@@ -5,7 +5,6 @@ import { useTranslation } from '@/common/hooks/lang.hooks';
 import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
 import SessionSection from './SessionSection';
-import { Accordion } from '@/components/ui/accordion';
 
 interface ISessionsSectionProps {
   form: UseFormReturn<IEventWithSessions>;
@@ -22,12 +21,7 @@ const SessionsSection: FC<ISessionsSectionProps> = ({ form }) => {
     <div>
       <p className="text-xl font-medium">{t('creation.event.sessions')}</p>
 
-      <Accordion
-        type="single"
-        collapsible
-        defaultValue="session-0"
-        className="py-4"
-      >
+      <div className="py-8">
         {fields.map((field, index) => (
           <SessionSection
             form={form}
@@ -36,7 +30,7 @@ const SessionsSection: FC<ISessionsSectionProps> = ({ form }) => {
             key={field.id}
           />
         ))}
-      </Accordion>
+      </div>
 
       <Button variant="outline" size="sm">
         <Plus className="w-4 h-4 mr-1" />

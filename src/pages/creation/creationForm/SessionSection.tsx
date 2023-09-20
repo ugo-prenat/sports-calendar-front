@@ -12,11 +12,6 @@ import Tooltip from '@/components/Tooltip';
 import { Button } from '@/components/ui/button';
 import { CalendarIcon, Trash } from 'lucide-react';
 import { useFnsFormat, useTranslation } from '@/common/hooks/lang.hooks';
-import {
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger
-} from '@/components/ui/accordion';
 import { SESSIONS } from '@/constants';
 import {
   Select,
@@ -128,33 +123,22 @@ const SessionSection: FC<ISessionSectionProps> = ({ form, index }) => {
     />
   );
 
-  const Content = () => (
-    <>
-      <div className="flex gap-4">
-        <RegionalizedSection />
-        <DateSection id="startTime" />
-        <DateSection id="endTime" />
-      </div>
+  return (
+    <div className="flex gap-4 items-end">
+      <RegionalizedSection />
+      <DateSection id="startTime" />
+      <DateSection id="endTime" />
+
       <Tooltip title={t('creation.event.sessions.remove.tooltip')}>
-        <Button size="icon" variant="outline" className="w-8 h-8">
-          <Trash className="w-4 h-4" />
+        <Button
+          size="icon"
+          variant="outline"
+          className="group w-10 h-10 hover:bg-destructive"
+        >
+          <Trash className="w-4 h-4 opacity-50 group-hover:opacity-100 group-hover:stroke-white" />
         </Button>
       </Tooltip>
-    </>
-  );
-
-  return (
-    <AccordionItem value={`session-${index}`}>
-      <AccordionTrigger>
-        <div className="flex items-center gap-2">
-          <p>{t(form.watch(`sessions.${index}.type`))}</p>
-          <span className="text-muted-foreground text-sm">etc...</span>
-        </div>
-      </AccordionTrigger>
-      <AccordionContent>
-        <Content />
-      </AccordionContent>
-    </AccordionItem>
+    </div>
   );
 };
 
