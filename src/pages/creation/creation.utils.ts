@@ -1,8 +1,8 @@
-import { WithoutIds } from '@/common/models/models';
-import { IEvent, ISession } from '@/common/models/sports.models';
-import { F1, MOTORSPORTS } from '@/constants';
-import { addDays, startOfToday } from 'date-fns';
+import { IEvent } from '@/common/models/sports.models';
+import { F1, FREE_PRACTICE_1, MOTORSPORTS } from '@/constants';
+import { addDays, endOfToday, startOfToday } from 'date-fns';
 import { IDateRange } from '../home/home.models';
+import { ISchemaSession } from './creation.models';
 
 export interface ISchemaEvent
   extends Omit<IEvent, 'id' | 'startTime' | 'endTime'> {
@@ -34,13 +34,8 @@ export const makeVirginEvent = (): ISchemaEvent => ({
   }
 });
 
-export const makeVirginSession = (): WithoutIds<ISession> => ({
-  sport: MOTORSPORTS,
-  championship: F1,
-  regionalized: {
-    en: { name: '', shortName: '' },
-    fr: { name: '', shortName: '' }
-  },
-  startTime: '',
-  endTime: ''
+export const makeVirginSession = (): ISchemaSession => ({
+  type: FREE_PRACTICE_1,
+  startTime: startOfToday().toISOString(),
+  endTime: endOfToday().toISOString()
 });

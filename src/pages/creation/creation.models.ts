@@ -1,11 +1,16 @@
-import { WithoutIds } from '@/common/models/models';
-import { ISession } from '@/common/models/sports.models';
-import { CHAMPIONSHIPS, SPORTS_TYPES } from '@/constants';
+import { Session } from '@/common/models/sports.models';
+import { CHAMPIONSHIPS, SESSIONS, SPORTS_TYPES } from '@/constants';
 import { z } from 'zod';
 import { ISchemaEvent } from './creation.utils';
 
+export interface ISchemaSession {
+  type: Session;
+  startTime: string;
+  endTime: string;
+}
+
 export interface IEventWithSessions extends ISchemaEvent {
-  sessions: WithoutIds<ISession>[];
+  sessions: ISchemaSession[];
 }
 
 export const eventSchema: z.ZodType<IEventWithSessions> = z.object({
@@ -54,20 +59,7 @@ export const eventSchema: z.ZodType<IEventWithSessions> = z.object({
   }),
   sessions: z.array(
     z.object({
-      sport: z.enum(SPORTS_TYPES),
-      championship: z.enum(CHAMPIONSHIPS),
-      regionalized: z.object({
-        en: z.object({
-          name: z.string(),
-          shortName: z.string().optional()
-        }),
-        fr: z
-          .object({
-            name: z.string(),
-            shortName: z.string().optional()
-          })
-          .optional()
-      }),
+      type: z.enum(SESSIONS),
       startTime: z.string(),
       endTime: z.string()
     })

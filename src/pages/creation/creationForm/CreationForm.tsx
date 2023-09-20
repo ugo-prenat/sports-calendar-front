@@ -11,6 +11,8 @@ import EventRegionalizedSection from './EventRegionalizedSection';
 import ChampionshipAndSportSection from './ChampionshipAndSportSection';
 import StartAndEndTime from './StartAndEndTime';
 import { ISchemaEvent } from '../creation.utils';
+import { useTranslation } from '@/common/hooks/lang.hooks';
+import SessionsSection from './SessionsSection';
 
 interface ICreationFormProps {
   eventSample: ISchemaEvent;
@@ -21,6 +23,8 @@ const CreationForm: FC<ICreationFormProps> = ({
   eventSample,
   sessionsSample
 }) => {
+  const { t } = useTranslation();
+
   const form = useForm<z.infer<typeof eventSchema>>({
     resolver: zodResolver(eventSchema),
     defaultValues: {
@@ -44,7 +48,9 @@ const CreationForm: FC<ICreationFormProps> = ({
             <StartAndEndTime form={form} />
           </div>
 
-          <Button type="submit">Submit</Button>
+          <SessionsSection form={form} />
+
+          <Button type="submit">{t('creation.event.btn.create')}</Button>
         </form>
       </Form>
     </div>

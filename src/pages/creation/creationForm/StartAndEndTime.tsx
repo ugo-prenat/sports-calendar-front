@@ -14,7 +14,6 @@ import {
   PopoverTrigger
 } from '@/components/ui/popover';
 import { Button } from '@/components/ui/button';
-import { cn } from '@/common/utils/tailwind.utils';
 import { CalendarIcon } from 'lucide-react';
 import { Calendar } from '@/components/ui/calendar';
 import { useFnsFormat, useTranslation } from '@/common/hooks/lang.hooks';
@@ -41,10 +40,7 @@ const StartAndEndTime: FC<IStartAndEndTimeProps> = ({ form }) => {
               <FormControl>
                 <Button
                   variant={'outline'}
-                  className={cn(
-                    'pl-3 text-left font-normal',
-                    !field.value && 'text-muted-foreground'
-                  )}
+                  className="pl-3 text-left font-normal"
                 >
                   {field.value ? (
                     <>

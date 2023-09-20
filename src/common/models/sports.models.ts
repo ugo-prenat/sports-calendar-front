@@ -1,6 +1,7 @@
 import {
   COMBAT_SPORTS_CHAMPIONSHIP,
   MOTORSPORTS_CHAMPIONSHIPS,
+  SESSIONS,
   SPORTS_TYPES
 } from '@/constants';
 
@@ -11,6 +12,8 @@ export type CombatSportChampionship =
   (typeof COMBAT_SPORTS_CHAMPIONSHIP)[number];
 
 export type ChampionshipId = MotorsportChampionship | CombatSportChampionship;
+
+export type Session = (typeof SESSIONS)[number];
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface IRegionalized<T extends { [key: string]: any }> {

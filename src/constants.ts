@@ -217,3 +217,26 @@ export const DENSITY_COMPACT = 'compact';
 export const DEFAULT_DENSITY = DENSITY_NORMAL;
 
 export const DENSITYS = [DENSITY_NORMAL, DENSITY_COMPACT] as const;
+
+// SESSIONS
+export const FREE_PRACTICE = 'free-practice';
+export const FREE_PRACTICE_1 = 'free-practice-1';
+export const FREE_PRACTICE_2 = 'free-practice-2';
+export const FREE_PRACTICE_3 = 'free-practice-3';
+export const PRE_QUALIFYING = 'pre-qualifying';
+export const QUALIFYING = 'qualifying';
+export const RACE = 'race';
+export const RACE_1 = 'race-1';
+export const RACE_2 = 'race-2';
+
+export const SESSIONS = [
+  FREE_PRACTICE,
+  FREE_PRACTICE_1,
+  FREE_PRACTICE_2,
+  FREE_PRACTICE_3,
+  PRE_QUALIFYING,
+  QUALIFYING,
+  RACE,
+  RACE_1,
+  RACE_2
+] as const;

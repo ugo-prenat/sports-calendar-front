@@ -15,7 +15,7 @@ const EventsHistory: FC<IEventsHistoryProps> = ({
   const { t } = useTranslation();
 
   return (
-    <div className="w-[250px] border-l pl-4">
+    <div className="w-[350px] border-l pl-4">
       <h2 className="font-semibold text-xl">{t('creation.event.history')}</h2>
     </div>
   );
