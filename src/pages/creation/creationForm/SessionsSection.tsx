@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
 import SessionSection from './SessionSection';
 import { makeVirginSession } from '../creation.utils';
+import { isEmpty } from '@/common/utils/utils';
 
 interface ISessionsSectionProps {
   form: UseFormReturn<IEventWithSessions>;
@@ -26,15 +27,23 @@ const SessionsSection: FC<ISessionsSectionProps> = ({ form }) => {
       <p className="text-xl font-medium">{t('creation.event.sessions')}</p>
 
       <div className="flex flex-col gap-4 py-8">
-        {fields.map((field, index) => (
-          <SessionSection
-            form={form}
-            field={field}
-            index={index}
-            key={field.id}
-            handleRemove={handleRemove(index)}
-          />
-        ))}
+        {isEmpty(fields) ? (
+          <p className="text-muted-foreground/40">
+            {t('creation.event.sessions.empty')}
+          </p>
+        ) : (
+          <>
+            {fields.map((field, index) => (
+              <SessionSection
+                form={form}
+                field={field}
+                index={index}
+                key={field.id}
+                handleRemove={handleRemove(index)}
+              />
+            ))}
+          </>
+        )}
       </div>
 
       <Button variant="outline" size="sm" onClick={handleAppend}>

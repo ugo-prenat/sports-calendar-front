@@ -87,6 +87,7 @@
   "creation.event.sessions.startTime": "Début",
   "creation.event.sessions.endTime": "Fin",
   "creation.event.sessions.hour": "Heure",
+  "creation.event.sessions.empty": "Aucune session",
 
   "creation.event.btn.create": "Créer"
 }

@@ -18,13 +18,13 @@ export const eventSchema: z.ZodType<IEventWithSessions> = z.object({
   championship: z.enum(CHAMPIONSHIPS),
   regionalized: z.object({
     en: z.object({
-      name: z.string(),
-      shortName: z.string().optional()
+      name: z.string().nonempty(),
+      shortName: z.string().nonempty().optional()
     }),
     fr: z
       .object({
-        name: z.string(),
-        shortName: z.string().optional()
+        name: z.string().nonempty(),
+        shortName: z.string().nonempty().optional()
       })
       .optional()
   }),

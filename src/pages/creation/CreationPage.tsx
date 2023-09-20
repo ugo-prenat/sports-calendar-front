@@ -1,5 +1,4 @@
 import { useTranslation } from '@/common/hooks/lang.hooks';
-import { ISession } from '@/common/models/sports.models';
 import { FC, useState } from 'react';
 import EventsHistory from './EventsHistory';
 import CreationForm from './creationForm/CreationForm';
@@ -8,14 +7,14 @@ import {
   makeVirginEvent,
   makeVirginSession
 } from './creation.utils';
-import { WithoutIds } from '@/common/models/models';
+import { ISchemaSession } from './creation.models';
 
 const CreationPage: FC = () => {
   const { t } = useTranslation();
   const [eventSample, setEventSample] = useState<ISchemaEvent>(
     makeVirginEvent()
   );
-  const [sessionsSample, setSessionsSample] = useState<WithoutIds<ISession>[]>([
+  const [sessionsSample, setSessionsSample] = useState<ISchemaSession[]>([
     makeVirginSession()
   ]);
 

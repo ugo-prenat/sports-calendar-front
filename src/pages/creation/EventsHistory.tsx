@@ -1,11 +1,11 @@
 import { useTranslation } from '@/common/hooks/lang.hooks';
-import { ISession } from '@/common/models/sports.models';
 import { FC } from 'react';
 import { ISchemaEvent } from './creation.utils';
+import { ISchemaSession } from './creation.models';
 
 interface IEventsHistoryProps {
   setEventSample: (event: ISchemaEvent) => void;
-  setSessionsSample: (sessions: ISession[]) => void;
+  setSessionsSample: (sessions: ISchemaSession[]) => void;
 }
 
 const EventsHistory: FC<IEventsHistoryProps> = ({

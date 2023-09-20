@@ -1,12 +1,10 @@
-import { ISession } from '@/common/models/sports.models';
 import { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { eventSchema } from '../creation.models';
+import { ISchemaSession, eventSchema } from '../creation.models';
 import { Form } from '@/components/ui/form';
 import { Button } from '@/components/ui/button';
-import { WithoutIds } from '@/common/models/models';
 import EventRegionalizedSection from './EventRegionalizedSection';
 import ChampionshipAndSportSection from './ChampionshipAndSportSection';
 import StartAndEndTime from './StartAndEndTime';
@@ -16,7 +14,7 @@ import SessionsSection from './SessionsSection';
 
 interface ICreationFormProps {
   eventSample: ISchemaEvent;
-  sessionsSample: WithoutIds<ISession>[];
+  sessionsSample: ISchemaSession[];
 }
 
 const CreationForm: FC<ICreationFormProps> = ({

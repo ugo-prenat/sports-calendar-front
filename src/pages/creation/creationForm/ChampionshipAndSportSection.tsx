@@ -18,8 +18,7 @@ import {
 import {
   COMBAT_SPORTS_CHAMPIONSHIP,
   MOTORSPORTS,
-  MOTORSPORTS_CHAMPIONSHIPS,
-  SPORTS_TYPES
+  MOTORSPORTS_CHAMPIONSHIPS
 } from '@/constants';
 import { useTranslation } from '@/common/hooks/lang.hooks';
 import { ChampionshipId, SportType } from '@/common/models/sports.models';
@@ -54,7 +53,7 @@ const ChampionshipAndSportSection: FC<IChampionshipAndSportSectionProps> = ({
                 </SelectTrigger>
               </FormControl>
               <SelectContent>
-                {SPORTS_TYPES.map((sport, i) => (
+                {[MOTORSPORTS].map((sport, i) => (
                   <SelectItem key={i} value={sport}>
                     {t(sport)}
                   </SelectItem>
