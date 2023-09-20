@@ -138,12 +138,10 @@ const SessionSection: FC<ISessionSectionProps> = ({
         <Button
           size="icon"
           variant="outline"
+          onClick={handleRemove}
           className="group w-10 h-10 hover:bg-destructive"
         >
-          <Trash
-            className="w-4 h-4 opacity-50 group-hover:opacity-100 group-hover:stroke-white"
-            onClick={handleRemove}
-          />
+          <Trash className="w-4 h-4 opacity-50 group-hover:opacity-100 group-hover:stroke-white" />
         </Button>
       </Tooltip>
     </div>
