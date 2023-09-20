@@ -16,6 +16,8 @@ export const DEFAULT_THEME = THEME_SYSTEM;
 export const LANG_EN = 'en';
 export const LANG_FR = 'fr';
 
+export const LANGS = [LANG_EN, LANG_FR] as const;
+
 export const LANG_STORAGE_KEY = 'language';
 export const DEFAULT_LANG = LANG_EN;
 
@@ -56,6 +58,11 @@ export const DEFAULT_CHAMPIONSHIPS: ChampionshipId[] = [
   WEC,
   GT_WORLD_CHALLENGE
 ];
+
+export const CHAMPIONSHIPS = [
+  ...MOTORSPORTS_CHAMPIONSHIPS,
+  ...COMBAT_SPORTS_CHAMPIONSHIP
+] as const;
 
 export const CHAMIPONSHIP_CONFS: IChampionshipConf[] = [
   {

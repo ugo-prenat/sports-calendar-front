@@ -4,6 +4,7 @@ import { Button } from '../ui/button';
 import CompactThemeToggle from './CompactThemeToggle';
 import CompactLangToggle from './CompactLangToggle';
 import { useTranslation } from '@/common/hooks/lang.hooks';
+import { CalendarPlus } from 'lucide-react';
 
 interface HeaderProps {}
 
@@ -23,6 +24,12 @@ const Header: FC<HeaderProps> = () => {
         <Button variant="link">
           <Link to="/settings">{t('settings')}</Link>
         </Button>
+
+        <Link to="/creation">
+          <Button variant="ghost" size="icon">
+            <CalendarPlus className="w-4 h-4 opacity-30" />
+          </Button>
+        </Link>
       </div>
       <div className="flex gap-x-2">
         <CompactLangToggle />

@@ -1,9 +1,10 @@
 import { Outlet, Route, RootRoute } from '@tanstack/react-router';
 import Header from '../../components/header/Header';
 import HomePage from '../../pages/home/HomePage';
-import Settings from '../../pages/settings/SettingsPage';
-import Manage from '../../pages/manage/ManagePage';
+import SettingsPage from '../../pages/settings/SettingsPage';
+import ManagePage from '../../pages/manage/ManagePage';
 import NotFoundPage from '@/pages/notFound/NotFoundPage';
+import CreationPage from '@/pages/creation/CreationPage';
 
 export const rootRoute = new RootRoute({
   component: () => (
@@ -23,13 +24,19 @@ const calendarRoute = new Route({
 const settingsRoute = new Route({
   getParentRoute: () => rootRoute,
   path: '/settings',
-  component: Settings
+  component: SettingsPage
 });
 
 const manageRoute = new Route({
   getParentRoute: () => rootRoute,
   path: '/manage',
-  component: Manage
+  component: ManagePage
+});
+
+const creationRoute = new Route({
+  getParentRoute: () => rootRoute,
+  path: '/creation',
+  component: CreationPage
 });
 
 const notFoundRoute = new Route({
@@ -42,5 +49,6 @@ export const routes = [
   calendarRoute,
   settingsRoute,
   manageRoute,
+  creationRoute,
   notFoundRoute
 ];

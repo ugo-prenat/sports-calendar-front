@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
-import { LANG_EN, LANG_FR } from '../../constants';
+import { LANGS } from '../../constants';
 
-export type Lang = typeof LANG_EN | typeof LANG_FR;
+export type Lang = (typeof LANGS)[number];
 
 export interface ILangContextProps {
   children: ReactNode;

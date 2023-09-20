@@ -24,7 +24,7 @@ export interface IEvent {
   championship: ChampionshipId;
   regionalized: IRegionalized<{
     name: string;
-    shortName: string;
+    shortName?: string;
   }>;
   startTime: string;
   endTime: string;
@@ -33,10 +33,7 @@ export interface IEvent {
 }
 
 export interface IEventCountry {
-  regionalized: IRegionalized<{
-    code: string;
-    name?: string; // i18n à partir du code ?
-  }>;
+  code: string;
   flag: string;
 }
 

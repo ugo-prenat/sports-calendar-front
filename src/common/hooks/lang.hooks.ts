@@ -15,11 +15,6 @@ export const useTranslation = () => {
 export const useFnsFormat = () => {
   const { fnsLocale } = useContext(LangProviderContext);
 
-  const format = (
-    date: Date | number,
-    format: string,
-    options?: IFnsFormatOptions
-  ) => fnsFormat(date, format, { locale: fnsLocale, ...options });
-
-  return format;
+  return (date: Date | number, format: string, options?: IFnsFormatOptions) =>
+    fnsFormat(date, format, { locale: fnsLocale, ...options });
 };

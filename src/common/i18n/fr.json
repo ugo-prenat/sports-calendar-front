@@ -8,6 +8,18 @@
   "language.fr": "Français",
   "language.en": "English",
 
+  "sportType": "Type de sport",
+  "motorsports": "Sports mécaniques",
+  "combat-sports": "Sports de combat",
+
+  "championship": "Championnat",
+  "f1": "Formule 1",
+  "f2": "Formule 2",
+  "f3": "Formule 3",
+  "wec": "WEC",
+  "f1-academy": "F1 Academy",
+  "gt-world-challenge": "GT World Challenge",
+
   "manage.sports": "Gérer",
   "manage.sports.title": "Gestion des sports",
   "manage.sports.details": "Choisissez les sports à afficher ou non dans le calendrier.",
@@ -36,5 +48,14 @@
   "pick.date.month.2": "Dans 2 mois",
 
   "filtersColumn.open": "Afficher la barre latérale",
-  "filtersColumn.close": "Masquer la barre latérale"
+  "filtersColumn.close": "Masquer la barre latérale",
+
+  "creation.event.title": "Créer un événement",
+  "creation.event.history": "Historique",
+  "creation.event.names": "Noms",
+  "creation.event.regionalized.en.name": "Nom anglais",
+  "creation.event.regionalized.en.shortname": "Nom anglais court",
+  "creation.event.regionalized.fr.name": "Nom français (optionnel)",
+  "creation.event.regionalized.fr.shortname": "Nom français court (optionnel)",
+  "creation.event.period": "Période"
 }
