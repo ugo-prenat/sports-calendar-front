@@ -47,6 +47,8 @@
   "manage": "Gérer",
   "settings": "Paramètres",
 
+  "retry": "Réessayer",
+
   "tab.upcoming": "Prochainement",
   "tab.weekend": "Week-end",
   "tab.week": "Semaine",
@@ -68,6 +70,8 @@
 
   "filtersColumn.open": "Afficher la barre latérale",
   "filtersColumn.close": "Masquer la barre latérale",
+
+  "calendar.receive.sessions.error": "Une erreur est survenue lors de la récupération des sessions.",
 
   "creation.event.title": "Créer un événement",
   "creation.event.history": "Historique",

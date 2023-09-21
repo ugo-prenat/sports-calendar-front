@@ -47,6 +47,8 @@
   "manage": "Manage",
   "settings": "Settings",
 
+  "retry": "Retry",
+
   "tab.upcoming": "Upcoming",
   "tab.weekend": "Weekend",
   "tab.week": "Week",
@@ -68,6 +70,8 @@
 
   "filtersColumn.open": "Show sidebar",
   "filtersColumn.close": "Hide sidebar",
+
+  "calendar.receive.sessions.error": "An error occurred while retrieving the sessions.",
 
   "creation.event.title": "Create an event",
   "creation.event.history": "History",
