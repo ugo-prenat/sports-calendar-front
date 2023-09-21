@@ -6,7 +6,6 @@ import UpcomingTab from './tabs/upcoming/UpcomingTab';
 import CalendarTab from './tabs/calendar/CalendarTab';
 import { DEFAULT_CALENDAR_VIEW, TAB_IDS, UPCOMING } from '@/constants';
 import { useCalendar } from '@/common/hooks/calendar.hooks';
-import { cn } from '@/common/utils/tailwind.utils';
 import { usePreferences } from '@/common/hooks/preferences.hooks';
 
 const HomePage: FC = () => {
@@ -29,10 +28,7 @@ const HomePage: FC = () => {
   return (
     <Tabs
       defaultValue={DEFAULT_CALENDAR_VIEW}
-      className={cn('p-6 pb-0 flex flex-col h-full', {
-        // 'h-[calc(100%-6.5rem)]': calendarView === MONTH,
-        // 'h-[calc(100%-3rem)]': calendarView !== MONTH
-      })}
+      className="p-6 pb-0 flex flex-col h-full"
     >
       <TabsList className="w-fit py-6 px-2">
         {tabs.map((tab) => (

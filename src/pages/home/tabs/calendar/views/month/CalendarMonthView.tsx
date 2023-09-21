@@ -2,7 +2,6 @@ import { FC, useEffect } from 'react';
 import CalendarMonthDay from './CalendarMonthDay';
 import { getWeeksInMonth } from 'date-fns';
 import { useCalendar } from '@/common/hooks/calendar.hooks';
-import { MONTH } from '@/constants';
 import { useCalendarDaysSessions } from '@/pages/home/home.hooks';
 import { makeLoadingCalendarDaySessions } from '@/pages/home/home.utils';
 
@@ -11,16 +10,14 @@ interface ICalendarMonthViewProps {
 }
 
 const CalendarMonthView: FC<ICalendarMonthViewProps> = ({ days }) => {
-  const { calendarRange, calendarView } = useCalendar();
+  const { calendarRange } = useCalendar();
   const weeksInMonth = getWeeksInMonth(calendarRange.from, { weekStartsOn: 1 });
 
   const { calendarDaysSessions, status, handleFetch } =
     useCalendarDaysSessions(days);
 
   useEffect(() => {
-    if (calendarView !== MONTH) return;
     handleFetch();
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [days]);
 

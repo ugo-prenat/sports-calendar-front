@@ -22,22 +22,22 @@ export const CalendarProvider: FC<ICalendarContextProps> = ({
   children,
   ...props
 }) => {
-  const [calendarView, setcalendarView] = useState<CalendarView>(
+  const [calendarView, setCalendarView] = useState<CalendarView>(
     DEFAULT_CALENDAR_VIEW
   );
-  const [calendarRange, setcalendarRange] = useState<IDateRange>(
+  const [calendarRange, setCalendarRange] = useState<IDateRange>(
     getDateRange(DEFAULT_CALENDAR_VIEW)
   );
 
   useEffect(() => {
-    setcalendarRange(getDateRange(calendarView));
+    setCalendarRange(getDateRange(calendarView));
   }, [calendarView]);
 
   const value = {
     calendarView,
     calendarRange,
-    setCalendarView: setcalendarView,
-    setCalendarRange: setcalendarRange
+    setCalendarView,
+    setCalendarRange
   };
   return (
     <CalendarProviderContext.Provider {...props} value={value}>
