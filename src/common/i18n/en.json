@@ -77,9 +77,10 @@
   "creation.event.history": "History",
   "creation.event.names": "Names",
   "creation.event.regionalized.en.name": "English name",
-  "creation.event.regionalized.en.shortname": "English short name",
+  "creation.event.regionalized.en.shortname": "English short name (optional)",
   "creation.event.regionalized.fr.name": "French name (optional)",
   "creation.event.regionalized.fr.shortname": "French short name (optional)",
+  "creation.event.regionalized.name.error": "The name is required.",
   "creation.event.period": "Period",
   "creation.event.sessions": "Sessions",
   "creation.event.sessions.add": "Add a session",
@@ -90,8 +91,9 @@
   "creation.event.sessions.type.search": "Search a type...",
   "creation.event.sessions.startTime": "Start",
   "creation.event.sessions.endTime": "End",
+  "creation.event.sessions.time.error": "Invalid date.",
   "creation.event.sessions.hour": "Hour",
   "creation.event.sessions.empty": "No session",
 
-  "creation.event.btn.create": "Create"
+  "creation.event.btn.create": "Create event"
 }

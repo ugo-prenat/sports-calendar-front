@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Button } from './ui/button';
+import { Button } from './button';
 import { useTranslation } from '@/common/hooks/lang.hooks';
 
 interface IErrorProps {

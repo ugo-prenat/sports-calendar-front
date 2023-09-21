@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, MouseEvent } from 'react';
 import { IEventWithSessions } from '../creation.models';
 import { UseFormReturn, useFieldArray } from 'react-hook-form';
 import { useTranslation } from '@/common/hooks/lang.hooks';
@@ -20,7 +20,10 @@ const SessionsSection: FC<ISessionsSectionProps> = ({ form }) => {
   });
 
   const handleRemove = (index: number) => () => remove(index);
-  const handleAppend = () => append(makeVirginSession());
+  const handleAppend = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    append(makeVirginSession());
+  };
 
   return (
     <div>

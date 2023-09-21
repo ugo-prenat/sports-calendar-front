@@ -3,7 +3,7 @@ import CalendarWeekDay from './CalendarWeekDay';
 import CalendarWeekHours from './CalendarWeekHours';
 import { useCalendarDaysSessions } from '@/pages/home/home.hooks';
 import { makeLoadingCalendarDaySessions } from '@/pages/home/home.utils';
-import Error from '@/components/Error';
+import Error from '@/components/ui/Error';
 import { useTranslation } from '@/common/hooks/lang.hooks';
 
 interface ICalendarWeekViewProps {
@@ -20,8 +20,6 @@ const CalendarWeekView: FC<ICalendarWeekViewProps> = ({ days }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [days]);
 
-  const handleRetry = handleFetch;
-
   return (
     <>
       <CalendarWeekHours />
@@ -37,7 +35,7 @@ const CalendarWeekView: FC<ICalendarWeekViewProps> = ({ days }) => {
       {status === 'error' && (
         <Error
           text={t('calendar.receive.sessions.error')}
-          retry={handleRetry}
+          retry={handleFetch}
         />
       )}
       {status === 'success' &&

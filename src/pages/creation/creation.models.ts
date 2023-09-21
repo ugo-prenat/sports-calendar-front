@@ -18,13 +18,15 @@ export const eventSchema: z.ZodType<IEventWithSessions> = z.object({
   championship: z.enum(CHAMPIONSHIPS),
   regionalized: z.object({
     en: z.object({
-      name: z.string().nonempty(),
-      shortName: z.string().nonempty().optional()
+      name: z
+        .string()
+        .nonempty({ message: 'creation.event.regionalized.name.error' }),
+      shortName: z.string().optional()
     }),
     fr: z
       .object({
-        name: z.string().nonempty(),
-        shortName: z.string().nonempty().optional()
+        name: z.string(),
+        shortName: z.string().optional()
       })
       .optional()
   }),
@@ -60,8 +62,12 @@ export const eventSchema: z.ZodType<IEventWithSessions> = z.object({
   sessions: z.array(
     z.object({
       type: z.enum(SESSIONS),
-      startTime: z.string(),
-      endTime: z.string()
+      startTime: z
+        .string()
+        .datetime({ message: 'creation.event.sessions.time.error' }),
+      endTime: z
+        .string()
+        .datetime({ message: 'creation.event.sessions.time.error' })
     })
   )
 });
