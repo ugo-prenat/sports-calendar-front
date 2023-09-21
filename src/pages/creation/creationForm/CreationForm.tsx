@@ -8,9 +8,12 @@ import { Button } from '@/components/ui/button';
 import EventRegionalizedSection from './EventRegionalizedSection';
 import ChampionshipAndSportSection from './ChampionshipAndSportSection';
 import StartAndEndTime from './StartAndEndTime';
-import { ISchemaEvent } from '../creation.utils';
+import { ISchemaEvent, makeEvent, makeSessions } from '../creation.utils';
 import { useTranslation } from '@/common/hooks/lang.hooks';
 import SessionsSection from './SessionsSection';
+import cleanDeep from 'clean-deep';
+import { WithoutId, WithoutIds } from '@/common/models/models';
+import { IEvent, ISession } from '@/common/models/sports.models';
 
 interface ICreationFormProps {
   eventSample: ISchemaEvent;
@@ -31,9 +34,13 @@ const CreationForm: FC<ICreationFormProps> = ({
     }
   });
 
-  const onSubmit = (values: z.infer<typeof eventSchema>) => {
-    console.log(values);
-    // remove tout les string empty
+  const onSubmit = (data: z.infer<typeof eventSchema>) => {
+    const event: WithoutId<IEvent> = makeEvent(data);
+    const sessions: WithoutIds<ISession>[] = makeSessions(data);
+
+    // fetch
+    console.log(cleanDeep(event));
+    console.log(cleanDeep(sessions));
   };
 
   return (

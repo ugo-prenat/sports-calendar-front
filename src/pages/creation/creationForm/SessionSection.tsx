@@ -38,7 +38,7 @@ const SessionSection: FC<ISessionSectionProps> = ({
 
   const handleTimeChange =
     (id: 'startTime' | 'endTime') => (e: ChangeEvent<HTMLInputElement>) =>
-      form.setValue(`sessions.${index}.${id}`, e.target.value + ':e00Z');
+      form.setValue(`sessions.${index}.${id}`, e.target.value + ':00Z');
 
   const RegionalizedSection = () => (
     <FormField
