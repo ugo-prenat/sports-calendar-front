@@ -57,10 +57,7 @@ export interface ISession {
   eventId: string;
   sport: SportType;
   championship: ChampionshipId;
-  regionalized: IRegionalized<{
-    name: string;
-    shortName?: string;
-  }>;
+  type: Session;
   startTime: string;
   endTime: string;
 }

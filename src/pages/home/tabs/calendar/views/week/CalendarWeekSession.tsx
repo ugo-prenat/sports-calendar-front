@@ -1,3 +1,4 @@
+import { useFnsFormat, useTranslation } from '@/common/hooks/lang.hooks';
 import { cn } from '@/common/utils/tailwind.utils';
 import {
   Popover,
@@ -28,6 +29,9 @@ const CalendarWeekSession: FC<ICalendarWeekSessionProps> = ({
     isSessionSameDay,
     isSessionPast
   } = useSessionDetails(session);
+
+  const format = useFnsFormat();
+  const { t } = useTranslation();
 
   const style: CSSProperties = {
     top: `calc(100%/24/60*${sessionStartMinutes})`,
@@ -63,12 +67,16 @@ const CalendarWeekSession: FC<ICalendarWeekSessionProps> = ({
             className="w-6"
           />
           <p className="text-ellipsis overflow-hidden whitespace-nowrap">
-            {session.regionalized.en.name}
+            {t(session.type)}
           </p>
         </div>
       </PopoverTrigger>
       <PopoverContent side="right" className="-mx-4">
-        {session.regionalized.en.name}
+        <p>{t(session.type)}</p>
+        <p>
+          {format(new Date(session.startTime), 'p')} -{' '}
+          {format(new Date(session.endTime), 'p')}
+        </p>
       </PopoverContent>
     </Popover>
   );

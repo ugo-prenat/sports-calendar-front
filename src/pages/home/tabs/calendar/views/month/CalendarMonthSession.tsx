@@ -19,11 +19,11 @@ const CalendarMonthSession: FC<ICalendarMonthSessionProps> = ({ session }) => {
           className="w-6"
         />
         <p className="whitespace-nowrap text-ellipsis overflow-hidden">
-          {session.regionalized.en.name}
+          {session.type}
         </p>
       </PopoverTrigger>
       <PopoverContent side="right" className="-mx-4">
-        {session.regionalized.en.name}
+        {session.type}
       </PopoverContent>
     </Popover>
   );
