@@ -49,7 +49,7 @@ export interface IEventLocation {
     lat: number;
     lng: number;
   };
-  track?: string; // juste pour les sports mécaniques
+  track?: string;
 }
 
 export interface ISession {
