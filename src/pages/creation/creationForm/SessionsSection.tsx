@@ -20,6 +20,7 @@ const SessionsSection: FC<ISessionsSectionProps> = ({ form }) => {
   });
 
   const handleRemove = (index: number) => () => remove(index);
+
   const handleAppend = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     append(makeVirginSession());

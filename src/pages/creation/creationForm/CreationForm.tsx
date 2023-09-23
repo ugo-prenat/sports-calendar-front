@@ -40,11 +40,9 @@ const CreationForm: FC<ICreationFormProps> = ({
     const event: WithoutId<IEvent> = makeEvent(data);
     const sessions: WithoutIds<ISession>[] = makeSessions(data);
 
-    handleCreateEvent(event)
-      .then((event) => handleCreateSessions(sessions, event.id))
-      .catch(() => {
-        console.log('ah');
-      });
+    handleCreateEvent(event).then((event) =>
+      handleCreateSessions(sessions, event._id)
+    );
   };
 
   return (

@@ -1,6 +1,11 @@
 import { useFetcher } from '@/common/fetcher/fetcher.hooks';
 import { WithoutId, WithoutIds } from '@/common/models/models';
-import { IEvent, ISession } from '@/common/models/sports.models';
+import {
+  IAPIEvent,
+  IAPISession,
+  IEvent,
+  ISession
+} from '@/common/models/sports.models';
 import { createEvent, createSessions } from './creation.api';
 import cleanDeep from 'clean-deep';
 
@@ -13,12 +18,19 @@ export const useSessionsCreation = () => {
     return createSessions(cleanDeep(sessions));
   };
 
-  return useFetcher<ISession[], Parameters<typeof fetchFunc>>(fetchFunc);
+  return useFetcher<IAPISession[], Parameters<typeof fetchFunc>>(fetchFunc);
 };
 
 export const useEventCreation = () => {
   const fetchFunc = (rawEvent: WithoutId<IEvent>) =>
-    createEvent(cleanDeep(rawEvent));
+    // createEvent(cleanDeep(rawEvent));
+    createEvent(
+      cleanDeep({
+        ...rawEvent,
+        location: { regionalized: { en: { name: 'test' } } },
+        country: { code: 'FR', flag: 'flag url' }
+      })
+    );
 
-  return useFetcher<IEvent, Parameters<typeof fetchFunc>>(fetchFunc);
+  return useFetcher<IAPIEvent, Parameters<typeof fetchFunc>>(fetchFunc);
 };

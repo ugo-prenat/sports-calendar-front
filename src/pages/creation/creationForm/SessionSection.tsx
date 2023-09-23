@@ -35,7 +35,6 @@ const SessionSection: FC<ISessionSectionProps> = ({
   handleRemove
 }) => {
   const { t } = useTranslation();
-
   const handleTimeChange =
     (id: 'startTime' | 'endTime') => (e: ChangeEvent<HTMLInputElement>) =>
       form.setValue(`sessions.${index}.${id}`, e.target.value + ':00Z');

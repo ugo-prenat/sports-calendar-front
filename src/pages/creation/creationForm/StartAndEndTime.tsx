@@ -59,7 +59,6 @@ const StartAndEndTime: FC<IStartAndEndTimeProps> = ({ form }) => {
                 mode="range"
                 selected={field.value}
                 onSelect={field.onChange}
-                initialFocus
               />
             </PopoverContent>
           </Popover>

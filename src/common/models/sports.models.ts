@@ -21,6 +21,10 @@ export interface IRegionalized<T extends { [key: string]: any }> {
   fr?: T;
 }
 
+export interface IAPIEvent extends Omit<IEvent, 'id'> {
+  _id: string;
+}
+
 export interface IEvent {
   id: string;
   sport: SportType;
@@ -50,6 +54,10 @@ export interface IEventLocation {
     lng: number;
   };
   track?: string;
+}
+
+export interface IAPISession extends Omit<ISession, 'id'> {
+  _id: string;
 }
 
 export interface ISession {

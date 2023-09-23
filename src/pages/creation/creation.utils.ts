@@ -1,6 +1,6 @@
 import { IEvent, ISession } from '@/common/models/sports.models';
 import { F1, FREE_PRACTICE_1, MOTORSPORTS } from '@/constants';
-import { addDays, endOfToday, startOfToday } from 'date-fns';
+import { addDays, addMonths, endOfToday, startOfToday } from 'date-fns';
 import { IDateRange } from '../home/home.models';
 import { IEventWithSessions, ISchemaSession } from './creation.models';
 import { WithoutId, WithoutIds } from '@/common/models/models';
@@ -18,8 +18,8 @@ export const makeVirginEvent = (): ISchemaEvent => ({
     fr: { name: '', shortName: '' }
   },
   range: {
-    from: startOfToday(),
-    to: addDays(startOfToday(), 2)
+    from: addMonths(new Date(), 2),
+    to: addDays(addMonths(new Date(), 2), 2)
   },
   country: {
     code: '',
