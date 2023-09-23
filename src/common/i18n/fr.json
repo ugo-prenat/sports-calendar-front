@@ -76,7 +76,7 @@
   "creation.event.title": "Créer un événement",
   "creation.event.history": "Historique",
   "creation.event.names": "Noms",
-  "creation.event.regionalized.en.name": "Nom anglais",
+  "creation.event.regionalized.en.name": "Nom anglais*",
   "creation.event.regionalized.en.shortname": "Nom anglais court (optionnel)",
   "creation.event.regionalized.fr.name": "Nom français (optionnel)",
   "creation.event.regionalized.fr.shortname": "Nom français court (optionnel)",

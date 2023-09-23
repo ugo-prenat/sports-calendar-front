@@ -11,9 +11,9 @@ import StartAndEndTime from './StartAndEndTime';
 import { ISchemaEvent, makeEvent, makeSessions } from '../creation.utils';
 import { useTranslation } from '@/common/hooks/lang.hooks';
 import SessionsSection from './SessionsSection';
-import cleanDeep from 'clean-deep';
 import { WithoutId, WithoutIds } from '@/common/models/models';
 import { IEvent, ISession } from '@/common/models/sports.models';
+import { useEventCreation, useSessionsCreation } from '../creation.hooks';
 
 interface ICreationFormProps {
   eventSample: ISchemaEvent;
@@ -25,6 +25,8 @@ const CreationForm: FC<ICreationFormProps> = ({
   sessionsSample
 }) => {
   const { t } = useTranslation();
+  const { handleFetch: handleCreateSessions } = useSessionsCreation();
+  const { handleFetch: handleCreateEvent } = useEventCreation();
 
   const form = useForm<z.infer<typeof eventSchema>>({
     resolver: zodResolver(eventSchema),
@@ -38,9 +40,11 @@ const CreationForm: FC<ICreationFormProps> = ({
     const event: WithoutId<IEvent> = makeEvent(data);
     const sessions: WithoutIds<ISession>[] = makeSessions(data);
 
-    // fetch
-    console.log(cleanDeep(event));
-    console.log(cleanDeep(sessions));
+    handleCreateEvent(event)
+      .then((event) => handleCreateSessions(sessions, event.id))
+      .catch(() => {
+        console.log('ah');
+      });
   };
 
   return (

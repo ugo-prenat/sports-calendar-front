@@ -1,33 +1,27 @@
 import { useState } from 'react';
 import { IInitialStates, Status } from './fetcher.models';
 
-export interface IFetcherProps<T> {
-  onSuccess?: (data: T) => void;
-  onError?: () => void;
-  initialStates?: IInitialStates<T>;
-}
-
-export function useFetcher<T>(
-  fetchFunc: () => Promise<T>,
-  { onSuccess, onError, initialStates }: IFetcherProps<T> = {}
+export function useFetcher<T, U extends unknown[] = []>(
+  fetchFunc: (...args: U) => Promise<T>,
+  initialStates: IInitialStates<T> = {}
 ) {
   const [data, setData] = useState<T | undefined>(initialStates?.initialData);
   const [status, setStatus] = useState<Status>(
     initialStates?.initialStatus || 'idle'
   );
 
-  const handleFetch = () => {
+  const handleFetch = (...args: U): Promise<T> => {
     setStatus('loading');
 
-    fetchFunc()
+    return fetchFunc(...args)
       .then((data) => {
         setData(data);
-        onSuccess && onSuccess(data);
         setStatus('success');
+        return data;
       })
       .catch(() => {
-        onError && onError();
         setStatus('error');
+        return Promise.reject();
       });
   };
 

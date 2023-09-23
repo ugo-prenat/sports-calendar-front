@@ -3,30 +3,34 @@ import { defaultInit } from './fetcher.models';
 import { ensureError, makeUrl } from './fetcher.utils';
 
 const fetcher = {
-  get: <T>(url: string, init?: RequestInit): Promise<T> =>
+  get: <TResponse>(url: string, init?: RequestInit): Promise<TResponse> =>
     fetch(makeUrl(url), { ...defaultInit, ...init, method: GET_METHOD })
       .then((res) => {
         if (res.ok) return res.json();
         throw new Error(res.statusText);
       })
-      .then((res) => res as T)
+      .then((res) => res as TResponse)
       .catch((err) => {
         const error = ensureError(err);
         throw new Error(error.message);
       }),
 
-  post: <T>(url: string, body: string, init?: RequestInit): Promise<T> =>
+  post: <TResponse = void>(
+    url: string,
+    body: unknown,
+    init?: RequestInit
+  ): Promise<TResponse> =>
     fetch(makeUrl(url), {
       ...defaultInit,
       ...init,
       method: POST_METHOD,
-      body
+      body: JSON.stringify(body)
     })
       .then((res) => {
         if (res.ok) return res.json();
         throw new Error(res.statusText);
       })
-      .then((res) => res as T)
+      .then((res) => res as TResponse)
       .catch((err) => {
         const error = ensureError(err);
         throw new Error(error.message);
