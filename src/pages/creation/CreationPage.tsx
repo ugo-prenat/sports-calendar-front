@@ -2,12 +2,8 @@ import { useTranslation } from '@/common/hooks/lang.hooks';
 import { FC, useState } from 'react';
 import EventsHistory from './EventsHistory';
 import CreationForm from './creationForm/CreationForm';
-import {
-  ISchemaEvent,
-  makeVirginEvent,
-  makeVirginSession
-} from './creation.utils';
-import { ISchemaSession } from './creation.models';
+import { makeVirginEvent, makeVirginSession } from './creation.utils';
+import { ISchemaEvent, ISchemaSession } from './creation.models';
 
 const CreationPage: FC = () => {
   const { t } = useTranslation();
@@ -19,7 +15,7 @@ const CreationPage: FC = () => {
   ]);
 
   return (
-    <div className="h-full flex flex-col p-8">
+    <div className="flex-1 max-h-[calc(100%-3rem)] h-full-[calc(100%-3rem)] flex flex-col m-8 mr-0 overflow-hidden">
       <h2 className="font-semibold text-2xl mb-8">
         {t('creation.event.title')}
       </h2>

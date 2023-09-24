@@ -2,6 +2,7 @@ import fetcher from '@/common/fetcher/fetcher';
 import { WithoutId, WithoutIds } from '@/common/models/models';
 import {
   IAPIEvent,
+  IAPIEventWithSessions,
   IAPISession,
   IEvent,
   ISession
@@ -15,5 +16,5 @@ export const createEvent = (
   event: Partial<WithoutId<IEvent>>
 ): Promise<IAPIEvent> => fetcher.post<IAPIEvent>(`/events`, event);
 
-export const getEvents = (): Promise<IAPIEvent[]> =>
-  fetcher.get<IAPIEvent[]>(`/events`);
+export const getEvents = (): Promise<IAPIEventWithSessions[]> =>
+  fetcher.get<IAPIEventWithSessions[]>(`/events?sessions=true`);

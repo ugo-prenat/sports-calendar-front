@@ -54,7 +54,7 @@ const CreationForm: FC<ICreationFormProps> = ({
   };
 
   return (
-    <div className="flex-1 pr-4">
+    <div className="flex-1 pr-4 pb-16 overflow-auto">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <EventRegionalizedSection form={form} />

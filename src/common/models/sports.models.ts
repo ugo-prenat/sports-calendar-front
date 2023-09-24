@@ -25,6 +25,11 @@ export interface IAPIEvent extends Omit<IEvent, 'id'> {
   _id: string;
 }
 
+export interface IAPIEventWithSessions extends Omit<IEvent, 'id'> {
+  _id: string;
+  sessions: IAPISession[];
+}
+
 export interface IEvent {
   id: string;
   sport: SportType;

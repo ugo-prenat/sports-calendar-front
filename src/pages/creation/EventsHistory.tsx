@@ -4,8 +4,12 @@ import { ISchemaEvent, ISchemaSession } from './creation.models';
 import { useEvents } from './creation.hooks';
 import { Skeleton } from '@/components/ui/skeleton';
 import Error from '@/components/ui/Error';
-import { IAPIEvent } from '@/common/models/sports.models';
+import {
+  IAPIEvent,
+  IAPIEventWithSessions
+} from '@/common/models/sports.models';
 import { makeEventFromAPIToSchema } from './creation.utils';
+import { cn } from '@/common/utils/tailwind.utils';
 
 interface IEventsHistoryProps {
   setEventSample: (event: ISchemaEvent) => void;
@@ -24,43 +28,47 @@ const EventsHistory: FC<IEventsHistoryProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleClick = (event: IAPIEvent) => () => {
+  const handleClick = (eventWithSessions: IAPIEventWithSessions) => () => {
+    const { sessions, ...event } = eventWithSessions;
     setEventSample(makeEventFromAPIToSchema(event));
+    setSessionsSample(sessions);
   };
 
   return (
-    <div className="w-[350px] border-l pl-4">
+    <div
+      className={cn('w-[355px] flex flex-col border-l pl-4 pb-16', {
+        'pr-8': status !== 'success'
+      })}
+    >
       <h2 className="font-semibold text-xl">{t('creation.event.history')}</h2>
-      <p className="text-sm text-muted-foreground leading-4">
+      <p className="text-sm text-muted-foreground leading-4 mb-4">
         {t('creation.event.history.details')}
       </p>
 
       {status === 'loading' && (
         <>
           {Array.from({ length: 3 }).map((_, i) => (
-            <div className="space-y-2 bg-muted/40 p-3 rounded-sm mt-4" key={i}>
-              <Skeleton className="h-4 w-[250px]" />
+            <div className="space-y-2 bg-muted/40 p-3 rounded-sm mb-4" key={i}>
               <Skeleton className="h-4 w-[200px]" />
+              <Skeleton className="h-4 w-[150px]" />
             </div>
           ))}
         </>
       )}
       {status === 'error' && (
-        <Error
-          className="mt-4"
-          retry={handleFetch}
-          text={t('creation.event.history.error')}
-        />
+        <Error retry={handleFetch} text={t('creation.event.history.error')} />
       )}
       {status === 'success' && data && (
-        <div className="flex flex-col gap-2 mt-4">
-          {data.map((event) => (
-            <EventCard
-              onClick={handleClick(event)}
-              event={event}
-              key={event._id}
-            />
-          ))}
+        <div className="overflow-auto pr-8">
+          <div className="flex flex-col gap-2">
+            {data.map((event) => (
+              <EventCard
+                onClick={handleClick(event)}
+                event={event}
+                key={event._id}
+              />
+            ))}
+          </div>
         </div>
       )}
     </div>
@@ -76,7 +84,7 @@ const EventCard = ({
 }) => {
   return (
     <div
-      className="rounded-sm p-2 cursor-pointer transition-all hover:bg-muted border"
+      className="rounded-sm p-2 border cursor-pointer transition-all hover:bg-muted"
       onClick={onClick}
     >
       <p className="font-medium">

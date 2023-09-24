@@ -2,6 +2,7 @@ import { useFetcher } from '@/common/fetcher/fetcher.hooks';
 import { WithoutId, WithoutIds } from '@/common/models/models';
 import {
   IAPIEvent,
+  IAPIEventWithSessions,
   IAPISession,
   IEvent,
   ISession
@@ -35,4 +36,4 @@ export const useEventCreation = () => {
   return useFetcher<IAPIEvent, Parameters<typeof fetchFunc>>(fetchFunc);
 };
 
-export const useEvents = () => useFetcher<IAPIEvent[]>(getEvents);
+export const useEvents = () => useFetcher<IAPIEventWithSessions[]>(getEvents);
