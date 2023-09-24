@@ -1,7 +1,7 @@
-import { Session } from '@/common/models/sports.models';
+import { IEvent, Session } from '@/common/models/sports.models';
 import { CHAMPIONSHIPS, SESSIONS, SPORTS_TYPES } from '@/constants';
 import { z } from 'zod';
-import { ISchemaEvent } from './creation.utils';
+import { IDateRange } from '../home/home.models';
 
 export interface ISchemaSession {
   type: Session;
@@ -11,6 +11,11 @@ export interface ISchemaSession {
 
 export interface IEventWithSessions extends ISchemaEvent {
   sessions: ISchemaSession[];
+}
+
+export interface ISchemaEvent
+  extends Omit<IEvent, 'id' | 'startTime' | 'endTime'> {
+  range: IDateRange;
 }
 
 export const eventSchema: z.ZodType<IEventWithSessions> = z.object({

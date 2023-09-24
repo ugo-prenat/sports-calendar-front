@@ -1,14 +1,12 @@
-import { IEvent, ISession } from '@/common/models/sports.models';
+import { IAPIEvent, IEvent, ISession } from '@/common/models/sports.models';
 import { F1, FREE_PRACTICE_1, MOTORSPORTS } from '@/constants';
 import { addDays, addMonths, endOfToday, startOfToday } from 'date-fns';
-import { IDateRange } from '../home/home.models';
-import { IEventWithSessions, ISchemaSession } from './creation.models';
+import {
+  IEventWithSessions,
+  ISchemaEvent,
+  ISchemaSession
+} from './creation.models';
 import { WithoutId, WithoutIds } from '@/common/models/models';
-
-export interface ISchemaEvent
-  extends Omit<IEvent, 'id' | 'startTime' | 'endTime'> {
-  range: IDateRange;
-}
 
 export const makeVirginEvent = (): ISchemaEvent => ({
   sport: MOTORSPORTS,
@@ -55,3 +53,11 @@ export const makeSessions = (
     sport: event.sport,
     championship: event.championship
   }));
+
+export const makeEventFromAPIToSchema = (event: IAPIEvent): ISchemaEvent => ({
+  ...event,
+  range: {
+    from: new Date(event.startTime),
+    to: new Date(event.endTime)
+  }
+});

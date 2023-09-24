@@ -1,14 +1,14 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { ISchemaSession, eventSchema } from '../creation.models';
+import { ISchemaEvent, ISchemaSession, eventSchema } from '../creation.models';
 import { Form } from '@/components/ui/form';
 import { Button } from '@/components/ui/button';
 import EventRegionalizedSection from './EventRegionalizedSection';
 import ChampionshipAndSportSection from './ChampionshipAndSportSection';
 import StartAndEndTime from './StartAndEndTime';
-import { ISchemaEvent, makeEvent, makeSessions } from '../creation.utils';
+import { makeEvent, makeSessions } from '../creation.utils';
 import { useTranslation } from '@/common/hooks/lang.hooks';
 import SessionsSection from './SessionsSection';
 import { WithoutId, WithoutIds } from '@/common/models/models';
@@ -35,6 +35,14 @@ const CreationForm: FC<ICreationFormProps> = ({
       sessions: sessionsSample
     }
   });
+
+  useEffect(() => {
+    form.reset({
+      ...eventSample,
+      sessions: sessionsSample
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [eventSample, sessionsSample]);
 
   const onSubmit = (data: z.infer<typeof eventSchema>) => {
     const event: WithoutId<IEvent> = makeEvent(data);

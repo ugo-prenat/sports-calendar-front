@@ -26,6 +26,7 @@
   "free-practice-3": "Essais libres 3",
   "pre-qualifying": "Pré-qualifications",
   "qualifying": "Qualifications",
+  "sprint-shootout": "Sprint Shootout",
   "sprint": "Sprint",
   "race": "Course",
   "race-1": "Course 1",
@@ -36,6 +37,8 @@
   "short.free-practice-3": "EL3",
   "short.pre-qualifying": "Pre-qualif",
   "short.qualifying": "Qualif",
+  "short.sprint-shootout": "SS",
+  "short.sprint": "Sprint",
   "short.race": "Course",
   "short.race-1": "C1",
   "short.race-2": "C2",
@@ -95,6 +98,7 @@
   "creation.event.sessions.time.error": "Date invalide.",
   "creation.event.sessions.hour": "Heure",
   "creation.event.sessions.empty": "Aucune session",
-
-  "creation.event.btn.create": "Créer l'événement"
+  "creation.event.btn.create": "Créer l'événement",
+  "creation.event.history.details": "Créer un événement à partir d'un déjà existant.",
+  "creation.event.history.error": "Une erreur est survenue lors de la récupération de l'historique des évènements."
 }

@@ -14,3 +14,6 @@ export const createSessions = (
 export const createEvent = (
   event: Partial<WithoutId<IEvent>>
 ): Promise<IAPIEvent> => fetcher.post<IAPIEvent>(`/events`, event);
+
+export const getEvents = (): Promise<IAPIEvent[]> =>
+  fetcher.get<IAPIEvent[]>(`/events`);

@@ -6,7 +6,7 @@ import {
   IEvent,
   ISession
 } from '@/common/models/sports.models';
-import { createEvent, createSessions } from './creation.api';
+import { createEvent, createSessions, getEvents } from './creation.api';
 import cleanDeep from 'clean-deep';
 
 export const useSessionsCreation = () => {
@@ -34,3 +34,5 @@ export const useEventCreation = () => {
 
   return useFetcher<IAPIEvent, Parameters<typeof fetchFunc>>(fetchFunc);
 };
+
+export const useEvents = () => useFetcher<IAPIEvent[]>(getEvents);
