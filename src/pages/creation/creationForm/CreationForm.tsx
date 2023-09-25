@@ -75,7 +75,11 @@ const CreationForm: FC<ICreationFormProps> = ({
           <SessionsSection form={form} />
 
           <div className="sticky bottom-0 flex justify-end bg-background pt-4">
-            <Button className="mr-2" variant="ghost" onClick={handleReset}>
+            <Button
+              className="mr-2 text-primary/50"
+              variant="ghost"
+              onClick={handleReset}
+            >
               {t('creation.event.btn.reset')}
             </Button>
             <Button type="submit">{t('creation.event.btn.create')}</Button>
