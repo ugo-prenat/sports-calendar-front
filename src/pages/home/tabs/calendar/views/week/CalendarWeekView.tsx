@@ -32,12 +32,14 @@ const CalendarWeekView: FC<ICalendarWeekViewProps> = ({ days }) => {
             isLoading={status === 'loading'}
           />
         ))}
+
       {status === 'error' && (
         <Error
           text={t('calendar.receive.sessions.error')}
           retry={handleFetch}
         />
       )}
+
       {status === 'success' &&
         calendarDaysSessions &&
         calendarDaysSessions.map((calendarDaySessions, index) => (
