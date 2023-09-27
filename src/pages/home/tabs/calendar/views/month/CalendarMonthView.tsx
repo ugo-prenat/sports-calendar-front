@@ -39,7 +39,9 @@ const CalendarMonthView: FC<ICalendarMonthViewProps> = ({ days }) => {
           ))}
         </div>
       )}
+
       {status === 'error' && <div>Error</div>}
+
       {status === 'success' && calendarDaysSessions && (
         <div
           className="grid grid-cols-7 w-full first:border-t border-l"
