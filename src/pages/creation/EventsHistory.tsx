@@ -88,7 +88,7 @@ const EventCard = ({
       onClick={onClick}
     >
       <p className="font-medium">
-        {event.regionalized.en.shortName || event.regionalized.en.name} 2023
+        {event.regionalized.en.shortName || event.regionalized.en.name}
       </p>
       <p className="text-xs text-muted-foreground leading-4">
         EL1, SS, Sprint, Quali, Course{' '}

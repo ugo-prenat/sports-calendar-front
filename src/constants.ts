@@ -230,3 +230,19 @@ export const SESSIONS = [
   RACE_1,
   RACE_2
 ] as const;
+
+export const SESSIONS_DURATION = {
+  'free-practice': 60,
+  'free-practice-1': 60,
+  'free-practice-2': 60,
+  'free-practice-3': 60,
+  'pre-qualifying': 60,
+  qualifying: 60,
+  'sprint-shootout': 45,
+  sprint: 60,
+  race: 120,
+  'race-1': 60,
+  'race-2': 60
+};
+
+export const DEFAULT_SESSION_DURATION = 60;

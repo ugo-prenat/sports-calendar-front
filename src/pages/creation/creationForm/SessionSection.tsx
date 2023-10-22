@@ -1,4 +1,4 @@
-import { ChangeEvent, FC } from 'react';
+import { ChangeEvent, FC, useEffect } from 'react';
 import { IEventWithSessions } from '../creation.models';
 import { UseFormReturn, FieldArrayWithId } from 'react-hook-form';
 import {
@@ -21,6 +21,8 @@ import {
   SelectValue
 } from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
+import { getSessionDurartion } from '../creation.utils';
+import { addMinutes } from 'date-fns';
 
 interface ISessionSectionProps {
   handleRemove: () => void;
@@ -35,9 +37,34 @@ const SessionSection: FC<ISessionSectionProps> = ({
   handleRemove
 }) => {
   const { t } = useTranslation();
+  const sessionType = form.watch(`sessions.${index}.type`);
+
   const handleTimeChange =
-    (id: 'startTime' | 'endTime') => (e: ChangeEvent<HTMLInputElement>) =>
-      form.setValue(`sessions.${index}.${id}`, e.target.value + ':00Z');
+    (id: 'startTime' | 'endTime') => (e: ChangeEvent<HTMLInputElement>) => {
+      const newValue = e.target.value + ':00Z';
+      const sessionDuration = getSessionDurartion(
+        form.getValues(`sessions.${index}.type`)
+      );
+
+      form.setValue(`sessions.${index}.${id}`, newValue);
+
+      if (id === 'startTime')
+        form.setValue(
+          `sessions.${index}.endTime`,
+          addMinutes(new Date(newValue), sessionDuration).toISOString()
+        );
+    };
+
+  useEffect(() => {
+    const sessionDuration = getSessionDurartion(sessionType);
+    const startTime = form.getValues(`sessions.${index}.startTime`);
+
+    form.setValue(
+      `sessions.${index}.endTime`,
+      addMinutes(new Date(startTime), sessionDuration).toISOString()
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sessionType]);
 
   const RegionalizedSection = () => (
     <FormField

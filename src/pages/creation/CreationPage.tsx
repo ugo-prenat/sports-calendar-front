@@ -15,8 +15,8 @@ const CreationPage: FC = () => {
   ]);
 
   return (
-    <div className="flex-1 max-h-[calc(100%-3rem)] h-full-[calc(100%-3rem)] flex flex-col m-8 mr-0 overflow-hidden">
-      <h2 className="font-semibold text-2xl mb-8">
+    <div className="flex-1 max-h-[calc(100%-3rem)] h-full-[calc(100%-3rem)] flex flex-col my-8 overflow-hidden">
+      <h2 className="font-semibold text-2xl mb-8 ml-4">
         {t('creation.event.title')}
       </h2>
 

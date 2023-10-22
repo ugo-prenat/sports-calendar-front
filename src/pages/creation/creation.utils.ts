@@ -1,6 +1,17 @@
-import { IAPIEvent, IEvent, ISession } from '@/common/models/sports.models';
-import { F1, FREE_PRACTICE_1, MOTORSPORTS } from '@/constants';
-import { addDays, addMonths, endOfToday, startOfToday } from 'date-fns';
+import {
+  IAPIEvent,
+  IEvent,
+  ISession,
+  Session
+} from '@/common/models/sports.models';
+import {
+  DEFAULT_SESSION_DURATION,
+  F1,
+  FREE_PRACTICE_1,
+  MOTORSPORTS,
+  SESSIONS_DURATION
+} from '@/constants';
+import { addDays, addMinutes, addMonths, startOfToday } from 'date-fns';
 import {
   IEventWithSessions,
   ISchemaEvent,
@@ -33,10 +44,15 @@ export const makeVirginEvent = (): ISchemaEvent => ({
   }
 });
 
-export const makeVirginSession = (): ISchemaSession => ({
-  type: FREE_PRACTICE_1,
+export const makeVirginSession = (
+  session: Session = FREE_PRACTICE_1
+): ISchemaSession => ({
+  type: session,
   startTime: startOfToday().toISOString(),
-  endTime: endOfToday().toISOString()
+  endTime: addMinutes(
+    startOfToday(),
+    getSessionDurartion(session)
+  ).toISOString()
 });
 
 export const makeEvent = (event: IEventWithSessions): WithoutId<IEvent> => ({
@@ -61,3 +77,6 @@ export const makeEventFromAPIToSchema = (event: IAPIEvent): ISchemaEvent => ({
     to: new Date(event.endTime)
   }
 });
+
+export const getSessionDurartion = (session: Session): number =>
+  SESSIONS_DURATION[session] || DEFAULT_SESSION_DURATION;
