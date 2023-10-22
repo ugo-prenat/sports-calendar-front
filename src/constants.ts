@@ -23,8 +23,7 @@ export const DEFAULT_LANG = LANG_EN;
 
 // SPORTS
 export const MOTORSPORTS = 'motorsports';
-export const COMBAT_SPORTS = 'combat-sports';
-export const SPORTS_TYPES = [MOTORSPORTS, COMBAT_SPORTS] as const;
+export const SPORTS_TYPES = [MOTORSPORTS] as const;
 
 // CHAMIPONSHIPS
 
