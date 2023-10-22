@@ -15,13 +15,8 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui/select';
-import {
-  COMBAT_SPORTS_CHAMPIONSHIP,
-  MOTORSPORTS,
-  MOTORSPORTS_CHAMPIONSHIPS
-} from '@/constants';
 import { useTranslation } from '@/common/hooks/lang.hooks';
-import { ChampionshipId, SportType } from '@/common/models/sports.models';
+import { CHAMPIONSHIPS } from '@/constants';
 
 interface IChampionshipAndSportSectionProps {
   form: UseFormReturn<IEventWithSessions>;
@@ -31,41 +26,6 @@ const ChampionshipAndSportSection: FC<IChampionshipAndSportSectionProps> = ({
   form
 }) => {
   const { t } = useTranslation();
-
-  const selectedSport: SportType = form.watch('sport');
-  const championships: readonly ChampionshipId[] =
-    selectedSport === MOTORSPORTS
-      ? MOTORSPORTS_CHAMPIONSHIPS
-      : COMBAT_SPORTS_CHAMPIONSHIP;
-
-  const SportSelect = () => (
-    <FormField
-      control={form.control}
-      name="sport"
-      render={({ field }) => (
-        <FormItem className="flex-1">
-          <FormLabel>{t('sportType')}</FormLabel>
-          <FormControl>
-            <Select onValueChange={field.onChange} defaultValue={field.value}>
-              <FormControl>
-                <SelectTrigger>
-                  <SelectValue />
-                </SelectTrigger>
-              </FormControl>
-              <SelectContent>
-                {[MOTORSPORTS].map((sport, i) => (
-                  <SelectItem key={i} value={sport}>
-                    {t(sport)}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </FormControl>
-          <FormMessage />
-        </FormItem>
-      )}
-    />
-  );
 
   const ChampionshipSelect = () => (
     <FormField
@@ -82,7 +42,7 @@ const ChampionshipAndSportSection: FC<IChampionshipAndSportSectionProps> = ({
                 </SelectTrigger>
               </FormControl>
               <SelectContent>
-                {championships.map((championship, i) => (
+                {CHAMPIONSHIPS.map((championship, i) => (
                   <SelectItem key={i} value={championship}>
                     {t(championship)}
                   </SelectItem>
@@ -98,7 +58,6 @@ const ChampionshipAndSportSection: FC<IChampionshipAndSportSectionProps> = ({
 
   return (
     <>
-      <SportSelect />
       <ChampionshipSelect />
     </>
   );

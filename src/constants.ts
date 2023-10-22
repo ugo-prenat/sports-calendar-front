@@ -50,19 +50,13 @@ export const MOTORSPORTS_CHAMPIONSHIPS = [
   GT_WORLD_CHALLENGE
 ] as const;
 
-export const UFC = 'ufc';
-export const COMBAT_SPORTS_CHAMPIONSHIP = [UFC] as const;
-
 export const DEFAULT_CHAMPIONSHIPS: ChampionshipId[] = [
   F1,
   WEC,
   GT_WORLD_CHALLENGE
 ];
 
-export const CHAMPIONSHIPS = [
-  ...MOTORSPORTS_CHAMPIONSHIPS,
-  ...COMBAT_SPORTS_CHAMPIONSHIP
-] as const;
+export const CHAMPIONSHIPS = [...MOTORSPORTS_CHAMPIONSHIPS] as const;
 
 export const CHAMIPONSHIP_CONFS: IChampionshipConf[] = [
   {
@@ -106,13 +100,6 @@ export const CHAMIPONSHIP_CONFS: IChampionshipConf[] = [
     color: '#e31e12',
     logoUrl:
       'https://www.gt-world-challenge.com/images/logo-gt-world-challenge.png'
-  },
-  {
-    id: UFC,
-    sport: COMBAT_SPORTS,
-    color: '#ff0000',
-    logoUrl:
-      'https://logos-marques.com/wp-content/uploads/2021/03/UFC-Logo-768x434.png'
   }
 ];
 

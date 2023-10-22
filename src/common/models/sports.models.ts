@@ -1,17 +1,10 @@
-import {
-  COMBAT_SPORTS_CHAMPIONSHIP,
-  MOTORSPORTS_CHAMPIONSHIPS,
-  SESSIONS,
-  SPORTS_TYPES
-} from '@/constants';
+import { MOTORSPORTS_CHAMPIONSHIPS, SESSIONS, SPORTS_TYPES } from '@/constants';
 
 export type SportType = (typeof SPORTS_TYPES)[number];
 
 export type MotorsportChampionship = (typeof MOTORSPORTS_CHAMPIONSHIPS)[number];
-export type CombatSportChampionship =
-  (typeof COMBAT_SPORTS_CHAMPIONSHIP)[number];
 
-export type ChampionshipId = MotorsportChampionship | CombatSportChampionship;
+export type ChampionshipId = MotorsportChampionship;
 
 export type Session = (typeof SESSIONS)[number];
 
