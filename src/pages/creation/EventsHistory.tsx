@@ -3,10 +3,7 @@ import { FC, useEffect } from 'react';
 import { ISchemaEvent, ISchemaSession } from './creation.models';
 import { Skeleton } from '@/components/ui/skeleton';
 import Error from '@/components/ui/Error';
-import {
-  IAPIEvent,
-  IAPIEventWithSessions
-} from '@/common/models/sports.models';
+import { IAPIEventWithSessions } from '@/common/models/sports.models';
 import { makeEventFromAPIToSchema } from './creation.utils';
 import { cn } from '@/common/utils/tailwind.utils';
 import { Status } from '@/common/fetcher/fetcher.models';
@@ -90,19 +87,24 @@ const EventCard = ({
   event,
   onClick
 }: {
-  event: IAPIEvent;
+  event: IAPIEventWithSessions;
   onClick: () => void;
 }) => {
+  const { t } = useTranslation();
+  const eventSessions = event.sessions
+    .map((session) => t(`short.${session.type}`))
+    .join(', ');
+
   return (
     <div
       className="rounded-sm p-2 border cursor-pointer transition-all hover:bg-muted/40"
       onClick={onClick}
     >
-      <p className="font-medium">
+      <p className="font-medium text-ellipsis overflow-hidden whitespace-nowrap">
         {event.regionalized.en.shortName || event.regionalized.en.name}
       </p>
-      <p className="text-xs text-muted-foreground leading-4">
-        EL1, SS, Sprint, Quali, Course{' '}
+      <p className="text-xs text-muted-foreground leading-4 text-ellipsis overflow-hidden whitespace-nowrap">
+        {eventSessions}
       </p>
     </div>
   );
