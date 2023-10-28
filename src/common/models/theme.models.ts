@@ -12,5 +12,6 @@ export interface IThemeContextProps {
 
 export interface IThemeContextState {
   theme: Theme;
+  isDark: boolean;
   setTheme: (theme: Theme) => void;
 }

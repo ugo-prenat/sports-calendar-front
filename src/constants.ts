@@ -62,43 +62,55 @@ export const CHAMIPONSHIP_CONFS: IChampionshipConf[] = [
     id: F1,
     sport: MOTORSPORTS,
     color: '#e10600',
-    logoUrl:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/F1.svg/320px-F1.svg.png'
+    logo: {
+      dark: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/F1.svg/320px-F1.svg.png',
+      light: ''
+    }
   },
   {
     id: F2,
     sport: MOTORSPORTS,
     color: '#0090D0',
-    logoUrl:
-      'https://www.thesportsdb.com/images/media/league/badge/3iwfjg1536242234.png'
+    logo: {
+      dark: 'https://www.thesportsdb.com/images/media/league/badge/3iwfjg1536242234.png',
+      light: ''
+    }
   },
   {
     id: F3,
     sport: MOTORSPORTS,
     color: '#E90300',
-    logoUrl:
-      'https://cdn.discordapp.com/attachments/1112352229962297434/1150433209444732988/ELxnupl53yCuIAAAAASUVORK5CYII.png'
+    logo: {
+      dark: 'https://cdn.discordapp.com/attachments/1112352229962297434/1150433209444732988/ELxnupl53yCuIAAAAASUVORK5CYII.png',
+      light: ''
+    }
   },
   {
     id: WEC,
     sport: MOTORSPORTS,
     color: '#0c3266',
-    logoUrl:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/FIA_WEC_Logo_2019.svg/langfr-330px-FIA_WEC_Logo_2019.svg.png'
+    logo: {
+      dark: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/FIA_WEC_Logo_2019.svg/langfr-330px-FIA_WEC_Logo_2019.svg.png',
+      light: ''
+    }
   },
   {
     id: F1_ACADEMY,
     sport: MOTORSPORTS,
     color: '#be117e',
-    logoUrl:
-      'https://www.f1academy.com/_next/static/images/fa_logo_footer-1992667600d4ff845995310220de58a8.png'
+    logo: {
+      dark: 'https://www.f1academy.com/_next/static/images/fa_logo_footer-1992667600d4ff845995310220de58a8.png',
+      light: ''
+    }
   },
   {
     id: GT_WORLD_CHALLENGE,
     sport: MOTORSPORTS,
     color: '#e31e12',
-    logoUrl:
-      'https://www.gt-world-challenge.com/images/logo-gt-world-challenge.png'
+    logo: {
+      dark: 'https://www.gt-world-challenge.com/images/logo-gt-world-challenge.png',
+      light: ''
+    }
   }
 ];
 

@@ -76,5 +76,8 @@ export interface IChampionshipConf {
   id: ChampionshipId;
   sport: SportType;
   color: string;
-  logoUrl: string;
+  logo: {
+    dark: string;
+    light: string;
+  };
 }
