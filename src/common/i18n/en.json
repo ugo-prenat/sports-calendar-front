@@ -83,7 +83,7 @@
   "creation.event.regionalized.en.shortname": "English short name (optional)",
   "creation.event.regionalized.fr.name": "French name (optional)",
   "creation.event.regionalized.fr.shortname": "French short name (optional)",
-  "creation.event.regionalized.name.error": "The name is required.",
+  "creation.event.regionalized.name.error": "The english name is required.",
   "creation.event.period": "Period",
   "creation.event.sessions": "Sessions",
   "creation.event.sessions.add": "Add a session",

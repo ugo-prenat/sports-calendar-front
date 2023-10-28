@@ -18,6 +18,7 @@ import {
   ISchemaSession
 } from './creation.models';
 import { WithoutId, WithoutIds } from '@/common/models/models';
+import { UseFormReturn } from 'react-hook-form';
 
 export const makeVirginEvent = (): ISchemaEvent => ({
   sport: MOTORSPORTS,
@@ -85,3 +86,13 @@ export const makeEventFromAPIToSchema = (event: IAPIEvent): ISchemaEvent => ({
 
 export const getSessionDurartion = (session: Session): number =>
   SESSIONS_DURATION[session] || DEFAULT_SESSION_DURATION;
+
+export const resetForm = (
+  form: UseFormReturn<IEventWithSessions>,
+  eventSample?: ISchemaEvent,
+  sessionsSample?: ISchemaSession[]
+) =>
+  form.reset({
+    ...(eventSample || makeVirginEvent()),
+    sessions: sessionsSample || [makeVirginSession()]
+  });

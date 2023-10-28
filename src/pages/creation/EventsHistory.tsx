@@ -84,7 +84,7 @@ const EventCard = ({
 }) => {
   return (
     <div
-      className="rounded-sm p-2 border cursor-pointer transition-all hover:bg-muted"
+      className="rounded-sm p-2 border cursor-pointer transition-all hover:bg-muted/40"
       onClick={onClick}
     >
       <p className="font-medium">

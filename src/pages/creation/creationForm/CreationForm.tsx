@@ -8,13 +8,12 @@ import { Button } from '@/components/ui/button';
 import EventRegionalizedSection from './EventRegionalizedSection';
 import ChampionshipAndSportSection from './ChampionshipAndSportSection';
 import StartAndEndTime from './StartAndEndTime';
-import { makeEvent, makeSessions } from '../creation.utils';
+import { makeEvent, makeSessions, resetForm } from '../creation.utils';
 import { useTranslation } from '@/common/hooks/lang.hooks';
 import SessionsSection from './SessionsSection';
 import { WithoutId, WithoutIds } from '@/common/models/models';
 import { IEvent, ISession } from '@/common/models/sports.models';
 import { useEventCreation, useSessionsCreation } from '../creation.hooks';
-import { makeVirginEvent, makeVirginSession } from '../creation.utils';
 import { useToast } from '@/components/ui/use-toast';
 import { isEmpty } from '@/common/utils/utils';
 
@@ -40,10 +39,7 @@ const CreationForm: FC<ICreationFormProps> = ({
 
   const form = useForm<z.infer<typeof eventSchema>>({
     resolver: zodResolver(eventSchema),
-    defaultValues: {
-      ...eventSample,
-      sessions: sessionsSample
-    }
+    defaultValues: { ...eventSample, sessions: sessionsSample }
   });
 
   const displayToast = (variant: 'default' | 'destructive' = 'default') =>
@@ -67,9 +63,9 @@ const CreationForm: FC<ICreationFormProps> = ({
     handleCreateEvent(event)
       .then((event) => {
         isEmpty(sessions)
-          ? displayToast()
+          ? handleResetFormAfterSuccess()
           : handleCreateSessions(sessions, event._id)
-              .then(() => displayToast())
+              .then(() => handleResetFormAfterSuccess())
               .catch(() => displayToast('destructive'));
       })
       .catch(() => displayToast('destructive'));
@@ -77,10 +73,12 @@ const CreationForm: FC<ICreationFormProps> = ({
 
   const handleReset = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    form.reset({
-      ...makeVirginEvent(),
-      sessions: [makeVirginSession()]
-    });
+    resetForm(form);
+  };
+
+  const handleResetFormAfterSuccess = () => {
+    displayToast();
+    resetForm(form);
   };
 
   return (
@@ -103,7 +101,7 @@ const CreationForm: FC<ICreationFormProps> = ({
             >
               {t('creation.event.btn.reset')}
             </Button>
-            <Button type="submit" disabled={isDisabled} loadingBtn>
+            <Button loadingBtn type="submit" disabled={isDisabled}>
               {t('creation.event.btn.create')}
             </Button>
           </div>
