@@ -5,6 +5,7 @@ import { usePreferences } from '@/common/hooks/preferences.hooks';
 import { useCalendar } from '@/common/hooks/calendar.hooks';
 import { MONTH } from '@/constants';
 import ToggleFiltersColumnBtn from './ToggleFiltersColumnBtn';
+import ChampionshipsFilter from './ChampionshipsFilter';
 
 const FiltersColumn: FC = () => {
   const { isFiltersColumnOpen, toggleFiltersColumn } = usePreferences();
@@ -19,9 +20,7 @@ const FiltersColumn: FC = () => {
     >
       <CalendarRangeSelector />
 
-      <div className="pt-4 border-t opacity-30 flex-1">
-        championship filters
-      </div>
+      <ChampionshipsFilter />
 
       <div className="flex justify-end">
         <ToggleFiltersColumnBtn

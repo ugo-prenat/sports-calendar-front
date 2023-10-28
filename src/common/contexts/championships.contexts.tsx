@@ -8,8 +8,7 @@ import { DEFAULT_CHAMPIONSHIPS } from '@/constants';
 
 const initialState: IChampionshipsContextState = {
   championships: DEFAULT_CHAMPIONSHIPS,
-  addChampionship: () => null,
-  removeChampionship: () => null
+  updateChampionships: () => {}
 };
 
 export const ChampionshipsProviderContext =
@@ -23,22 +22,18 @@ export const ChampionshipsProvider: FC<IChampionshipsContextProps> = ({
     DEFAULT_CHAMPIONSHIPS
   );
 
-  const addChampionship = (championshipId: ChampionshipId) => {
+  const updateChampionships = (championshipId: ChampionshipId) => {
     const isChampionshipAlreadyAdded = championships.includes(championshipId);
 
-    if (!isChampionshipAlreadyAdded)
-      setChampionships((prev) => [...prev, championshipId]);
-  };
-
-  const removeChampionship = (championshipId: ChampionshipId) =>
     setChampionships((prev) =>
-      prev.filter((championship) => championship !== championshipId)
+      isChampionshipAlreadyAdded
+        ? prev.filter((championship) => championship !== championshipId)
+        : [...prev, championshipId]
     );
-
+  };
   const value = {
     championships,
-    addChampionship,
-    removeChampionship
+    updateChampionships
   };
 
   return (

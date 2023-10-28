@@ -6,6 +6,5 @@ export interface IChampionshipsContextProps {
 }
 export interface IChampionshipsContextState {
   championships: ChampionshipId[];
-  addChampionship: (championship: ChampionshipId) => void;
-  removeChampionship: (championship: ChampionshipId) => void;
+  updateChampionships: (championship: ChampionshipId) => void;
 }
