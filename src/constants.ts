@@ -2,7 +2,6 @@ import {
   ChampionshipId,
   IChampionshipConf
 } from './common/models/sports.models';
-import { ICalendarSession } from './pages/home/home.models';
 
 // THEME
 export const THEME_LIGHT = 'light';
@@ -57,62 +56,69 @@ export const DEFAULT_CHAMPIONSHIPS: ChampionshipId[] = [
 
 export const CHAMPIONSHIPS = [...MOTORSPORTS_CHAMPIONSHIPS] as const;
 
-export const CHAMIPONSHIP_CONFS: IChampionshipConf[] = [
-  {
+export const CHAMIPONSHIP_CONFS: Record<ChampionshipId, IChampionshipConf> = {
+  [F1]: {
     id: F1,
     sport: MOTORSPORTS,
     color: '#e10600',
     logo: {
       dark: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/F1.svg/320px-F1.svg.png',
-      light: ''
+      light:
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/F1.svg/320px-F1.svg.png'
     }
   },
-  {
+  [F2]: {
     id: F2,
     sport: MOTORSPORTS,
     color: '#0090D0',
     logo: {
-      dark: 'https://www.thesportsdb.com/images/media/league/badge/3iwfjg1536242234.png',
-      light: ''
+      dark: 'https://img.redbull.com/images/e_trim:10:transparent/bo_5px_solid_rgb:00000000/q_auto,f_png/redbullcom/2020/5/29/dr0wsisnomqykmgi6q84/formula-2-logo',
+      light:
+        'https://upload.wikimedia.org/wikipedia/fr/thumb/7/7a/Formula_2.svg/1200px-Formula_2.svg.png'
     }
   },
-  {
+  [F3]: {
     id: F3,
     sport: MOTORSPORTS,
     color: '#E90300',
     logo: {
-      dark: 'https://cdn.discordapp.com/attachments/1112352229962297434/1150433209444732988/ELxnupl53yCuIAAAAASUVORK5CYII.png',
-      light: ''
+      dark: 'https://www.fiaformula3.com/livetiming/img/f3/logo.8.png',
+      light:
+        'https://upload.wikimedia.org/wikipedia/commons/5/5b/FIA_F3_Championship_logo.png'
     }
   },
-  {
+  [WEC]: {
     id: WEC,
     sport: MOTORSPORTS,
     color: '#0c3266',
     logo: {
-      dark: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/FIA_WEC_Logo_2019.svg/langfr-330px-FIA_WEC_Logo_2019.svg.png',
-      light: ''
+      dark: 'https://images.squarespace-cdn.com/content/v1/5c784c56fb22a5229ab07d42/1556052342906-TRGNLIXQDCUMHJVKHIJW/wec-logo-wht.png',
+      light:
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/FIA_WEC_Logo_2019.svg/langfr-330px-FIA_WEC_Logo_2019.svg.png'
     }
   },
-  {
+  [F1_ACADEMY]: {
     id: F1_ACADEMY,
     sport: MOTORSPORTS,
     color: '#be117e',
     logo: {
       dark: 'https://www.f1academy.com/_next/static/images/fa_logo_footer-1992667600d4ff845995310220de58a8.png',
-      light: ''
+      light:
+        'https://www.f1academy.com/_next/static/images/fa_logo_footer-1992667600d4ff845995310220de58a8.png'
     }
   },
-  {
+  [GT_WORLD_CHALLENGE]: {
     id: GT_WORLD_CHALLENGE,
     sport: MOTORSPORTS,
     color: '#e31e12',
     logo: {
+      // dark: 'https://www.gt-world-challenge.com/assets/img/gt-world-challenge-fanatec-aws-neg-logo.svg',
       dark: 'https://www.gt-world-challenge.com/images/logo-gt-world-challenge.png',
-      light: ''
+      light:
+        'https://www.gt-world-challenge.com/images/logo-gt-world-challenge.png'
     }
   }
-];
+};
 
 // CALENDAR
 export const UPCOMING = 'upcoming';
@@ -133,77 +139,6 @@ export const DELETE_METHOD = 'DELETE';
 
 export const PROD_API_URL = 'https://api.sports-calendar.com';
 export const DEV_API_URL = 'http://localhost:3000';
-
-//  FAKE LOADING SESSIONS
-const LOADING_SESSION: ICalendarSession = {
-  id: '',
-  eventId: '',
-  sport: 'motorsports',
-  championship: 'f1',
-  type: 'free-practice',
-  startTime: new Date().toISOString(),
-  endTime: new Date().toISOString(),
-  sessionStartedYesterday: false,
-  sessionEndsTomorrow: false
-};
-
-const ZERO_SESSION: ICalendarSession[][] = [];
-
-const ONE_SESSION: ICalendarSession[][] = [
-  [
-    {
-      ...LOADING_SESSION,
-      startTime: new Date('2023-01-01T10:00:00.000Z').toISOString(),
-      endTime: new Date('2023-01-01T12:00:00.000Z').toISOString()
-    }
-  ]
-];
-
-const TWO_SESSIONS: ICalendarSession[][] = [
-  [
-    {
-      ...LOADING_SESSION,
-      startTime: new Date('2023-01-01T03:00:00.000Z').toISOString(),
-      endTime: new Date('2023-01-01T05:00:00.000Z').toISOString()
-    }
-  ],
-  [
-    {
-      ...LOADING_SESSION,
-      startTime: new Date('2023-01-01T15:00:00.000Z').toISOString(),
-      endTime: new Date('2023-01-01T16:30:00.000Z').toISOString()
-    }
-  ]
-];
-
-const THREE_SESSIONS: ICalendarSession[][] = [
-  [
-    {
-      ...LOADING_SESSION,
-      startTime: new Date('2023-01-01T11:00:00.000Z').toISOString(),
-      endTime: new Date('2023-01-01T15:00:00.000Z').toISOString()
-    },
-    {
-      ...LOADING_SESSION,
-      startTime: new Date('2023-01-01T12:00:00.000Z').toISOString(),
-      endTime: new Date('2023-01-01T13:30:00.000Z').toISOString()
-    }
-  ],
-  [
-    {
-      ...LOADING_SESSION,
-      startTime: new Date('2023-01-01T20:00:00.000Z').toISOString(),
-      endTime: new Date('2023-01-01T21:30:00.000Z').toISOString()
-    }
-  ]
-];
-
-export const LOADING_OVERLAPED_SESSIONS: ICalendarSession[][][] = [
-  ZERO_SESSION,
-  ONE_SESSION,
-  TWO_SESSIONS,
-  THREE_SESSIONS
-];
 
 // PREFERENCES
 export const PREFERENCES_STORAGE_KEY = 'preferences';

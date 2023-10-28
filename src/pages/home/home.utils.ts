@@ -22,9 +22,10 @@ import {
   ICalendarDaySessions,
   ICalendarSession,
   IDateRange,
-  IRange
+  IRange,
+  LOADING_OVERLAPED_SESSIONS
 } from './home.models';
-import { LOADING_OVERLAPED_SESSIONS, MONTH, WEEK, WEEKEND } from '@/constants';
+import { MONTH, WEEK, WEEKEND } from '@/constants';
 import { ICalendarWeekSessionStyle } from './tabs/calendar/views/week/CalendarWeekSession';
 import { randomNbs } from '@/common/utils/utils';
 
