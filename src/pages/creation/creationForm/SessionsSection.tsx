@@ -7,8 +7,6 @@ import { Plus } from 'lucide-react';
 import SessionSection from './SessionSection';
 import { makeVirginSession } from '../creation.utils';
 import { isEmpty } from '@/common/utils/utils';
-import { RACE } from '@/constants';
-import { Session } from '@/common/models/sports.models';
 
 interface ISessionsSectionProps {
   form: UseFormReturn<IEventWithSessions>;
@@ -26,8 +24,14 @@ const SessionsSection: FC<ISessionsSectionProps> = ({ form }) => {
   const handleAppend = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
 
-    const sessionToAdd: Session = RACE;
-    append(makeVirginSession(sessionToAdd));
+    const prevSession = form.getValues(`sessions.${fields.length - 1}`);
+
+    append(
+      makeVirginSession({
+        startTime: prevSession?.startTime,
+        endTime: prevSession?.endTime
+      })
+    );
   };
 
   return (

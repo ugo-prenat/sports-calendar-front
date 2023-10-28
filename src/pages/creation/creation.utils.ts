@@ -44,15 +44,20 @@ export const makeVirginEvent = (): ISchemaEvent => ({
   }
 });
 
-export const makeVirginSession = (
-  session: Session = FREE_PRACTICE_1
-): ISchemaSession => ({
+export const makeVirginSession = ({
+  session = FREE_PRACTICE_1,
+  startTime,
+  endTime
+}: {
+  session?: Session;
+  startTime?: string;
+  endTime?: string;
+} = {}): ISchemaSession => ({
   type: session,
-  startTime: startOfToday().toISOString(),
-  endTime: addMinutes(
-    startOfToday(),
-    getSessionDurartion(session)
-  ).toISOString()
+  startTime: startTime || startOfToday().toISOString(),
+  endTime:
+    endTime ||
+    addMinutes(startOfToday(), getSessionDurartion(session)).toISOString()
 });
 
 export const makeEvent = (event: IEventWithSessions): WithoutId<IEvent> => ({
