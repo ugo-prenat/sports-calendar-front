@@ -1,7 +1,6 @@
 import { useTranslation } from '@/common/hooks/lang.hooks';
 import { FC, useEffect } from 'react';
 import { ISchemaEvent, ISchemaSession } from './creation.models';
-import { useEvents } from './creation.hooks';
 import { Skeleton } from '@/components/ui/skeleton';
 import Error from '@/components/ui/Error';
 import {
@@ -10,21 +9,30 @@ import {
 } from '@/common/models/sports.models';
 import { makeEventFromAPIToSchema } from './creation.utils';
 import { cn } from '@/common/utils/tailwind.utils';
+import { Status } from '@/common/fetcher/fetcher.models';
+
+interface IEventFetchingProps {
+  status: Status;
+  data: IAPIEventWithSessions[] | undefined;
+  handleFetchEvents: () => void;
+}
 
 interface IEventsHistoryProps {
   setEventSample: (event: ISchemaEvent) => void;
   setSessionsSample: (sessions: ISchemaSession[]) => void;
+  eventFetching: IEventFetchingProps;
 }
 
 const EventsHistory: FC<IEventsHistoryProps> = ({
   setEventSample,
-  setSessionsSample
+  setSessionsSample,
+  eventFetching
 }) => {
   const { t } = useTranslation();
-  const { handleFetch, status, data } = useEvents();
+  const { handleFetchEvents, status, data } = eventFetching;
 
   useEffect(() => {
-    handleFetch();
+    handleFetchEvents();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -56,7 +64,10 @@ const EventsHistory: FC<IEventsHistoryProps> = ({
         </>
       )}
       {status === 'error' && (
-        <Error retry={handleFetch} text={t('creation.event.history.error')} />
+        <Error
+          retry={handleFetchEvents}
+          text={t('creation.event.history.error')}
+        />
       )}
       {status === 'success' && data && (
         <div className="overflow-auto pr-8">

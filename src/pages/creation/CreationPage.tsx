@@ -4,9 +4,13 @@ import EventsHistory from './EventsHistory';
 import CreationForm from './creationForm/CreationForm';
 import { makeVirginEvent, makeVirginSession } from './creation.utils';
 import { ISchemaEvent, ISchemaSession } from './creation.models';
+import { useEvents } from './creation.hooks';
 
 const CreationPage: FC = () => {
   const { t } = useTranslation();
+
+  const { handleFetch: handleFetchEvents, status, data } = useEvents();
+
   const [eventSample, setEventSample] = useState<ISchemaEvent>(
     makeVirginEvent()
   );
@@ -24,11 +28,13 @@ const CreationPage: FC = () => {
         <CreationForm
           eventSample={eventSample}
           sessionsSample={sessionsSample}
+          updateHistoryList={handleFetchEvents}
         />
 
         <EventsHistory
           setEventSample={setEventSample}
           setSessionsSample={setSessionsSample}
+          eventFetching={{ handleFetchEvents, status, data }}
         />
       </div>
     </div>

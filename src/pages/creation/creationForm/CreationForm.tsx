@@ -20,11 +20,13 @@ import { isEmpty } from '@/common/utils/utils';
 interface ICreationFormProps {
   eventSample: ISchemaEvent;
   sessionsSample: ISchemaSession[];
+  updateHistoryList: () => void;
 }
 
 const CreationForm: FC<ICreationFormProps> = ({
   eventSample,
-  sessionsSample
+  sessionsSample,
+  updateHistoryList
 }) => {
   const { toast } = useToast();
   const { t } = useTranslation();
@@ -79,6 +81,7 @@ const CreationForm: FC<ICreationFormProps> = ({
   const handleResetFormAfterSuccess = () => {
     displayToast();
     resetForm(form);
+    updateHistoryList();
   };
 
   return (
