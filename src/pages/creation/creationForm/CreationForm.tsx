@@ -15,6 +15,8 @@ import { WithoutId, WithoutIds } from '@/common/models/models';
 import { IEvent, ISession } from '@/common/models/sports.models';
 import { useEventCreation, useSessionsCreation } from '../creation.hooks';
 import { makeVirginEvent, makeVirginSession } from '../creation.utils';
+import { useToast } from '@/components/ui/use-toast';
+import { isEmpty } from '@/common/utils/utils';
 
 interface ICreationFormProps {
   eventSample: ISchemaEvent;
@@ -25,9 +27,16 @@ const CreationForm: FC<ICreationFormProps> = ({
   eventSample,
   sessionsSample
 }) => {
+  const { toast } = useToast();
   const { t } = useTranslation();
-  const { handleFetch: handleCreateSessions } = useSessionsCreation();
-  const { handleFetch: handleCreateEvent } = useEventCreation();
+
+  const { handleFetch: handleCreateSessions, status: sessionCreationStatus } =
+    useSessionsCreation();
+  const { handleFetch: handleCreateEvent, status: eventCreationStatus } =
+    useEventCreation();
+
+  const isDisabled =
+    sessionCreationStatus === 'loading' || eventCreationStatus === 'loading';
 
   const form = useForm<z.infer<typeof eventSchema>>({
     resolver: zodResolver(eventSchema),
@@ -36,6 +45,12 @@ const CreationForm: FC<ICreationFormProps> = ({
       sessions: sessionsSample
     }
   });
+
+  const displayToast = (variant: 'default' | 'destructive' = 'default') =>
+    toast({
+      variant,
+      description: t(`creation.event.toast.${variant}.title`)
+    });
 
   useEffect(() => {
     form.reset({
@@ -49,9 +64,15 @@ const CreationForm: FC<ICreationFormProps> = ({
     const event: WithoutId<IEvent> = makeEvent(data);
     const sessions: WithoutIds<ISession>[] = makeSessions(data);
 
-    handleCreateEvent(event).then((event) =>
-      handleCreateSessions(sessions, event._id)
-    );
+    handleCreateEvent(event)
+      .then((event) => {
+        isEmpty(sessions)
+          ? displayToast()
+          : handleCreateSessions(sessions, event._id)
+              .then(() => displayToast())
+              .catch(() => displayToast('destructive'));
+      })
+      .catch(() => displayToast('destructive'));
   };
 
   const handleReset = (e: MouseEvent<HTMLButtonElement>) => {
@@ -82,7 +103,9 @@ const CreationForm: FC<ICreationFormProps> = ({
             >
               {t('creation.event.btn.reset')}
             </Button>
-            <Button type="submit">{t('creation.event.btn.create')}</Button>
+            <Button type="submit" disabled={isDisabled} loadingBtn>
+              {t('creation.event.btn.create')}
+            </Button>
           </div>
         </form>
       </Form>

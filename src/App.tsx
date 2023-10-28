@@ -6,6 +6,8 @@ import { CalendarProvider } from './common/contexts/calendar.contexts';
 import { ChampionshipsProvider } from './common/contexts/championships.contexts';
 import { PreferencesProvider } from './common/contexts/preferences.contexts';
 
+import { Toaster } from '@/components/ui/toaster';
+
 const App = () => (
   <ThemeProvider>
     <LangProvider>
@@ -13,6 +15,7 @@ const App = () => (
         <ChampionshipsProvider>
           <PreferencesProvider>
             <RouterProvider router={router} />
+            <Toaster />
           </PreferencesProvider>
         </ChampionshipsProvider>
       </CalendarProvider>

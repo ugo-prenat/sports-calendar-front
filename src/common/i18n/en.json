@@ -100,5 +100,7 @@
   "creation.event.btn.create": "Create event",
   "creation.event.btn.reset": "Reset",
   "creation.event.history.details": "Create an event from an existing one.",
-  "creation.event.history.error": "An error occurred while retrieving the event history."
+  "creation.event.history.error": "An error occurred while retrieving the event history.",
+  "creation.event.toast.destructive.title": "An error occurred while creating the event.",
+  "creation.event.toast.default.title": "The event has been created."
 }
