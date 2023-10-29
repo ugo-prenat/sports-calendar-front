@@ -16,7 +16,10 @@ import {
 import { Button } from '@/components/ui/button';
 import { CalendarIcon } from 'lucide-react';
 import { Calendar } from '@/components/ui/calendar';
-import { useFnsFormat, useTranslation } from '@/common/hooks/lang.hooks';
+import {
+  useFnsFormat,
+  useTranslation
+} from '@/common/contexts/lang/lang.hooks';
 
 interface IStartAndEndTimeProps {
   form: UseFormReturn<IEventWithSessions>;

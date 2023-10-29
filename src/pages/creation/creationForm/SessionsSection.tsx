@@ -1,7 +1,7 @@
 import { FC, MouseEvent } from 'react';
 import { IEventWithSessions } from '../creation.models';
 import { UseFormReturn, useFieldArray } from 'react-hook-form';
-import { useTranslation } from '@/common/hooks/lang.hooks';
+import { useTranslation } from '@/common/contexts/lang/lang.hooks';
 import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
 import SessionSection from './SessionSection';

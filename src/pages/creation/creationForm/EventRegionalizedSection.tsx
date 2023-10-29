@@ -9,7 +9,7 @@ import { FC } from 'react';
 import { IEventWithSessions } from '../creation.models';
 import { UseFormReturn } from 'react-hook-form';
 import { LANGS } from '@/constants';
-import { useTranslation } from '@/common/hooks/lang.hooks';
+import { useTranslation } from '@/common/contexts/lang/lang.hooks';
 
 interface IEventRegionalizedSectionProps {
   form: UseFormReturn<IEventWithSessions>;

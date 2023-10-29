@@ -1,4 +1,4 @@
-import { useTranslation } from '@/common/hooks/lang.hooks';
+import { useTranslation } from '@/common/contexts/lang/lang.hooks';
 import { getHours } from '@/pages/home/home.utils';
 
 const CalendarWeekHours = () => {

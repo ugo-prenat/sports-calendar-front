@@ -1,16 +1,12 @@
 import { FC, createContext, useEffect, useState } from 'react';
-import {
-  IThemeContextProps,
-  IThemeContextState,
-  Theme
-} from '../models/theme.models';
+import { IThemeContextProps, IThemeContextState, Theme } from './theme.models';
 import {
   DEFAULT_THEME,
   THEME_DARK,
   THEME_LIGHT,
   THEME_STORAGE_KEY,
   THEME_SYSTEM
-} from '../../constants';
+} from '../../../constants';
 
 const initialState: IThemeContextState = {
   theme: DEFAULT_THEME,

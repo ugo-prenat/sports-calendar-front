@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import { LangProviderContext } from '../contexts/lang.contexts';
-import { IFnsFormatOptions } from '../models/lang.models';
+import { LangProviderContext } from './lang.contexts';
+import { IFnsFormatOptions } from './lang.models';
 import { format as fnsFormat } from 'date-fns';
 
 export const useTranslation = () => {

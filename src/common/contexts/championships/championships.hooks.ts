@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { ChampionshipsProviderContext } from '../contexts/championships.contexts';
+import { ChampionshipsProviderContext } from './championships.contexts';
 
 export const useChampionships = () => {
   const context = useContext(ChampionshipsProviderContext);

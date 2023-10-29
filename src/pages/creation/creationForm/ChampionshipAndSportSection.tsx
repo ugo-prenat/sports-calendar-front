@@ -15,7 +15,7 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui/select';
-import { useTranslation } from '@/common/hooks/lang.hooks';
+import { useTranslation } from '@/common/contexts/lang/lang.hooks';
 import { CHAMPIONSHIPS } from '@/constants';
 
 interface IChampionshipAndSportSectionProps {

@@ -2,7 +2,7 @@ import { FC } from 'react';
 import ThemeToggle from './ThemeToggle';
 import LangToggle from './LangToggle';
 import { Separator } from '@/components/ui/separator';
-import { useTranslation } from '@/common/hooks/lang.hooks';
+import { useTranslation } from '@/common/contexts/lang/lang.hooks';
 
 const SettingsPage: FC = () => {
   const { t } = useTranslation();

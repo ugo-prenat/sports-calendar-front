@@ -1,4 +1,4 @@
-import { useCalendar } from '@/common/hooks/calendar.hooks';
+import { useCalendar } from '@/common/contexts/calendar/calendar.hooks';
 import { FC, useMemo } from 'react';
 import { getCalendarMonthDays, getCalendarWeekDays } from '../../home.utils';
 import CalendarWeekView from './views/week/CalendarWeekView';

@@ -2,7 +2,7 @@ import { PREFERENCES_STORAGE_KEY } from '@/constants';
 import {
   IStoredPreferences,
   storedPreferencesSchema
-} from '../models/preferences.models';
+} from './preferences.models';
 
 export const getStoredPreferences = (): IStoredPreferences | undefined => {
   const storedPreferences = localStorage.getItem(PREFERENCES_STORAGE_KEY);

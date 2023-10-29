@@ -11,7 +11,7 @@ import {
 import Tooltip from '@/components/Tooltip';
 import { Button } from '@/components/ui/button';
 import { Trash } from 'lucide-react';
-import { useTranslation } from '@/common/hooks/lang.hooks';
+import { useTranslation } from '@/common/contexts/lang/lang.hooks';
 import { SESSIONS } from '@/constants';
 import {
   Select,

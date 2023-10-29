@@ -1,4 +1,4 @@
-import { useTranslation } from '@/common/hooks/lang.hooks';
+import { useTranslation } from '@/common/contexts/lang/lang.hooks';
 import { FC, useEffect } from 'react';
 import { ISchemaEvent, ISchemaSession } from './creation.models';
 import { Skeleton } from '@/components/ui/skeleton';

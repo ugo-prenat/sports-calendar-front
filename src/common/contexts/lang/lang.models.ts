@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { LANGS } from '../../constants';
+import { LANGS } from '../../../constants';
 
 export type Lang = (typeof LANGS)[number];
 

@@ -1,4 +1,4 @@
-import { useTranslation } from '@/common/hooks/lang.hooks';
+import { useTranslation } from '@/common/contexts/lang/lang.hooks';
 import { cn } from '@/common/utils/tailwind.utils';
 import Tooltip from '@/components/Tooltip';
 import { Button } from '@/components/ui/button';

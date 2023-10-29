@@ -1,6 +1,6 @@
 import { CHAMPIONSHIPS_STORAGE_KEY } from '@/constants';
-import { storedChampionshipsSchema } from '../models/championships.models';
-import { ChampionshipId } from '../models/sports.models';
+import { storedChampionshipsSchema } from './championships.models';
+import { ChampionshipId } from '../../models/sports.models';
 
 export const getStoredChampionships = (): ChampionshipId[] | undefined => {
   const storedChampionships = localStorage.getItem(CHAMPIONSHIPS_STORAGE_KEY);

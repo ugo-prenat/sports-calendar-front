@@ -12,7 +12,7 @@ import {
 
 import { cn } from '@/common/utils/tailwind.utils';
 import { Label } from '@/components/ui/label';
-import { useTranslation } from '@/common/hooks/lang.hooks';
+import { useTranslation } from '@/common/contexts/lang/lang.hooks';
 
 const Form = FormProvider;
 

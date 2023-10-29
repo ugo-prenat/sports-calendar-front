@@ -4,13 +4,13 @@ import {
   IPreferencesContextProps,
   IPreferencesContextState,
   IStoredPreferences
-} from '../models/preferences.models';
+} from './preferences.models';
 import { DEFAULT_CALENDAR_VIEW, DEFAULT_DENSITY } from '@/constants';
 import { TabId } from '@/pages/home/home.models';
 import {
   getStoredPreferences,
   updateStoredPreferences
-} from '../utils/preferences.utils';
+} from './preferences.utils';
 
 const initialState: IPreferencesContextState = {
   isFiltersColumnOpen: true,

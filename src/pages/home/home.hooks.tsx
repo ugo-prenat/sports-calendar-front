@@ -1,7 +1,7 @@
 import { differenceInMinutes, startOfDay } from 'date-fns';
 import { ICalendarDaySessions, ICalendarSession, IRange } from './home.models';
 import { getCalendarDaysSessions } from './home.api';
-import { useChampionships } from '@/common/hooks/championships.hooks';
+import { useChampionships } from '@/common/contexts/championships/championships.hooks';
 import { makeRange } from './home.utils';
 import { useFetcher } from '@/common/fetcher/fetcher.hooks';
 

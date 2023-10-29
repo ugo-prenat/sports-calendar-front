@@ -1,4 +1,4 @@
-import { useTranslation } from '@/common/hooks/lang.hooks';
+import { useTranslation } from '@/common/contexts/lang/lang.hooks';
 import { LANG_EN, LANG_FR } from '@/constants';
 import { ILanguageSelect } from '@/pages/settings/settings.models';
 import { FC } from 'react';
@@ -9,7 +9,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger
 } from '../ui/dropdown-menu';
-import { Lang } from '@/common/models/lang.models';
+import { Lang } from '@/common/contexts/lang/lang.models';
 
 const CompactLangToggle: FC = () => {
   const { lang, setLang } = useTranslation();

@@ -1,8 +1,8 @@
 import { DetailedHTMLProps, FC, ImgHTMLAttributes } from 'react';
 import { ChampionshipId } from '@/common/models/sports.models';
-import { useTheme } from '@/common/hooks/theme.hooks';
-import { CHAMIPONSHIP_CONFS } from '@/constants';
+import { useTheme } from '@/common/contexts/theme/theme.hooks';
 import { cn } from '@/common/utils/tailwind.utils';
+import { useChampionshipConf } from '@/common/hooks/sports.hooks';
 
 interface IChampionshipLogoProps
   extends DetailedHTMLProps<
@@ -19,7 +19,7 @@ const ChampionshipLogo: FC<IChampionshipLogoProps> = ({
 }) => {
   const { isDark } = useTheme();
 
-  const championshipConf = CHAMIPONSHIP_CONFS[championshipId];
+  const championshipConf = useChampionshipConf(championshipId);
   const logo = championshipConf.logo[isDark ? 'dark' : 'light'];
 
   return (

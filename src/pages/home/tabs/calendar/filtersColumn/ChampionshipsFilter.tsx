@@ -1,5 +1,5 @@
-import { useChampionships } from '@/common/hooks/championships.hooks';
-import { useTranslation } from '@/common/hooks/lang.hooks';
+import { useChampionships } from '@/common/contexts/championships/championships.hooks';
+import { useTranslation } from '@/common/contexts/lang/lang.hooks';
 import { ChampionshipId } from '@/common/models/sports.models';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';

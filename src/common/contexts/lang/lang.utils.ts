@@ -1,5 +1,5 @@
-import { DEFAULT_LANG, LANG_FR, LANG_STORAGE_KEY } from '../../constants';
-import { Lang } from '../models/lang.models';
+import { DEFAULT_LANG, LANG_FR, LANG_STORAGE_KEY } from '../../../constants';
+import { Lang } from './lang.models';
 
 export const getDefaultLang = (): Lang => {
   const lang = localStorage.getItem(LANG_STORAGE_KEY);

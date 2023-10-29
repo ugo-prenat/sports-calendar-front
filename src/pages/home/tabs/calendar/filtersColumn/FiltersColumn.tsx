@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import CalendarRangeSelector from './CalendarRangeSelector';
 import { cn } from '@/common/utils/tailwind.utils';
-import { usePreferences } from '@/common/hooks/preferences.hooks';
-import { useCalendar } from '@/common/hooks/calendar.hooks';
+import { usePreferences } from '@/common/contexts/preferences/preferences.hooks';
+import { useCalendar } from '@/common/contexts/calendar/calendar.hooks';
 import { MONTH } from '@/constants';
 import ToggleFiltersColumnBtn from './ToggleFiltersColumnBtn';
 import ChampionshipsFilter from './ChampionshipsFilter';

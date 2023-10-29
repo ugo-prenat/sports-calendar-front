@@ -3,7 +3,7 @@ import { Link } from '@tanstack/react-router';
 import { Button } from '../ui/button';
 import CompactThemeToggle from './CompactThemeToggle';
 import CompactLangToggle from './CompactLangToggle';
-import { useTranslation } from '@/common/hooks/lang.hooks';
+import { useTranslation } from '@/common/contexts/lang/lang.hooks';
 import { CalendarPlus } from 'lucide-react';
 
 interface HeaderProps {}

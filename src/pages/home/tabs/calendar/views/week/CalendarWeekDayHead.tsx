@@ -1,4 +1,4 @@
-import { useFnsFormat } from '@/common/hooks/lang.hooks';
+import { useFnsFormat } from '@/common/contexts/lang/lang.hooks';
 import { cn } from '@/common/utils/tailwind.utils';
 import { Badge } from '@/components/ui/badge';
 import { isSameDay } from 'date-fns';

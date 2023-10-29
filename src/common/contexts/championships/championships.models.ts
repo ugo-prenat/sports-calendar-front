@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { ChampionshipId } from './sports.models';
+import { ChampionshipId } from '../../models/sports.models';
 import z from 'zod';
 import { CHAMPIONSHIPS } from '@/constants';
 

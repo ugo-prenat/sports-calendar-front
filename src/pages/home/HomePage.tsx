@@ -1,12 +1,12 @@
 import { FC, useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { useTranslation } from '@/common/hooks/lang.hooks';
+import { useTranslation } from '@/common/contexts/lang/lang.hooks';
 import { TabId, ICalendarTab } from './home.models';
 import UpcomingTab from './tabs/upcoming/UpcomingTab';
 import CalendarTab from './tabs/calendar/CalendarTab';
 import { DEFAULT_CALENDAR_VIEW, TAB_IDS, UPCOMING } from '@/constants';
-import { useCalendar } from '@/common/hooks/calendar.hooks';
-import { usePreferences } from '@/common/hooks/preferences.hooks';
+import { useCalendar } from '@/common/contexts/calendar/calendar.hooks';
+import { usePreferences } from '@/common/contexts/preferences/preferences.hooks';
 
 const HomePage: FC = () => {
   const { t } = useTranslation();

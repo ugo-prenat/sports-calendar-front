@@ -1,5 +1,5 @@
-import { useCalendar } from '@/common/hooks/calendar.hooks';
-import { useFnsFormat } from '@/common/hooks/lang.hooks';
+import { useCalendar } from '@/common/contexts/calendar/calendar.hooks';
+import { useFnsFormat } from '@/common/contexts/lang/lang.hooks';
 import { cn } from '@/common/utils/tailwind.utils';
 import { isSameDay } from 'date-fns';
 import { FC } from 'react';

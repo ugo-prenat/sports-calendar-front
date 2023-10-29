@@ -6,11 +6,11 @@ import {
   PopoverContent,
   PopoverTrigger
 } from '@/components/ui/popover';
-import { Lang } from '@/common/models/lang.models';
+import { Lang } from '@/common/contexts/lang/lang.models';
 import { cn } from '@/common/utils/tailwind.utils';
 import { Check, ChevronsUpDown } from 'lucide-react';
 import { LANG_EN, LANG_FR } from '@/constants';
-import { useTranslation } from '@/common/hooks/lang.hooks';
+import { useTranslation } from '@/common/contexts/lang/lang.hooks';
 import { ILanguageSelect } from './settings.models';
 
 const LangToggle: FC = () => {

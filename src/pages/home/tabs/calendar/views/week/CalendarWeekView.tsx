@@ -3,8 +3,8 @@ import CalendarWeekDay from './CalendarWeekDay';
 import CalendarWeekHours from './CalendarWeekHours';
 import { useCalendarDaysSessions } from '@/pages/home/home.hooks';
 import { makeLoadingCalendarDaySessions } from '@/pages/home/home.utils';
-import { useTranslation } from '@/common/hooks/lang.hooks';
-import { useChampionships } from '@/common/hooks/championships.hooks';
+import { useTranslation } from '@/common/contexts/lang/lang.hooks';
+import { useChampionships } from '@/common/contexts/championships/championships.hooks';
 import { isEmpty, isNotEmpty } from '@/common/utils/utils';
 import Alert from '@/components/Alert';
 

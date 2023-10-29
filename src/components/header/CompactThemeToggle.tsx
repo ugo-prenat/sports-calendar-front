@@ -7,9 +7,9 @@ import {
 } from '../ui/dropdown-menu';
 import { Button } from '../ui/button';
 import { Moon, Sun } from 'lucide-react';
-import { useTranslation } from '@/common/hooks/lang.hooks';
-import { useTheme } from '@/common/hooks/theme.hooks';
-import { Theme } from '@/common/models/theme.models';
+import { useTranslation } from '@/common/contexts/lang/lang.hooks';
+import { useTheme } from '@/common/contexts/theme/theme.hooks';
+import { Theme } from '@/common/contexts/theme/theme.models';
 import { THEME_DARK, THEME_LIGHT, THEME_SYSTEM } from '@/constants';
 import { IThemeSelect } from '@/pages/settings/settings.models';
 

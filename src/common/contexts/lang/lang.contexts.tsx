@@ -2,15 +2,11 @@ import i18next from 'i18next';
 import { FC, createContext, useEffect, useState } from 'react';
 import { initReactI18next, useTranslation } from 'react-i18next';
 
-import en from '../i18n/en.json';
-import fr from '../i18n/fr.json';
-import {
-  ILangContextProps,
-  ILangContextState,
-  Lang
-} from '../models/lang.models';
-import { LANG_FR, LANG_STORAGE_KEY } from '../../constants';
-import { getDefaultLang } from '../utils/lang.utils';
+import en from '../../i18n/en.json';
+import fr from '../../i18n/fr.json';
+import { ILangContextProps, ILangContextState, Lang } from './lang.models';
+import { LANG_FR, LANG_STORAGE_KEY } from '../../../constants';
+import { getDefaultLang } from './lang.utils';
 import { fr as fnsFrLocale } from 'date-fns/locale';
 
 export const defaultLang: Lang = getDefaultLang();

@@ -1,7 +1,7 @@
 import { FC, HTMLAttributes } from 'react';
 import { AlertTriangle, CheckCircle2, XCircle } from 'lucide-react';
 import { Button } from './ui/button';
-import { useTranslation } from '@/common/hooks/lang.hooks';
+import { useTranslation } from '@/common/contexts/lang/lang.hooks';
 import { cn } from '@/common/utils/tailwind.utils';
 
 type AlertVariant = 'default' | 'success' | 'warning' | 'error';

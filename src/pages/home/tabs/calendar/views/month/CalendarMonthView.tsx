@@ -1,11 +1,11 @@
 import { FC, useEffect } from 'react';
 import CalendarMonthDay from './CalendarMonthDay';
 import { getWeeksInMonth } from 'date-fns';
-import { useCalendar } from '@/common/hooks/calendar.hooks';
+import { useCalendar } from '@/common/contexts/calendar/calendar.hooks';
 import { useCalendarDaysSessions } from '@/pages/home/home.hooks';
 import { makeLoadingCalendarDaySessions } from '@/pages/home/home.utils';
-import { useChampionships } from '@/common/hooks/championships.hooks';
-import { useTranslation } from '@/common/hooks/lang.hooks';
+import { useChampionships } from '@/common/contexts/championships/championships.hooks';
+import { useTranslation } from '@/common/contexts/lang/lang.hooks';
 import { isEmpty, isNotEmpty } from '@/common/utils/utils';
 import Alert from '@/components/Alert';
 

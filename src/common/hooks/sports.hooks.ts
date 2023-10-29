@@ -5,7 +5,7 @@ export const getChampionshipConfs = () => CHAMIPONSHIP_CONFS;
 export const useChampionshipConfs = getChampionshipConfs;
 
 export const getChampionshipConf = (id: ChampionshipId) => {
-  const conf = CHAMIPONSHIP_CONFS.find((c) => c.id === id);
+  const conf = CHAMIPONSHIP_CONFS[id];
   if (!conf) throw new Error(`Championship conf not found for id ${id}`);
   return conf;
 };

@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import CalendarMonthDayHead from './CalendarMonthDayHead';
 import { cn } from '@/common/utils/tailwind.utils';
-import { useCalendar } from '@/common/hooks/calendar.hooks';
+import { useCalendar } from '@/common/contexts/calendar/calendar.hooks';
 import { ICalendarDaySessions } from '@/pages/home/home.models';
 import CalendarMonthSessions from './CalendarMonthSessions';
 

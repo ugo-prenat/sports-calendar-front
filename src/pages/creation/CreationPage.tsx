@@ -1,4 +1,4 @@
-import { useTranslation } from '@/common/hooks/lang.hooks';
+import { useTranslation } from '@/common/contexts/lang/lang.hooks';
 import { FC, useState } from 'react';
 import EventsHistory from './EventsHistory';
 import CreationForm from './creationForm/CreationForm';

@@ -8,10 +8,10 @@ import {
 import { FC } from 'react';
 import { Calendar } from '@/components/ui/calendar';
 import { ICalendarRangeSelect, IDateRange } from '../../../home.models';
-import { useTranslation } from '@/common/hooks/lang.hooks';
+import { useTranslation } from '@/common/contexts/lang/lang.hooks';
 import { getNextRange } from '../../../home.utils';
 import { DateRange } from 'react-day-picker';
-import { useCalendar } from '@/common/hooks/calendar.hooks';
+import { useCalendar } from '@/common/contexts/calendar/calendar.hooks';
 
 const CalendarRangeSelector: FC = () => {
   const { t } = useTranslation();

@@ -9,7 +9,7 @@ import EventRegionalizedSection from './EventRegionalizedSection';
 import ChampionshipAndSportSection from './ChampionshipAndSportSection';
 import StartAndEndTime from './StartAndEndTime';
 import { makeEvent, makeSessions, resetForm } from '../creation.utils';
-import { useTranslation } from '@/common/hooks/lang.hooks';
+import { useTranslation } from '@/common/contexts/lang/lang.hooks';
 import SessionsSection from './SessionsSection';
 import { WithoutId, WithoutIds } from '@/common/models/models';
 import { IEvent, ISession } from '@/common/models/sports.models';

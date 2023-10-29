@@ -2,13 +2,13 @@ import { FC, createContext, useState } from 'react';
 import {
   IChampionshipsContextProps,
   IChampionshipsContextState
-} from '../models/championships.models';
-import { ChampionshipId } from '../models/sports.models';
+} from './championships.models';
+import { ChampionshipId } from '../../models/sports.models';
 import { DEFAULT_CHAMPIONSHIPS } from '@/constants';
 import {
   getStoredChampionships,
   updateStoredChampionships
-} from '../utils/championships.utils';
+} from './championships.utils';
 
 const initialState: IChampionshipsContextState = {
   championships: DEFAULT_CHAMPIONSHIPS,
