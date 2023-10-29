@@ -4,6 +4,7 @@ import { getWeeksInMonth } from 'date-fns';
 import { useCalendar } from '@/common/hooks/calendar.hooks';
 import { useCalendarDaysSessions } from '@/pages/home/home.hooks';
 import { makeLoadingCalendarDaySessions } from '@/pages/home/home.utils';
+import { useChampionships } from '@/common/hooks/championships.hooks';
 
 interface ICalendarMonthViewProps {
   days: Date[];
@@ -11,6 +12,7 @@ interface ICalendarMonthViewProps {
 
 const CalendarMonthView: FC<ICalendarMonthViewProps> = ({ days }) => {
   const { calendarRange } = useCalendar();
+  const { championships } = useChampionships();
   const weeksInMonth = getWeeksInMonth(calendarRange.from, { weekStartsOn: 1 });
 
   const { calendarDaysSessions, status, handleFetch } =
@@ -19,7 +21,7 @@ const CalendarMonthView: FC<ICalendarMonthViewProps> = ({ days }) => {
   useEffect(() => {
     handleFetch();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [days]);
+  }, [days, championships]);
 
   return (
     <>

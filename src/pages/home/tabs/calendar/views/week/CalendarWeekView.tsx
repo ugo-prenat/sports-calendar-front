@@ -5,6 +5,7 @@ import { useCalendarDaysSessions } from '@/pages/home/home.hooks';
 import { makeLoadingCalendarDaySessions } from '@/pages/home/home.utils';
 import Error from '@/components/ui/Error';
 import { useTranslation } from '@/common/hooks/lang.hooks';
+import { useChampionships } from '@/common/hooks/championships.hooks';
 
 interface ICalendarWeekViewProps {
   days: Date[];
@@ -12,13 +13,14 @@ interface ICalendarWeekViewProps {
 
 const CalendarWeekView: FC<ICalendarWeekViewProps> = ({ days }) => {
   const { t } = useTranslation();
+  const { championships } = useChampionships();
   const { calendarDaysSessions, status, handleFetch } =
     useCalendarDaysSessions(days);
 
   useEffect(() => {
     handleFetch();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [days]);
+  }, [days, championships]);
 
   return (
     <>

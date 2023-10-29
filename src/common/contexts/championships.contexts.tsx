@@ -5,6 +5,10 @@ import {
 } from '../models/championships.models';
 import { ChampionshipId } from '../models/sports.models';
 import { DEFAULT_CHAMPIONSHIPS } from '@/constants';
+import {
+  getStoredChampionships,
+  updateStoredChampionships
+} from '../utils/championships.utils';
 
 const initialState: IChampionshipsContextState = {
   championships: DEFAULT_CHAMPIONSHIPS,
@@ -18,18 +22,21 @@ export const ChampionshipsProvider: FC<IChampionshipsContextProps> = ({
   children,
   ...props
 }) => {
+  const storedChampionships: ChampionshipId[] | undefined =
+    getStoredChampionships();
+
   const [championships, setChampionships] = useState<ChampionshipId[]>(
-    DEFAULT_CHAMPIONSHIPS
+    storedChampionships || DEFAULT_CHAMPIONSHIPS
   );
 
   const updateChampionships = (championshipId: ChampionshipId) => {
     const isChampionshipAlreadyAdded = championships.includes(championshipId);
+    const newChampionships = isChampionshipAlreadyAdded
+      ? championships.filter((championship) => championship !== championshipId)
+      : [...championships, championshipId];
 
-    setChampionships((prev) =>
-      isChampionshipAlreadyAdded
-        ? prev.filter((championship) => championship !== championshipId)
-        : [...prev, championshipId]
-    );
+    setChampionships(newChampionships);
+    updateStoredChampionships(newChampionships);
   };
   const value = {
     championships,

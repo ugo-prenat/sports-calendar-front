@@ -120,6 +120,8 @@ export const CHAMIPONSHIP_CONFS: Record<ChampionshipId, IChampionshipConf> = {
   }
 };
 
+export const CHAMPIONSHIPS_STORAGE_KEY = 'championships';
+
 // CALENDAR
 export const UPCOMING = 'upcoming';
 export const WEEKEND = 'weekend';
