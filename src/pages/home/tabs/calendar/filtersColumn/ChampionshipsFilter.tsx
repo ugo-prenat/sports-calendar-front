@@ -25,7 +25,7 @@ const ChampionshipsFilter: FC = () => {
         checked={isChecked}
         onClick={handleClick(championship)}
       />
-      <Label htmlFor={championship} className="cursor-pointer font-normal">
+      <Label htmlFor={championship} className="cursor-pointer font-normal ">
         {t(championship)}
       </Label>
     </div>
@@ -33,6 +33,9 @@ const ChampionshipsFilter: FC = () => {
 
   return (
     <div className="pt-6 border-t flex-1">
+      <p className="pb-3 font-medium">
+        {t('calendar.championships.filter.title')}
+      </p>
       {CHAMPIONSHIPS.map((championship) => (
         <Championship
           key={championship}

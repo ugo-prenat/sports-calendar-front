@@ -2,11 +2,11 @@ import { useTranslation } from '@/common/hooks/lang.hooks';
 import { FC, useEffect } from 'react';
 import { ISchemaEvent, ISchemaSession } from './creation.models';
 import { Skeleton } from '@/components/ui/skeleton';
-import Error from '@/components/ui/Error';
 import { IAPIEventWithSessions } from '@/common/models/sports.models';
 import { makeEventFromAPIToSchema } from './creation.utils';
 import { cn } from '@/common/utils/tailwind.utils';
 import { Status } from '@/common/fetcher/fetcher.models';
+import Alert from '@/components/Alert';
 
 interface IEventFetchingProps {
   status: Status;
@@ -61,7 +61,8 @@ const EventsHistory: FC<IEventsHistoryProps> = ({
         </>
       )}
       {status === 'error' && (
-        <Error
+        <Alert
+          variant="error"
           retry={handleFetchEvents}
           text={t('creation.event.history.error')}
         />

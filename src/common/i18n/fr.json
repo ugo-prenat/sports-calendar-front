@@ -70,6 +70,8 @@
   "filtersColumn.close": "Masquer la barre latérale",
 
   "calendar.receive.sessions.error": "Une erreur est survenue lors de la récupération des sessions.",
+  "calendar.receive.sessions.noChampionships": "Aucun championnat sélectionné.",
+  "calendar.championships.filter.title": "Sélection des championnats",
 
   "creation.event.title": "Créer un événement",
   "creation.event.history": "Historique",

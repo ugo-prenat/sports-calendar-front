@@ -5,21 +5,26 @@ import { useCalendar } from '@/common/hooks/calendar.hooks';
 import { useCalendarDaysSessions } from '@/pages/home/home.hooks';
 import { makeLoadingCalendarDaySessions } from '@/pages/home/home.utils';
 import { useChampionships } from '@/common/hooks/championships.hooks';
+import { useTranslation } from '@/common/hooks/lang.hooks';
+import { isEmpty, isNotEmpty } from '@/common/utils/utils';
+import Alert from '@/components/Alert';
 
 interface ICalendarMonthViewProps {
   days: Date[];
 }
 
 const CalendarMonthView: FC<ICalendarMonthViewProps> = ({ days }) => {
+  const { t } = useTranslation();
   const { calendarRange } = useCalendar();
   const { championships } = useChampionships();
+
   const weeksInMonth = getWeeksInMonth(calendarRange.from, { weekStartsOn: 1 });
 
   const { calendarDaysSessions, status, handleFetch } =
     useCalendarDaysSessions(days);
 
   useEffect(() => {
-    handleFetch();
+    if (isNotEmpty(championships)) handleFetch();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [days, championships]);
 
@@ -42,23 +47,38 @@ const CalendarMonthView: FC<ICalendarMonthViewProps> = ({ days }) => {
         </div>
       )}
 
-      {status === 'error' && <div>Error</div>}
-
-      {status === 'success' && calendarDaysSessions && (
-        <div
-          className="grid grid-cols-7 w-full first:border-t border-l"
-          style={{
-            gridTemplateRows: `repeat(${weeksInMonth}, minmax(0, 1fr))`
-          }}
-        >
-          {calendarDaysSessions.map((calendarDaySessions, index) => (
-            <CalendarMonthDay
-              key={index}
-              calendarDaySessions={calendarDaySessions}
-            />
-          ))}
-        </div>
+      {status === 'error' && isNotEmpty(championships) && (
+        <Alert
+          variant="error"
+          text={t('calendar.receive.sessions.error')}
+          retry={handleFetch}
+        />
       )}
+
+      {isEmpty(championships) && (
+        <Alert
+          variant="warning"
+          text={t('calendar.receive.sessions.noChampionships')}
+        />
+      )}
+
+      {status === 'success' &&
+        calendarDaysSessions &&
+        isNotEmpty(championships) && (
+          <div
+            className="grid grid-cols-7 w-full first:border-t border-l"
+            style={{
+              gridTemplateRows: `repeat(${weeksInMonth}, minmax(0, 1fr))`
+            }}
+          >
+            {calendarDaysSessions.map((calendarDaySessions, index) => (
+              <CalendarMonthDay
+                key={index}
+                calendarDaySessions={calendarDaySessions}
+              />
+            ))}
+          </div>
+        )}
     </>
   );
 };

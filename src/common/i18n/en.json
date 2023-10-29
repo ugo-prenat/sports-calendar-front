@@ -70,6 +70,8 @@
   "filtersColumn.close": "Hide sidebar",
 
   "calendar.receive.sessions.error": "An error occurred while retrieving the sessions.",
+  "calendar.receive.sessions.noChampionships": "No championship selected.",
+  "calendar.championships.filter.title": "Championship selection",
 
   "creation.event.title": "Create an event",
   "creation.event.history": "History",
