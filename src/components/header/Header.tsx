@@ -18,10 +18,6 @@ const Header: FC<HeaderProps> = () => {
         </Button>
 
         <Button variant="link">
-          <Link to="/manage">{t('manage')}</Link>
-        </Button>
-
-        <Button variant="link">
           <Link to="/settings">{t('settings')}</Link>
         </Button>
 

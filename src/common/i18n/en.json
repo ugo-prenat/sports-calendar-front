@@ -42,12 +42,7 @@
   "short.race-1": "R1",
   "short.race-2": "R2",
 
-  "manage.sports": "Manage",
-  "manage.sports.title": "Sports management",
-  "manage.sports.details": "Select the sports to be displayed or not in the calendar.",
-
   "home": "Home",
-  "manage": "Manage",
   "settings": "Settings",
 
   "retry": "Retry",
