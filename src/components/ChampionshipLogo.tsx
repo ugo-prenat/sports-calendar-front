@@ -25,7 +25,7 @@ const ChampionshipLogo: FC<IChampionshipLogoProps> = ({
   return (
     <img
       alt={`${championshipId}-logo`}
-      className={cn('', className)}
+      className={cn('object-contain', className)}
       src={logo}
       {...props}
     />

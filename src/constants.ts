@@ -60,7 +60,7 @@ export const CHAMIPONSHIP_CONFS: Record<ChampionshipId, IChampionshipConf> = {
   [F1]: {
     id: F1,
     sport: MOTORSPORTS,
-    color: '#e10600',
+    color: '225,6,0', // '#E10600',
     logo: {
       dark: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/F1.svg/320px-F1.svg.png',
       light:
@@ -70,7 +70,7 @@ export const CHAMIPONSHIP_CONFS: Record<ChampionshipId, IChampionshipConf> = {
   [F2]: {
     id: F2,
     sport: MOTORSPORTS,
-    color: '#0090D0',
+    color: '0,146,208', // '#0090D0',
     logo: {
       dark: 'https://img.redbull.com/images/e_trim:10:transparent/bo_5px_solid_rgb:00000000/q_auto,f_png/redbullcom/2020/5/29/dr0wsisnomqykmgi6q84/formula-2-logo',
       light:
@@ -80,7 +80,7 @@ export const CHAMIPONSHIP_CONFS: Record<ChampionshipId, IChampionshipConf> = {
   [F3]: {
     id: F3,
     sport: MOTORSPORTS,
-    color: '#E90300',
+    color: '233,4,0', // '#E90300'
     logo: {
       dark: 'https://www.fiaformula3.com/livetiming/img/f3/logo.8.png',
       light:
@@ -90,7 +90,7 @@ export const CHAMIPONSHIP_CONFS: Record<ChampionshipId, IChampionshipConf> = {
   [WEC]: {
     id: WEC,
     sport: MOTORSPORTS,
-    color: '#0c3266',
+    color: '12,49,102', // #0c3266
     logo: {
       dark: 'https://images.squarespace-cdn.com/content/v1/5c784c56fb22a5229ab07d42/1556052342906-TRGNLIXQDCUMHJVKHIJW/wec-logo-wht.png',
       light:
@@ -100,7 +100,7 @@ export const CHAMIPONSHIP_CONFS: Record<ChampionshipId, IChampionshipConf> = {
   [F1_ACADEMY]: {
     id: F1_ACADEMY,
     sport: MOTORSPORTS,
-    color: '#be117e',
+    color: '190,17,127', // #be117e
     logo: {
       dark: 'https://www.f1academy.com/_next/static/images/fa_logo_footer-1992667600d4ff845995310220de58a8.png',
       light:
@@ -110,7 +110,7 @@ export const CHAMIPONSHIP_CONFS: Record<ChampionshipId, IChampionshipConf> = {
   [GT_WORLD_CHALLENGE]: {
     id: GT_WORLD_CHALLENGE,
     sport: MOTORSPORTS,
-    color: '#e31e12',
+    color: '227,30,18', //#e31e12
     logo: {
       // dark: 'https://www.gt-world-challenge.com/assets/img/gt-world-challenge-fanatec-aws-neg-logo.svg',
       dark: 'https://www.gt-world-challenge.com/images/logo-gt-world-challenge.png',
