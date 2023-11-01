@@ -67,7 +67,7 @@ const CreationForm: FC<ICreationFormProps> = ({
         isEmpty(sessions)
           ? handleResetFormAfterSuccess()
           : handleCreateSessions(sessions, event._id)
-              .then(() => handleResetFormAfterSuccess())
+              .then(handleResetFormAfterSuccess)
               .catch(() => displayToast('destructive'));
       })
       .catch(() => displayToast('destructive'));
