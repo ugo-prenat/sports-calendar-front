@@ -7,7 +7,7 @@ import { Popover, PopoverTrigger } from '@/components/ui/popover';
 import EventDetailsPopup from '@/pages/home/EventDetailsPopup';
 import { useSessionDetails } from '@/pages/home/home.hooks';
 import { ICalendarSession } from '@/pages/home/home.models';
-import { CSSProperties, FC } from 'react';
+import { CSSProperties, FC, useState } from 'react';
 
 export interface ICalendarWeekSessionStyle {
   left: string;
@@ -30,6 +30,8 @@ const CalendarWeekSession: FC<ICalendarWeekSessionProps> = ({
     isSessionPast
   } = useSessionDetails(session);
 
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+
   const { t } = useTranslation();
   const { calendarView } = useCalendar();
   const championshipConf = useChampionshipConf(session.championship);
@@ -48,7 +50,7 @@ const CalendarWeekSession: FC<ICalendarWeekSessionProps> = ({
   };
 
   return (
-    <Popover>
+    <Popover open={isPopoverOpen} onOpenChange={setIsPopoverOpen}>
       <PopoverTrigger
         className={cn(`flex items-start absolute p-2 border`, {
           'rounded-t-sm bg-gradient-to-t from-background via-background to-transparent to-5%':
@@ -74,7 +76,11 @@ const CalendarWeekSession: FC<ICalendarWeekSessionProps> = ({
         </div>
       </PopoverTrigger>
 
-      <EventDetailsPopup eventId={session.eventId} session={session} />
+      <EventDetailsPopup
+        isOpen={isPopoverOpen}
+        eventId={session.eventId}
+        session={session}
+      />
     </Popover>
   );
 };

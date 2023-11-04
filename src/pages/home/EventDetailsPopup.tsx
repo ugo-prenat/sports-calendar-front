@@ -7,11 +7,13 @@ import {
 } from '@/common/contexts/lang/lang.hooks';
 
 interface IEventDetailsPopupProps {
+  isOpen: boolean;
   eventId: string;
   session: ICalendarSession;
 }
 
 const EventDetailsPopup: FC<IEventDetailsPopupProps> = ({
+  isOpen,
   eventId,
   session
 }) => {
@@ -19,8 +21,11 @@ const EventDetailsPopup: FC<IEventDetailsPopupProps> = ({
   const format = useFnsFormat();
 
   useEffect(() => {
-    console.log('fetch event', eventId);
-  }, [eventId]);
+    if (isOpen) console.log('fetch event', eventId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen]);
+
+  if (!isOpen) return null;
 
   return (
     <PopoverContent side="right" className="-mx-4">
