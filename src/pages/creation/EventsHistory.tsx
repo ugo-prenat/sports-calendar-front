@@ -1,4 +1,7 @@
-import { useTranslation } from '@/common/contexts/lang/lang.hooks';
+import {
+  useRegionalized,
+  useTranslation
+} from '@/common/contexts/lang/lang.hooks';
 import { FC, useEffect } from 'react';
 import { ISchemaEvent, ISchemaSession } from './creation.models';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -92,6 +95,8 @@ const EventCard = ({
   onClick: () => void;
 }) => {
   const { t } = useTranslation();
+  const { name, shortName } = useRegionalized(event.regionalized);
+
   const eventSessions = event.sessions
     .map((session) => t(`short.${session.type}`))
     .join(', ');
@@ -102,7 +107,7 @@ const EventCard = ({
       onClick={onClick}
     >
       <p className="font-medium text-ellipsis overflow-hidden whitespace-nowrap">
-        {event.regionalized.en.shortName || event.regionalized.en.name}
+        {shortName || name}
       </p>
       <p className="text-xs text-muted-foreground leading-4 text-ellipsis overflow-hidden whitespace-nowrap">
         {eventSessions}
