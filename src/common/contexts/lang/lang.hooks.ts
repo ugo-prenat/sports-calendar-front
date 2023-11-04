@@ -29,8 +29,5 @@ export const useRegionalized = <T extends { [key: string]: unknown }>(
   const regionalized = regionalizedObj[lang];
   const defaultRegionalized = regionalizedObj[DEFAULT_LANG];
 
-  return {
-    ...defaultRegionalized,
-    ...regionalized
-  };
+  return { ...defaultRegionalized, ...regionalized };
 };
